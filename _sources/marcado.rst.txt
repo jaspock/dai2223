@@ -174,9 +174,9 @@ Una página web normalmente se aloja en un servidor web. Si la máquina en la qu
 
   o con versiones más recientes de Python:
 
-    .. code-block::
+  .. code-block::
 
-      python -m http.server
+    python -m http.server
 
 
 Validación de documentos HTML
@@ -220,5 +220,5 @@ Un aspecto básico de los documentos HTML es que estos cumplan estrictamente con
 
     <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" >
 
-  Ten en cuenta estas diferencias cuando encuentres código de ejemplo en HTML en alguna web. Los navegadores suelen procesar correctamente la mayor parte de la última versión del estándar existente cuando son publicados, pero no debes perder de vista que un gran número de usuarios tendrás probablemente versiones antiguas del navegador. Aunque no las veremos en este curso, existen maneras de desarrollar aplicaciones web teniendo en cuenta estas versiones antiguas sin renunciar necesariamente a la versatilidad de las recientes.
+  Ten en cuenta estas diferencias cuando encuentres código de ejemplo en HTML en alguna web. Los navegadores suelen procesar correctamente la mayor parte de la última versión del estándar existente cuando son publicados, pero no debes perder de vista que un gran número de usuarios tendrán probablemente versiones antiguas del navegador. Aunque no las veremos en este curso, existen maneras de desarrollar aplicaciones web teniendo en cuenta estas versiones antiguas sin renunciar necesariamente a la versatilidad de las recientes.
 
