@@ -27,7 +27,19 @@ author = 'Juan Antonio Pérez'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
+#extensions = [
+#]
+
 extensions = [
+    'sphinx_revealjs',
+]
+
+revealjs_css_files = [
+    'aux/custom_slides.css'
+]
+
+revealjs_js_files = [
+    'aux/custom_slides.js'
 ]
 
 # Add any paths that contain templates here, relative to this directory.

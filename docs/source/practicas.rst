@@ -18,22 +18,22 @@ Este es el calendario de cada uno de los entregables de la asignatura. No se adm
       - Tiempo medio estimado de realización
       - Porcentaje en la nota de prácticas
     * - Práctica #1
-      - `Una página web con HTML5`_
+      - `PRÁCTICA 1: Una página web con HTML5`_
       - 6 octubre 2022
       - 8 horas
       - 20%
     * - Práctica #2
-      - `Una aplicación web local`_
+      - `PRÁCTICA 2: Una aplicación web local`_
       - 3 noviembre 2022 (provisional)
       - 14 horas
       - 25%
     * - Práctica #3
-      - `Una aplicación con acceso a servicios web de terceros y con componentes web`_
+      - `PRÁCTICA 3: Una aplicación con acceso a servicios web de terceros y con componentes web`_
       - 24 noviembre 2022 (provisional)
       - 12 horas
       - 25%
     * - Práctica #4
-      - `Una aplicación en la nube`_
+      - `PRÁCTICA 4: Una aplicación en la nube`_
       - 21 diciembre 2022 (provisional)
       - 20 horas
       - 30%
@@ -48,7 +48,7 @@ Realiza tu entrega en un único fichero comprimido a través del `servidor web d
 
 
 PRÁCTICA 1: Una página web con HTML5
-------------------------¡------------
+------------------------------------
 
 En esta práctica vas a crear un documento HTML5 en el que *todo* el formato recaiga en hojas de estilo CSS (por tanto, no es posible usar atributos como ``style`` para el formato). Tu documento se llamará ``index.html`` y tendrá dos vistas diferentes, *normal* (la vista por defecto) y *compacta*; el usuario podrá cambiar de vista en cualquier momento usando los enlaces a pie de página. El objetivo es que consigas un documento que se muestre exactamente como puedes ver en estas imágenes de la `vista normal`_ y de la `vista compacta`_. Tu documento usará tres hojas de estilo: una con todo el contenido común a ambas vistas y dos más correspondientes a cada una de las vistas. Para poder alternar entre ambas hojas de estilo, añade este código a la cabecera (``head``) de tu página:
 
