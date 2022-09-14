@@ -99,7 +99,7 @@ Estos son los materiales de clase de la asignatura Desarrollo de Aplicaciones en
 .. _`guía docente`: http://cv1.cpd.ua.es/ConsPlanesEstudio/cvFichaAsiEEES.asp?wCodEst=C203&wcodasi=34063&wLengua=C&scaca=2022-23
 
 - La asistencia a prácticas es obligatoria, aunque se puede tener un máximo de 4 faltas no justificadas. Si tienes alguna ocupación que te impide asistir a todas o gran parte de las prácticas incluso online, envía un justificante escaneado al profesor a través del sistema de tutoría de UACloud. Para justificar una falta puntual, envía al profesor el justificante por una tutoría de UACloud. Cada falta no justificada por encima de las permitidas, restará una parte de la nota final de prácticas.
-- La visita al profesor durante sus horas de tutoría no puede ser obligatoria por cuestiones normativas, pero es muy recomendable, ya que es la oportunidad de recibir supervisión sobre tus conocimientos de la materia o la calidad del código que has desarrollado. Reserva turno a través de UACloud con anterioridad tanto para un encuentro virtual como presencial. Si el horario no es compatible con tu agenda, escribe al profesor e intentará encontrar un hueco fuera de dicho horario para atenderte.
+- La visita al profesor durante sus horas de tutoría no puede ser obligatoria por cuestiones normativas, pero es muy recomendable, ya que es la oportunidad de recibir supervisión sobre tus conocimientos de la materia o la calidad del código que has desarrollado. Reserva turno a través de UACloud con anterioridad tanto para un encuentro bien virtual bien presencial. Si el horario no es compatible con tu agenda, escribe al profesor e intentará encontrar un hueco fuera de dicho horario para atenderte.
 - Las prácticas se realizan individualmente. Lee lo que se comenta más abajo sobre plagios.
 - Cada una de las cuatro prácticas contribuye según lo indicado en la sección de prácticas a la nota final.
 - Para acceder a Google Cloud Platform necesitarás tu `cuenta de correo electrónico de GCloud`_ con dominio ``@gcloud.ua.es`` de la que dispones como alumno de la Universitat d'Alacant. Asegúrate antes de la cuarta semana de clase de que la tienes activada entrando en la sección *Servicios externos* de UACloud.
@@ -126,27 +126,27 @@ Cómo compartir código con el profesor en clase, tutorías virtuales o consulta
 
 Si quieres que el profesor pueda ayudarte con algún código que estás desarrollando, mandar un pantallazo no es la mejor opción. Utiliza repl.it en su lugar para que el profesor pueda probar tu código e incluso realizar modificaciones en directo.
 
-- Accede a la web de `repl.it`_ con tu usuario. 
+- Accede a la web de `replit.com`_ con tu usuario. 
 - Clica en el botón para añadir un nuevo espacio, elige :guilabel:`HTML,CSS,JS` o :guilabel:`Node.js` dependiendo de si tu aplicación es solo para el navegador o también incluye la parte del servidor, y clica en :guilabel:`Create repl`.
 - Arrastra desde el explorador de archivos tus ficheros sobre la zona :guilabel:`Files`.
 - Si tu aplicación incluye la parte del servidor programada con Express bajo Node.js, será más sencillo si copias el código del servidor (que probablemente tendrás en el fichero ``app.js``) en ``index.js`` y editas el código para que la aplicación se lance en el puerto 3000, ya que repl.it espera esta configuración. Como ejemplo, aquí puedes probar la aplicación del `carrito`_ que estudiamos en clase.
-- Puedes lanzar tu aplicación con el botón :guilabel:`Run`.
+- Puedes lanzar tu aplicación con el botón :guilabel:`Run`. Pulsa después en el icono que te permite abrirla en una ventana propia del navegador.
 - Clica en el botón :guilabel:`Share` y manda el enlace al profesor.
 - Si no es necesario que el profesor edite tu código, también puedes mandarle simplemente el URL de tu código; para ello, tienes que haber creado el espacio como público.
 
-.. _`repl.it`: https://repl.it/
+.. _`replit.com`: https://replit.com/
 .. _carrito: https://repl.it/@jaspock/Carrito
 
 
 Recomendaciones
 ---------------
 
-Este prefacio es un buen lugar para decir unas palabras sobre integridad profesional y ética académica. Durante este cuatrimestre, la carga de trabajo producida por esta y otras asignaturas puede hacer que en ocasiones te sientas desbordado por la faena pendiente. Esta situación también se producirá frecuentemente en el ámbito profesional para el que te estás formando. Es muy importante que afrontes esos momentos de presión con integridad. El Massachusettts Institute of Technology (MIT) da una `serie de recomendaciones`_ a sus estudiantes al respecto que es importante que leas. Este tipo de universidades suelen tener bien especificado los `procedimientos y sanciones`_ posibles en caso de fraude académico; también la Universitat d'Alacant tiene un reglamento_ al respecto, que probablemente ya conoces. Además, la `Ley de Convivencia Universitaria`_ de 2021 impone sansiones importantes ante faltas de este tipo. Todos estos aspectos también has de tenerlos en cuenta en esta asignatura: se pueden discutir soluciones en equipo pero nunca compartir código.
+Este prefacio es un buen lugar para decir unas palabras sobre integridad profesional y ética académica. Durante este cuatrimestre, la carga de trabajo producida por esta y otras asignaturas puede hacer que en ocasiones te sientas desbordado por la faena pendiente. Esta situación también se producirá frecuentemente en el ámbito profesional para el que te estás formando. Es muy importante que afrontes esos momentos de presión con integridad. El Massachusetts Institute of Technology (MIT) da una `serie de recomendaciones`_ a sus estudiantes al respecto que es importante que leas. Este tipo de universidades suelen tener bien especificado los `procedimientos y sanciones`_ posibles en caso de fraude académico; también la Universitat d'Alacant tiene un reglamento_ al respecto, que probablemente ya conoces. Además, la `Ley 3/2022 de Convivencia Universitaria`_ impone sanciones importantes ante faltas de este tipo. Todos estos aspectos también has de tenerlos en cuenta en esta asignatura: se pueden discutir soluciones en equipo pero nunca compartir código.
 
 .. _`serie de recomendaciones`: http://integrity.mit.edu/
 .. _`procedimientos y sanciones`: http://web.mit.edu/policies/10/10.2.html
 .. _reglamento: https://dma.ua.es/es/documentos/pdf/actuacion-ante-copia-en-pruebas-de-evaluacion-de-la-eps.pdf
-.. _`Ley de Convivencia Universitaria`: https://www.universidades.gob.es/portal/site/universidades/menuitem.43f867cc076c14d185cacc2c026041a0/?vgnextoid=b44e1fa61c2a9710VgnVCM1000001d04140aRCRD
+.. _`Ley 3/2022 de Convivencia Universitaria`: https://www.boe.es/buscar/doc.php?id=BOE-A-2022-2978
 
 Este es el momento también en el que enfatizar la importancia de tomar apuntes para poder preparar la asignatura con garantías. Las diapositivas, por ejemplo, solo contienen una parte de lo estudiado en clase. Por si se nos ha olvidado mencionarlo, también es muy aconsejable que acudas de vez en cuando a una tutoría presencial; usa antes para ello el sistema electrónico de solicitud de cita de UACloud.
 

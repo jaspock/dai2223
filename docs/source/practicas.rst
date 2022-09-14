@@ -47,8 +47,8 @@ Realiza tu entrega en un único fichero comprimido a través del `servidor web d
 .. _`servidor web del Departamento`: https://pracdlsi.dlsi.ua.es/index.cgi?id=val
 
 
-Una página web con HTML5
-------------------------
+PRÁCTICA 1: Una página web con HTML5
+------------------------¡------------
 
 En esta práctica vas a crear un documento HTML5 en el que *todo* el formato recaiga en hojas de estilo CSS (por tanto, no es posible usar atributos como ``style`` para el formato). Tu documento se llamará ``index.html`` y tendrá dos vistas diferentes, *normal* (la vista por defecto) y *compacta*; el usuario podrá cambiar de vista en cualquier momento usando los enlaces a pie de página. El objetivo es que consigas un documento que se muestre exactamente como puedes ver en estas imágenes de la `vista normal`_ y de la `vista compacta`_. Tu documento usará tres hojas de estilo: una con todo el contenido común a ambas vistas y dos más correspondientes a cada una de las vistas. Para poder alternar entre ambas hojas de estilo, añade este código a la cabecera (``head``) de tu página:
 
@@ -189,8 +189,8 @@ Por último, coloca en algún punto del pie de la página un fragmento de HTML c
 
 
 
-Una aplicación web local
-------------------------
+PRÁCTICA 2: Una aplicación web local
+------------------------------------
 
 En esta práctica extenderás la práctica anterior con la incorporación de elementos dinámicos mediante JavaScript. En particular, será posible añadir y eliminar cuestionarios, así como añadir y eliminar sus preguntas; todo ello en el navegador, sin interaccionar con ningún servidor o base de datos. Para ello, la sección ``main`` del documento tendrá al principio un formulario que permitirá añadir nuevos cuestionarios indicando su título y su imagen asociada; además, al principio de cada cuestionario (tras el título e inmediatamente antes de la primera pregunta, si la hubiera) se mostrará otro formulario que permitirá añadir una nueva pregunta y su respuesta (verdadero o falso) al final del cuestionario correspondiente. Se permitirá, además, borrar individualmente las preguntas de los cuestionarios.
 
@@ -439,8 +439,8 @@ Por último, coloca en algún punto del pie de la página un fragmento de HTML c
 
 
 
-Una aplicación con acceso a servicios web de terceros y con componentes web
----------------------------------------------------------------------------
+PRÁCTICA 3: Una aplicación con acceso a servicios web de terceros y con componentes web
+---------------------------------------------------------------------------------------
 
 En esta práctica ampliarás tu práctica anterior para integrarla con diferentes servicios web proporcionados por terceros a través de APIs; en particular, la imagen a mostrar junto al título de cada cuestionario será tomada de alguna de las imágenes relevantes ofrecidas por `Flickr`_; además, cada cuestionario mostrará un pequeño texto extraido de `Wikipedia en español`_ sobre el tema en cuestión. En la segunda parte, crearás algunos componentes web para encapsular adecuadamente toda esta información.
 
@@ -581,10 +581,8 @@ Por último, coloca en algún punto del pie de la página un fragmento de HTML c
 
 
 
-
-
-Una aplicación en la nube
--------------------------
+PRÁCTICA 4: Una aplicación en la nube
+-------------------------------------
 
 Esta práctica tiene dos partes. En la primera parte vas a ampliar la práctica anterior, que solo tenía *front-end*, para añadirle un *back-end* que dé persistencia a la aplicación y permita gestionar una base de datos con la información de los cuestionarios. La aplicación resultante se implantará en la plataforma Google App Engine y los datos se almacenarán en una base de datos MySQL alojada en el servicio Google Cloud SQL, de manera muy similar a la aplicación del carrito que has estudiado en clase. Como en prácticas anteriores, no puedes usar ninguna librería, como jQuery o Angular, en la parte del cliente, con excepción de la librería para integrar Google Sign-in que se usará en la segunda parte de la práctica.
 
@@ -703,8 +701,8 @@ Por último, coloca en algún punto del pie de la página un fragmento de HTML c
 
 .. _label-ampliaciones:
 
-Ejemplos de posibles ejercicios para el examen práctico
--------------------------------------------------------
+APÉNDICE: Ejemplos de posibles ejercicios para el examen práctico
+-----------------------------------------------------------------
 
 Este apartado muestra algunos ejemplos de posibles ejercicios para el examen práctico. Un examen típico incluiría solo uno de ellos, pero sería posible también que hubiera dos o más ejercicios de menor complejidad. El tiempo de realización del examen suele estar en torno a los 110 minutos. No podrás hacer estos ejercicios hasta que hayas acabado la práctica 4, ya que se basan en ella. Ejercicios adicionales con los que podrías practicar son:
 
