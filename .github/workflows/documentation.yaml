@@ -42,15 +42,3 @@ jobs:
 # https://github.com/peaceiris/actions-gh-pages
 # https://github.com/ammaraskar/sphinx-action
 # sphinx-build -M revealjs -d _build/doctrees/slides docs/slides _build/html/slides
-
-
-convert_via_pandoc:
-    runs-on: ubuntu-18.04
-    steps:
-      - run: echo "foo" > input.txt  # create an example file
-      - uses: docker://pandoc/core:2.9
-        with:
-          args: >-  # allows you to break string into multiple lines
-            --standalone
-            --output=index.html
-            input.txt
