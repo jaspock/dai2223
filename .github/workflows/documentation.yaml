@@ -19,6 +19,7 @@ jobs:
           mkdir _build/html/slides
           mkdir _build/html/slides/_static
           cp -r docs/slides/_static/* _build/html/slides/_static
+          git clone https://github.com/hakimel/reveal.js.git _build/html/slides/reveal.js
       - name: 150-js-slides
         uses: docker://pandoc/core:2.9
         with:
