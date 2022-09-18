@@ -159,7 +159,7 @@ La siguiente gráfica muestra cómo con la computación en la nube los gastos se
   .. _`centros de datos para computación en la nube`: https://www.youtube.com/playlist?list=PLy5CQU7Pj3dNm2vn6tSfrZ58vUaZiK8Sv
 
 
-.. diapositivas antiguas: _static/slides/500-cloud-slides.html
+.. diapositivas antiguas: ./slides/500-cloud-slides.html
 
 
 .. _label-appengine:

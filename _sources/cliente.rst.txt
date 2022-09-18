@@ -33,7 +33,7 @@ Introducción al lenguaje de programación JavaScript
 
 Elementos más avanzados del lenguaje o las características adicionales a las que un programador puede acceder cuando escribe programas en JavaScript para ser ejecutados por un navegador se estudiarán más adelante. Los conceptos que tienes que comprender del lenguaje se encuentran recogidos en `estas diapositivas`_, que también contiene información sobre elementos más avanzados que estudiaremos más adelante.
 
-.. _`estas diapositivas`: _static/slides/150-js-slides.html
+.. _`estas diapositivas`: ./slides/150-js-slides.html
 
 .. admonition:: Hazlo tú ahora
   :class: hazlotu
@@ -123,7 +123,7 @@ Los navegadores incluyen una serie de librerías estandarizadas para programar l
 
 Los conceptos que tienes que estudiar de estas APIs se encuentran recogidos en `estas otras diapositivas`_.
 
-.. _`estas otras diapositivas`: _static/slides/150-apidom-slides.html
+.. _`estas otras diapositivas`: ./slides/150-apidom-slides.html
 
 Ten en cuenta que las funciones de *callback* se ejecutan en el (único) hilo de tu programa pero cuando les toque (se van apilando conforme están listas para ser invocadas). El navegador nunca va a interrumpir la ejecución de tu código hasta que acabe lo que esté haciendo. Por ejemplo, si se está ejecutando un manejador de evento de clic, hasta que la función manejadora no acabe, el intérprete no se irá a la cola a ver si hay alguna otra función de *callback* esperando a ser llamada.
 

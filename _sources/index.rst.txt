@@ -111,7 +111,7 @@ Estos son los materiales de clase de la asignatura Desarrollo de Aplicaciones en
 
 Puedes encontrar algo de información adicional en las diapositivas usadas en la `presentación del curso`_.
 
-.. _`presentación del curso`: _static/slides/000-presentacion-curso.html
+.. _`presentación del curso`: ./slides/000-presentacion-curso.html
 
 El `código fuente`_ de estas páginas, escrito en reStructuredText, está disponible en Github.
 
