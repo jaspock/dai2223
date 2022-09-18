@@ -39,7 +39,7 @@ jobs:
             --variable keyboard="{37:'prev',38:'prev',39:'next',40:'next'}"
             --to=revealjs
             --output=_build/html/slides/000-presentacion-curso.html
-            docs/slides/000-presentacion-curso
+            docs/slides/000-presentacion-curso.md
       - name: 050-historia-slides
         uses: docker://pandoc/core:2.9
         with:
@@ -52,7 +52,7 @@ jobs:
             --variable keyboard="{37:'prev',38:'prev',39:'next',40:'next'}"
             --to=revealjs
             --output=_build/html/slides/050-historia-slides.html
-            docs/slides/050-historia-slides
+            docs/slides/050-historia-slides.md
       - name: 050-http-slides
         uses: docker://pandoc/core:2.9
         with:
@@ -65,7 +65,7 @@ jobs:
             --variable keyboard="{37:'prev',38:'prev',39:'next',40:'next'}"
             --to=revealjs
             --output=_build/html/slides/050-http-slides.html
-            docs/slides/050-http-slides
+            docs/slides/050-http-slides.md
       - name: 070-codificacion-slides
         uses: docker://pandoc/core:2.9
         with:
@@ -78,7 +78,7 @@ jobs:
             --variable keyboard="{37:'prev',38:'prev',39:'next',40:'next'}"
             --to=revealjs
             --output=_build/html/slides/070-codificacion-slides.html
-            docs/slides/070-codificacion-slides
+            docs/slides/070-codificacion-slides.md
       - name: 150-apidom-slides
         uses: docker://pandoc/core:2.9
         with:
@@ -91,7 +91,7 @@ jobs:
             --variable keyboard="{37:'prev',38:'prev',39:'next',40:'next'}"
             --to=revealjs
             --output=_build/html/slides/150-apidom-slides.html
-            docs/slides/150-apidom-slides
+            docs/slides/150-apidom-slides.md
       - name: 500-cloud-slides
         uses: docker://pandoc/core:2.9
         with:
@@ -104,7 +104,7 @@ jobs:
             --variable keyboard="{37:'prev',38:'prev',39:'next',40:'next'}"
             --to=revealjs
             --output=_build/html/slides/500-cloud-slides.html
-            docs/slides/500-cloud-slides
+            docs/slides/500-cloud-slides.md
       - name: 150-js-slides
         uses: docker://pandoc/core:2.9
         with:
