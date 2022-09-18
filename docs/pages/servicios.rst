@@ -37,7 +37,7 @@ HTTP (por *hypertext transfer protocol*) es el protocolo de comunicación (a niv
 
 Los conceptos que tienes que comprender del protocolo HTTP se encuentran recogidos en `estas diapositivas`_.
 
-.. _`estas diapositivas`: _static/slides/050-http-slides.html
+.. _`estas diapositivas`: ./slides/050-http-slides.html
 
 
 Herramientas para desarrolladores

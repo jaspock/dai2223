@@ -1,6 +1,6 @@
 % Desarrollo de Aplicaciones en Internet
 % Universitat d'Alacant
-% 2022&mdash;2023
+% 2021&mdash;2022
 
 ## Profesor y tutoría
 
@@ -33,7 +33,7 @@
 
 - Desarrollo individual e incremental de una aplicación web
 - Asistencia obligatoria, pero se admite un máximo de 4 faltas sin justificar
-- Fechas aproximadas de entrega: 6 octubre, 3 noviembre, 24 noviembre, 22 diciembre
+- Fechas aproximadas de entrega: 7 octubre, 4 noviembre, 25 noviembre, 23 diciembre
 - Peso: 40% de la nota final (sin nota mínima)
 
 ## Plagios
@@ -54,27 +54,27 @@
 
 - Nota mínima de 4 en ambos
 - Las notas mayores de 4 en los exámenes de enero se guardan para la convocatoria de julio
-- Se anunciará más adelante si se permite consultar cierto material durante el examen de teoría
+- Se podrá consultar cierto material durante el examen como se anunciará más adelante
 
 ## Profesional en Tecnologías de la Información
 
-- Explain and apply appropriate information technologies and employ appropriate methodologies to help an individual or organization achieve its goals and objectives
-- Function as a user advocate
-- Manage the information technology resources of an individual or organization
+- Explain and apply appropriate information technologies and employ appropriate methodologies to help an individual or organization achieve its goals and objectives;
+- Function as a user advocate;
+- Manage the information technology resources of an individual or organization;
 
 ## Profesional en Tecnologías de la Información
 
-- Anticipate the changing direction of information technology and evaluate and communicate the likely utility of new technologies to an individual or organization
-- Understand and, in some cases, contribute to the scientific, mathematical and theoretical foundations on which information technologies are built
+- Anticipate the changing direction of information technology and evaluate and communicate the likely utility of new technologies to an individual or organization;
+- Understand and, in some cases, contribute to the scientific, mathematical and theoretical foundations on which information technologies are built;
 
 ## Profesional en Tecnologías de la Información
 
-- Live and work as a contributing, well-rounded member of society
+- Live and work as a contributing, well-rounded member of society.
 - Tomado de ACM Special Interest Group for Information Technology Education, [SIGITE](http://www.sigite.org/?page_id=22)
 
 ## Contenidos
 
-- Los contenidos concretos que aprendas no son tan importantes como las capacidades que desarrolles
+- Los contenidos concretos que aprendas no son tan importantes como las capacidades que desarrolles.
 - Oblígate a preguntar con frecuencia. Cualquier persona en el proceso de aprender tiene dudas.
 
 ## DevOps
@@ -97,7 +97,7 @@
 
 ## Apéndice
 
-Historia de la web e internet (opcional)
+Historia de la web e internet
 
 ## Vannevar Bush
 

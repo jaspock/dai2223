@@ -146,7 +146,7 @@ Codificación de caracteres
 
 Aunque hoy día la mayor parte de los sistemas operativos trabajan con la codificación de caracteres de longitud variable UTF-8, que permite representar todos los caracteres del juego de caracteres Unicode, es importante que seas capaz de saber qué codificación de caracteres se usa en tus documentos web, en los de terceros, o en tu servidor web. No tener esto en cuenta puede hacer que tu web se visualice incorrectamente en algunos navegadores. En esta actividad hablaremos de codificación de caracteres siguiendo `estas diapositivas`_. 
 
-.. _`estas diapositivas`: _static/slides/070-codificacion-slides.html
+.. _`estas diapositivas`: ./slides/070-codificacion-slides.html
 
 
 .. admonition:: Hazlo tú ahora

@@ -1,5 +1,3 @@
-docs/build/
-slides/build/
-*.class
-docs/source/_static/slides/
+_build/
+doctrees/
 .vscode/

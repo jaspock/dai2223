@@ -1,0 +1,56 @@
+name: Documentation
+on: [push, pull_request, workflow_dispatch]
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10' 
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+      - name: Sphinx build
+        run: |
+          sphinx-build -M html docs/pages _build
+      - name: Create slides folder in _build
+        run: |
+          mkdir _build/html/slides
+          mkdir _build/html/slides/_static
+          cp -r docs/slides/_static/* _build/html/slides/_static
+      - name: 150-js-slides
+        uses: docker://pandoc/core:2.9
+        with:
+          args: >-
+            --standalone
+            --section-divs
+            --variable theme="simple"
+            --from=markdown
+            --variable transition="linear"
+            --variable keyboard="{37:'prev',38:'prev',39:'next',40:'next'}"
+			      --to=revealjs
+            --output=_build/html/slides/150-js-slides.html
+            docs/slides/150-js-slides.md
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          publish_branch: gh-pages
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: _build/html
+
+# https://github.com/peaceiris/actions-gh-pages
+# https://github.com/ammaraskar/sphinx-action
+# sphinx-build -M revealjs -d _build/doctrees/slides docs/slides _build/html/slides
+
+
+convert_via_pandoc:
+    runs-on: ubuntu-18.04
+    steps:
+      - run: echo "foo" > input.txt  # create an example file
+      - uses: docker://pandoc/core:2.9
+        with:
+          args: >-  # allows you to break string into multiple lines
+            --standalone
+            --output=index.html
+            input.txt

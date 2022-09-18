@@ -17,23 +17,23 @@ Este es el calendario de cada uno de los entregables de la asignatura. No se adm
       - Fecha límite de entrega
       - Tiempo medio estimado de realización
       - Porcentaje en la nota de prácticas
-    * - Práctica #1
-      - `PRÁCTICA 1: Una página web con HTML5`_
+    * - P#1
+      - `Práctica 1: una página web con HTML5 🖥️`_
       - 6 octubre 2022
       - 8 horas
       - 20%
-    * - Práctica #2
-      - `PRÁCTICA 2: Una aplicación web local`_
+    * - P#2
+      - `Práctica 2: una aplicación web local 🖥️`_
       - 3 noviembre 2022 (provisional)
       - 14 horas
       - 25%
-    * - Práctica #3
-      - `PRÁCTICA 3: Una aplicación con acceso a servicios web de terceros y con componentes web`_
+    * - P#3
+      - `Práctica 3: una aplicación con acceso a servicios web de terceros y con componentes web 🖥️`_
       - 24 noviembre 2022 (provisional)
       - 12 horas
       - 25%
-    * - Práctica #4
-      - `PRÁCTICA 4: Una aplicación en la nube`_
+    * - P#4
+      - `Práctica 4: una aplicación en la nube 🖥️`_
       - 21 diciembre 2022 (provisional)
       - 20 horas
       - 30%
@@ -47,8 +47,8 @@ Realiza tu entrega en un único fichero comprimido a través del `servidor web d
 .. _`servidor web del Departamento`: https://pracdlsi.dlsi.ua.es/index.cgi?id=val
 
 
-PRÁCTICA 1: Una página web con HTML5
-------------------------------------
+Práctica 1: una página web con HTML5 🖥️
+---------------------------------------
 
 En esta práctica vas a crear un documento HTML5 en el que *todo* el formato recaiga en hojas de estilo CSS (por tanto, no es posible usar atributos como ``style`` para el formato). Tu documento se llamará ``index.html`` y tendrá dos vistas diferentes, *normal* (la vista por defecto) y *compacta*; el usuario podrá cambiar de vista en cualquier momento usando los enlaces a pie de página. El objetivo es que consigas un documento que se muestre exactamente como puedes ver en estas imágenes de la `vista normal`_ y de la `vista compacta`_. Tu documento usará tres hojas de estilo: una con todo el contenido común a ambas vistas y dos más correspondientes a cada una de las vistas. Para poder alternar entre ambas hojas de estilo, añade este código a la cabecera (``head``) de tu página:
 
@@ -189,8 +189,8 @@ Por último, coloca en algún punto del pie de la página un fragmento de HTML c
 
 
 
-PRÁCTICA 2: Una aplicación web local
-------------------------------------
+Práctica 2: una aplicación web local 🖥️
+---------------------------------------
 
 En esta práctica extenderás la práctica anterior con la incorporación de elementos dinámicos mediante JavaScript. En particular, será posible añadir y eliminar cuestionarios, así como añadir y eliminar sus preguntas; todo ello en el navegador, sin interaccionar con ningún servidor o base de datos. Para ello, la sección ``main`` del documento tendrá al principio un formulario que permitirá añadir nuevos cuestionarios indicando su título y su imagen asociada; además, al principio de cada cuestionario (tras el título e inmediatamente antes de la primera pregunta, si la hubiera) se mostrará otro formulario que permitirá añadir una nueva pregunta y su respuesta (verdadero o falso) al final del cuestionario correspondiente. Se permitirá, además, borrar individualmente las preguntas de los cuestionarios.
 
@@ -438,9 +438,8 @@ Recuerda mantener tu nombre de usuario de la universidad en el pie del documento
 Por último, coloca en algún punto del pie de la página un fragmento de HTML como ``<span id="tiempo">[10 horas]</span>`` donde has de sustituir el 10 por el número de horas aproximadas que te haya llevado hacer esta práctica.
 
 
-
-PRÁCTICA 3: Una aplicación con acceso a servicios web de terceros y con componentes web
----------------------------------------------------------------------------------------
+Práctica 3: una aplicación con acceso a servicios web de terceros y con componentes web 🖥️
+------------------------------------------------------------------------------------------
 
 En esta práctica ampliarás tu práctica anterior para integrarla con diferentes servicios web proporcionados por terceros a través de APIs; en particular, la imagen a mostrar junto al título de cada cuestionario será tomada de alguna de las imágenes relevantes ofrecidas por `Flickr`_; además, cada cuestionario mostrará un pequeño texto extraido de `Wikipedia en español`_ sobre el tema en cuestión. En la segunda parte, crearás algunos componentes web para encapsular adecuadamente toda esta información.
 
@@ -581,8 +580,8 @@ Por último, coloca en algún punto del pie de la página un fragmento de HTML c
 
 
 
-PRÁCTICA 4: Una aplicación en la nube
--------------------------------------
+Práctica 4: una aplicación en la nube 🖥️
+----------------------------------------
 
 Esta práctica tiene dos partes. En la primera parte vas a ampliar la práctica anterior, que solo tenía *front-end*, para añadirle un *back-end* que dé persistencia a la aplicación y permita gestionar una base de datos con la información de los cuestionarios. La aplicación resultante se implantará en la plataforma Google App Engine y los datos se almacenarán en una base de datos MySQL alojada en el servicio Google Cloud SQL, de manera muy similar a la aplicación del carrito que has estudiado en clase. Como en prácticas anteriores, no puedes usar ninguna librería, como jQuery o Angular, en la parte del cliente, con excepción de la librería para integrar Google Sign-in que se usará en la segunda parte de la práctica.
 
