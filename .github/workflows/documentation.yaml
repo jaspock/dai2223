@@ -14,7 +14,11 @@ jobs:
       - name: Sphinx build
         run: |
           sphinx-build -M html docs/pages _build
-      - name: Create slides folder in _build
+      - name: Set-up node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Clone reveal.js
         run: |
           mkdir _build/html/slides
           mkdir _build/html/slides/_static
@@ -23,6 +27,84 @@ jobs:
           unzip 4.3.1.zip
           mkdir _build/html/slides/reveal.js
           mv reveal.js-4.3.1/* _build/html/slides/reveal.js
+      - name: 000-presentacion-curso
+        uses: docker://pandoc/core:2.9
+        with:
+          args: >-
+            --standalone
+            --section-divs
+            --variable theme="simple"
+            --from=markdown
+            --variable transition="linear" --variable revealjs-url=https://unpkg.com/reveal.js@3.9.2/
+            --variable keyboard="{37:'prev',38:'prev',39:'next',40:'next'}"
+            --to=revealjs
+            --output=_build/html/slides/000-presentacion-curso.html
+            docs/slides/000-presentacion-curso
+      - name: 050-historia-slides
+        uses: docker://pandoc/core:2.9
+        with:
+          args: >-
+            --standalone
+            --section-divs
+            --variable theme="simple"
+            --from=markdown
+            --variable transition="linear" --variable revealjs-url=https://unpkg.com/reveal.js@3.9.2/
+            --variable keyboard="{37:'prev',38:'prev',39:'next',40:'next'}"
+            --to=revealjs
+            --output=_build/html/slides/050-historia-slides.html
+            docs/slides/050-historia-slides
+      - name: 050-http-slides
+        uses: docker://pandoc/core:2.9
+        with:
+          args: >-
+            --standalone
+            --section-divs
+            --variable theme="simple"
+            --from=markdown
+            --variable transition="linear" --variable revealjs-url=https://unpkg.com/reveal.js@3.9.2/
+            --variable keyboard="{37:'prev',38:'prev',39:'next',40:'next'}"
+            --to=revealjs
+            --output=_build/html/slides/050-http-slides.html
+            docs/slides/050-http-slides
+      - name: 070-codificacion-slides
+        uses: docker://pandoc/core:2.9
+        with:
+          args: >-
+            --standalone
+            --section-divs
+            --variable theme="simple"
+            --from=markdown
+            --variable transition="linear" --variable revealjs-url=https://unpkg.com/reveal.js@3.9.2/
+            --variable keyboard="{37:'prev',38:'prev',39:'next',40:'next'}"
+            --to=revealjs
+            --output=_build/html/slides/070-codificacion-slides.html
+            docs/slides/070-codificacion-slides
+      - name: 150-apidom-slides
+        uses: docker://pandoc/core:2.9
+        with:
+          args: >-
+            --standalone
+            --section-divs
+            --variable theme="simple"
+            --from=markdown
+            --variable transition="linear" --variable revealjs-url=https://unpkg.com/reveal.js@3.9.2/
+            --variable keyboard="{37:'prev',38:'prev',39:'next',40:'next'}"
+            --to=revealjs
+            --output=_build/html/slides/150-apidom-slides.html
+            docs/slides/150-apidom-slides
+      - name: 500-cloud-slides
+        uses: docker://pandoc/core:2.9
+        with:
+          args: >-
+            --standalone
+            --section-divs
+            --variable theme="simple"
+            --from=markdown
+            --variable transition="linear" --variable revealjs-url=https://unpkg.com/reveal.js@3.9.2/
+            --variable keyboard="{37:'prev',38:'prev',39:'next',40:'next'}"
+            --to=revealjs
+            --output=_build/html/slides/500-cloud-slides.html
+            docs/slides/500-cloud-slides
       - name: 150-js-slides
         uses: docker://pandoc/core:2.9
         with:
@@ -31,7 +113,7 @@ jobs:
             --section-divs
             --variable theme="simple"
             --from=markdown
-            --variable transition="linear"
+            --variable transition="linear" --variable revealjs-url=https://unpkg.com/reveal.js@3.9.2/
             --variable keyboard="{37:'prev',38:'prev',39:'next',40:'next'}"
             --to=revealjs
             --output=_build/html/slides/150-js-slides.html
@@ -45,4 +127,7 @@ jobs:
 
 # https://github.com/peaceiris/actions-gh-pages
 # https://github.com/ammaraskar/sphinx-action
+
 # sphinx-build -M revealjs -d _build/doctrees/slides docs/slides _build/html/slides
+
+# TODO: avoid duplication for pandoc
