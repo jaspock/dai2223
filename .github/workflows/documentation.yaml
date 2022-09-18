@@ -18,6 +18,7 @@ jobs:
         run: |
           mkdir _build/html/slides
           mkdir _build/html/slides/_static
+          mkdir _build/html/slides/reveal.js
           cp -r docs/slides/_static/* _build/html/slides/_static
           git clone https://github.com/hakimel/reveal.js.git _build/html/slides/reveal.js
       - name: 150-js-slides
