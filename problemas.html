@@ -1728,8 +1728,21 @@
 </div>
 <p>Indica con qué sustituir <code class="docutils literal notranslate"><span class="pre">&#64;1</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;2</span></code> y <code class="docutils literal notranslate"><span class="pre">&#64;3</span></code> en el código de JavaScript anterior para que se muestre en el navegador un documento como el de la imagen siguiente:</p>
 <figure class="align-default" style="width: 70%">
-<a class="reference external image-reference" href="_static/img/problema-lavanda2.png"><img alt="cuadrados" src="_images/problema-lavanda1.png" /></a>
+<a class="reference external image-reference" href="_static/img/problema-lavanda1.png"><img alt="cuadrados" src="_images/problema-lavanda1.png" /></a>
 </figure>
+</div>
+<div class="problema admonition">
+<p class="admonition-title"><span class="problema-contador-cliente">Problema</span></p>
+<p>Dado el mismo código en HTML, CSS y JavaScript del problema anterior, se pretende conseguir que el navegador muestre ahora un documento como el siguiente:</p>
+<figure class="align-default" style="width: 70%">
+<a class="reference external image-reference" href="_static/img/problema-lavanda2.png"><img alt="cuadrados" src="_images/problema-lavanda2.png" /></a>
+</figure>
+<p>Para ello, se hace sobre el código en JavaScript completo (es decir, el código correcto sin los huecos de las arrobas del problema anterior) un único cambio: añadir a continuación de la línea que asigna valor a la variable <code class="docutils literal notranslate"><span class="pre">color</span></code> la línea:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nx">n</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">zIndex</span><span class="o">=</span><span class="w"> </span><span class="err">@</span><span class="mf">1</span><span class="w"> </span><span class="nx">i</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Indica con qué parte de una subexpresión hay que sustituir &#64;1 en la línea anterior para conseguir que el navegador muestre el documento como en la captura de este problema.</p>
+<p><em>Notas:</em> observa que el número de cuadrados mostrados es menor que en el problema anterior, pero las condiciones del bucle no han cambiado. Recuerda que en JavaScript para cambiar una propiedad de CSS como <code class="docutils literal notranslate"><span class="pre">margin-bottom</span></code> es necesario modificar <code class="docutils literal notranslate"><span class="pre">elemento.style.marginBottom</span></code> y no <code class="docutils literal notranslate"><span class="pre">elemento.style.margin-bottom</span></code>, ya que esto se interpretaría como la resta del valor de dos variables. Ten en cuenta que no es necesario haber resuelto correctamente el problema anterior para poder responder a este correctamente.</p>
 </div>
 <div class="problema admonition">
 <p class="admonition-title"><span class="problema-contador-cliente">Problema</span></p>

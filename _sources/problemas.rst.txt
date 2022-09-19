@@ -2181,11 +2181,38 @@ Programar el lado del cliente
   Indica con qué sustituir ``@1``, ``@2`` y ``@3`` en el código de JavaScript anterior para que se muestre en el navegador un documento como el de la imagen siguiente:
 
   .. figure:: _static/img/problema-lavanda1.png
-    :target: _static/img/problema-lavanda2.png
+    :target: _static/img/problema-lavanda1.png
     :alt: cuadrados
     :figwidth: 70 %
 
   .. solución: @1="orange","lightskyblue", @2=0+25*i+"px", @3=color  https://jsfiddle.net/aejk035L/1/ 
+  .. examen julio 2021
+
+.. --------
+
+.. admonition:: :problema-contador-cliente:`Problema`
+  :class: problema
+
+  Dado el mismo código en HTML, CSS y JavaScript del problema anterior, se pretende conseguir que el navegador muestre ahora un documento como el siguiente:
+
+  .. figure:: _static/img/problema-lavanda2.png
+    :target: _static/img/problema-lavanda2.png
+    :alt: cuadrados
+    :figwidth: 70 %
+
+  Para ello, se hace sobre el código en JavaScript completo (es decir, el código correcto sin los huecos de las arrobas del problema anterior) un único cambio: añadir a continuación de la línea que asigna valor a la variable ``color`` la línea:
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    n.style.zIndex= @1 i;
+
+  Indica con qué parte de una subexpresión hay que sustituir @1 en la línea anterior para conseguir que el navegador muestre el documento como en la captura de este problema. 
+
+  *Notas:* observa que el número de cuadrados mostrados es menor que en el problema anterior, pero las condiciones del bucle no han cambiado. Recuerda que en JavaScript para cambiar una propiedad de CSS como ``margin-bottom`` es necesario modificar ``elemento.style.marginBottom`` y no ``elemento.style.margin-bottom``, ya que esto se interpretaría como la resta del valor de dos variables. Ten en cuenta que no es necesario haber resuelto correctamente el problema anterior para poder responder a este correctamente.
+
+  .. solución: @1=8-  https://jsfiddle.net/j8egdxcu/1/ 
   .. examen julio 2021
   
 .. --------
