@@ -141,6 +141,48 @@ Lenguajes de marcado
   .. solución: 3
   .. examen enero 2020
 
+.. ------
+
+.. admonition:: :problema-contador-marcado:`Problema`
+  :class: problema
+
+  Considera estos tres caracteres: ``鮨``, ``ü``, ``$``. Si sabemos que el kanji japonés ``鮨`` (sushi) no ocupa dos caracteres en UTF-8, indica cuál de los caracteres de la lista hay que añadir a un fichero de texto codificado en UTF-8 que contenía inicialmente los caracteres "``鮨sushi鮨ñamñam``" (sin las comillas) para que el fichero pase a tener 21 bytes de tamaño. La respuesta no es *ninguno*.
+
+  .. solución: inicialmente 19, 鮨=sushi son 3 caracteres en UTF-8, hay que añadir ü
+  .. examen enero 2021
+
+.. --------
+
+.. admonition:: :problema-contador-marcado:`Problema`
+  :class: problema
+
+  Aunque en el idioma birmano es habitual usar los números arábigos, las cantidades pueden encontrarse también representadas con números que usan una grafía propia. Los números del 1 al 5 en esta grafía del birmano son: "၁", "၂", "၃", "၄" y "၅". El sistema de numeración usado es el indo-arábigo (el mismo que usamos nosotros) y, por lo tanto, el número 12345 se representa como "၁၂၃၄၅". Sin más información que la que has estudiado en la asignatura respecto al estándar Unicode, indica una cota inferior y una cota superior de la cantidad de bytes que son necesarios para representar en UTF-8 la cadena que representa el número "၁၂၂၄၂၄".
+
+  .. solución: 6*2= 12, 6*4=24
+  .. examen julio 2021
+
+.. -------
+
+.. admonition:: :problema-contador-marcado:`Problema`
+  :class: problema
+
+  Indica con qué código HTML es necesario sustituir las marcas ``@1`` y ``@2`` para que el siguiente bloque de HTML sea válido.
+
+  .. code-block:: html
+    :linenos:
+    :force:
+
+    <section>
+        <span @2-color="yellow">NEW!</span>
+        <img src="rainbow.svg" @1="vector graphic">
+    </section>
+
+  .. solución: @1=alt, @2=data
+  .. examen julio 2021
+
+.. --------
+
+
 
 Lenguajes de estilo
 -------------------
@@ -1735,7 +1777,7 @@ Programar el lado del cliente
     console.log(Object.getPrototypeOf(protoBichoBola) === Object.prototype);
     console.log(protoBichoBola.enrolla.prototype === protoBichoBola.desplaza.prototype);
 
-  .. solución: true[null===nulll],true,true, false
+  .. solución: true[null===null],true,true, false
   
 .. ------
 
@@ -1764,6 +1806,1063 @@ Programar el lado del cliente
 
   .. solución: @1=5,@2=2
   
+.. -------
+
+.. admonition:: :problema-contador-cliente:`Problema`
+  :class: problema
+
+  Considera un documento HTML cuyo cuerpo (contenido del elemento *body*) es el siguiente:
+
+  .. code-block:: html
+    :linenos:
+    :force:
+
+    <div class="cuadrados">
+      <div class="orange">naranja</div>
+      <div class="blue">azul</div>
+      <div class="lavender">lavanda</div>
+    </div>
+
+  y al cual se les están aplicando los siguientes estilos:
+
+  .. code-block:: css
+    :linenos:
+    :force:
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    .cuadrados {
+        width: 400px;
+        height: 400px;
+        background: gainsboro;
+        padding-left: 50px;
+        padding-top: 50px;
+        position: relative;
+    }
+    .orange {
+        background: orange;
+        height: 100px;
+        width: 100px;
+        position: relative;
+        z-index: @1;
+    }
+    .blue {
+        background: lightskyblue;
+        height: 100px;
+        width: 100px;
+        position: absolute;
+        left: 210px;
+        top: 50px;
+    }
+    .lavender {
+        background: lavender;
+        height: 100px;
+        width: 100px;
+        position: relative;
+    }
+
+  El siguiente código en JavaScript tiene como objetivo mover horizontalmente el cuadrado naranja a una velocidad de 1 píxel cada 10 milisegundos desde su posición inicial hasta situarlo *encima* del cuadrado azul. La función *setTimeout* es estándar de JavaScript y registra una función que se ejecutará asíncronamente después del número de milisegundos indicados como segundo parámetro.
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    let a= document.querySelector(".orange");
+    let i= 0;
+
+    function mueve() {
+        i++;
+        a.style.left= i+@2;
+        if (i<@3) {
+        setTimeout(mueve,10);
+        }  
+    }
+
+    setTimeout(mueve,10);
+
+  Indica con qué sustituir ``@1`` en la hoja de estilo y ``@2`` y ``@3`` en el código de JavaScript anterior para que se consiga el efecto deseado.
+
+  .. solución: @1=2/3/4,@2="px",@3=160
+  .. examen enero 2021
+
+.. --------
+
+.. admonition:: :problema-contador-cliente:`Problema`
+  :class: problema
+
+  En el siguiente programa en JavaScript la función *emit* imprime por consola el valor pasado como parámetro tras realizar una serie de cálculos durante 1 segundo. El tiempo de ejecución de cualquier otro elemento del código es despreciable. La función *setTimeout* es estándar de JavaScript y registra una función que se ejecutará asíncronamente después del número de milisegundos indicados como segundo parámetro. Indica con qué sustituir la marca ``@1`` para que se impriman por consola en este orden los valores 0, 1, 2, 3, 3, 2, 2, 1, 1, 0.
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    let lista=@1;
+
+    function foo(j) {
+        emit(j);
+        emit(j);
+    }
+
+    for(let i=0;i<lista.length;i++) {
+        console.log(i);
+        if (i > 1) {
+        setTimeout(() => foo(lista[i]),2000);
+        }
+        else {
+        setTimeout(() => emit(lista[i]), 3000-1000*i);
+        }
+    }
+
+  Observa que la variable ``lista`` es un *array* de números que serán impresos dentro del bucle, por lo que una posible respuesta (incorrecta) sería ``@1=[1,5,1,5,1,5]``.
+
+  .. function emit(s) { function pause(milliseconds) { let dt = new Date(); while ((new Date())-dt<=milliseconds) { /* Do nothing */} } pause(1000); let dt= new Date(); let seconds= dt.getSeconds(); console.log(seconds+"': "+s); }
+  .. solución: [0,3,2,1]
+  .. examen enero 2021
+
+.. --------
+
+.. admonition:: :problema-contador-cliente:`Problema`
+  :class: problema
+
+  Una vez completo, el siguiente programa en JavaScript crea dos objetos, ``t1`` y ``t2``, con atributos que representan las longitudes de los tres lados de un triángulo y les asocia un prototipo que incluye una función que permite obtener el perímetro (es decir, la suma de las longitudes de sus lados: 9 para el primer triángulo y 6 para el segundo).
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    var t1={}; 
+    t1.a=t1.b=t1.c=3;
+    var x={getPerimeter: function () {return @1;}};
+    Object.@2(t1,x);
+    console.log(t1.getPerimeter());
+    var t2=Object.@3;
+    t2.a=t2.b=t2.c=2;
+    console.log(t2.getPerimeter());
+
+  Indica con qué sustituir ``@1``, ``@2`` y ``@3`` en el programa anterior para que el código funcione de la forma indicada e imprima los valores 9 y 6.
+
+  .. solución: @1=this.a+this.b+this.c,@2=setPrototypeOf,@3=create(x)
+  .. examen enero 2021
+
+.. -------
+
+.. admonition:: :problema-contador-cliente:`Problema`
+  :class: problema
+
+  Considera el siguiente fragmento HTML de una página web que representa un tablero del juego del tres en raya con piezas de ambos jugadores (representadas mediante el prefijo *X* u *O*, según el jugador):
+
+  .. code-block:: html
+    :linenos:
+    :force:
+
+    <table id="tictactoe">
+        <tr>
+        <td class="X">X1</td><td class="X">X2</td><td class="X">X3</td>
+        </tr>
+        <tr>
+        <td></td><td class="O">O2</td><td></td>
+        </tr>
+        <tr>
+        <td class="O">O1</td><td></td><td></td>
+        </tr>
+    </table>
+
+  Considera los siguientes estilos CSS asociados a la página anterior:
+
+  .. code-block:: css
+    :linenos:
+    :force:
+
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    table {
+        border-spacing: 2px;
+    }
+
+    td {
+        width: 30px;
+        height: 30px;
+        border: 1px solid black;
+        padding: 5px;
+        text-align: center;
+    }
+
+    .O {
+        color: seagreen;
+    }
+
+    .X {
+        color: darkslateblue;
+    }
+
+    .pieza {
+        background-color: lightgray;
+    }
+
+    .izquierda {
+        border-left: 3px solid gray;
+    }
+
+    .derecha {
+        border-right: 3px solid darkgray;
+    }
+
+    .arriba {
+        border-top: 3px solid silver;
+    }
+
+    .abajo {
+        border-bottom: 3px solid dimgray;
+    }
+
+  Indica con qué sustituir ``@1``, ``@2``, ``@3`` y ``@4`` en el siguiente código de JavaScript para que todas las celdas de la tabla en las que hay una pieza de tipo *X* se muestren con fondo de color *lightgray*:
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    var a= document.querySelector("#tictactoe");
+    var b= a.querySelectorAll("td");
+    for (var e of b) {
+        if (e.@1!=="" && e.@2==="X") {
+        e.@3.add(@4);
+        }
+    }
+
+  .. solución: @1=textContent/innerHTML,@2=textContent[0]/innerHTML[0],@3=classList,@4="pieza"  https://jsfiddle.net/y5xqjsf2/3/
+  .. examen enero 2021
+
+.. -------
+
+.. admonition:: :problema-contador-cliente:`Problema`
+  :class: problema
+
+  Dado el código HTML y CSS del ejercicio del tres en raya anterior, indica con qué sustituir ``@1`` y ``@2`` en el siguiente código en JavaScript para que se muestra una especie de borde alrededor del tablero. Este efecto se obtiene marcando el borde externo de las celdas con distinto color según la posición de cada una (*silver* para las celdas de la primera fila, *dimgray* para las de la última fila, *gray* para las de la primera columna y *darkgray* para las de la última columna). 
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    var a= document.querySelector("#tictactoe");
+    var b= a.querySelectorAll("td:nth-child(1)");
+    for (var e of b) {
+        e.classList.add("izquierda");
+    }
+    b= a.querySelectorAll("td:last-child");
+    for (var e of b) {
+        e.classList.add("derecha");
+    }
+    b= a.querySelectorAll(@1);
+    for (var e of b) {
+        e.classList.add("arriba");
+    }
+    b= a.querySelectorAll(@2);
+    for (var e of b) {
+        e.classList.add("abajo");
+    }
+
+  .. solución: @1="tr:nth-child(1) > td"/"tr:first-child > td",@2="tr:last-child > td"/"tr:nth-child(3) > td"  https://jsfiddle.net/y5xqjsf2/3/ 
+  .. examen enero 2021
+
+.. -------
+
+.. admonition:: :problema-contador-cliente:`Problema`
+  :class: problema
+
+  Indica con qué sustituir ``@1`` y ``@2`` en el siguiente bloque de código para que por la salida se muestren los números 2, 2, 0 y 1 (en este orden):
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    @1 i=0;
+    var j=0;
+    while (i<2) {
+        i++;
+        @2 k= j++;
+        setTimeout(() => {console.log(i)}, 100);
+        setTimeout(() => {console.log(k)}, 500);
+    }
+
+  .. solución: @1=var,@2=let
+  .. examen enero 2021
+  
+.. -------
+
+.. admonition:: :problema-contador-cliente:`Problema`
+  :class: problema
+
+  Indica con qué sustituir ``@1`` y ``@2`` en el siguiente bloque de código JavaScript para que ``compact`` sea una función que devuelva una copia del array recibido como parámetro en la que se han eliminado todos los valores que en JavaScript se consideran falsos cuando son interpretados como un booleano.
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    function compact(arr1) {
+        arr2= @1;
+        for (var i=0;i<arr1.length;i++) {
+        if (@2) {
+            arr2.push(arr1[i]);
+        }
+        }
+        return arr2;
+    }
+
+    a= [0,false,undefined,5,"",6,null];
+    console.log(compact(a));  // imprime [5,6]
+
+  .. solución: @1=[]/new Array(),@2=arr1[i]
+  .. examen enero 2021
+
+.. --------
+
+.. admonition:: :problema-contador-cliente:`Problema`
+  :class: problema
+
+  Considera un documento HTML cuyo cuerpo (contenido del elemento *body*) es el siguiente:
+
+  .. code-block:: html
+    :linenos:
+    :force:
+
+    <div class="cuadrados"></div>
+
+  y al cual se les están aplicando los siguientes estilos:
+
+  .. code-block:: css
+    :linenos:
+    :force:
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    .cuadrados {
+        width: 400px;
+        height: 400px;
+        background: gainsboro;
+        padding-left: 50px;
+        padding-top: 50px;
+        position: relative;
+    }
+    .bloque {
+        height: 100px;
+        width: 100px;
+        position: absolute;
+    } 
+
+  Considera ahora el siguiente código incompleto en JavaScript:
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    let colores=[@1,"lavender"]
+    let arena= document.querySelector(".cuadrados");
+
+    for (let i=1;i<=11;i++) {
+        var n= document.createElement("div");
+        n.classList.add("bloque");
+        var color= colores[i%colores.length];
+        n.style.background= color;
+        n.style.left= 0+25*i+"px";
+        n.style.top= @2;
+        n.textContent= @3;
+        arena.appendChild(n);
+    }
+
+  Indica con qué sustituir ``@1``, ``@2`` y ``@3`` en el código de JavaScript anterior para que se muestre en el navegador un documento como el de la imagen siguiente:
+
+  .. figure:: _static/img/problema-lavanda1.png
+    :target: _static/img/problema-lavanda2.png
+    :alt: cuadrados
+    :figwidth: 70 %
+
+  .. solución: @1="orange","lightskyblue", @2=0+25*i+"px", @3=color  https://jsfiddle.net/aejk035L/1/ 
+  .. examen julio 2021
+  
+.. --------
+
+.. admonition:: :problema-contador-cliente:`Problema`
+  :class: problema
+
+  Cuando en JavaScript se utiliza el operador de comparación no estricta ``==``, el intérprete realiza una serie de conversiones de tipo entre los operandos afectados. Para simplificar, asumamos, por ejemplo, que si se está comparando un objeto con un dato de un tipo simple como una cadena o un entero, se llama a la función ``toString`` del objeto antes de realizar la comparación. Esto permite escribir una instrucción condicional como la del siguiente código que se evalúe a cierto, aunque en un principio la condición nos pueda parecer falsa.
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    let a = {
+        i: 1,
+        toString: function () {
+        return "" + @1;
+        }
+    }
+
+    if(a == "1" && a == "2" && a == 3) {
+        console.log('Hello world!');
+    }
+
+  Indica con qué sustituir @1 en el código anterior para que se imprima *Hello world!* por la consola. *Nota:* el operador ``&&`` se evalúa de izquierda a derecha.
+
+  .. solución: a.i++ 
+  .. true no funciona
+  .. examen julio 2021
+
+.. --------
+
+.. admonition:: :problema-contador-cliente:`Problema`
+  :class: problema
+
+  Considera esta lista de reglas de CSS:
+
+  1. ``aside + p {color:red}``
+  2. ``#a #b {color:red}``
+  3. ``section > p {color:red}``
+
+  Considera también estos fragmentos de código en HTML:
+
+  1. ``<section id="a"><aside><p>rainbow</p></aside><p>cat</p></section>``
+  2. ``<section id="a"><aside class="b"><p>rainbow</p></aside><span>super</span><p>cat</p></section>``
+  3. ``<section id="a"><aside><p>rainbow</p></aside><p>super</p><p id="b">cat</p></section>``
+
+  Asocia cada regla con un código HTML diferente de manera que solo la palabra *cat* aparezca en rojo y las demás no. Usa una notación como *1-1* para indicar que la regla *1* se asocia con el código de la línea marcada con *1* (*nota:* este ejemplo de asociación no es necesariamente parte de la respuesta correcta).
+
+  .. solución: 1-1, 2-3, 3-2
+  .. examen julio 2021
+
+.. -------
+
+.. admonition:: :problema-contador-cliente:`Problema`
+  :class: problema
+
+  Indica cuál es la salida por consola del siguiente bloque de JavaScript. Asume que todas las instrucciones tienen un tiempo de ejecución despreciable pero no nulo.
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    var i=1;
+    var j=0;
+    while (j<2) {
+        i++;
+        let x= i;
+        let y= j;
+        var z= j++;
+        setTimeout(() => {console.log(x)}, 10);
+        setTimeout(() => {console.log(y)}, 100);
+        setTimeout(() => {console.log(z)}, 1000);
+    }
+
+  .. solución:  2,3,0,1,1,1
+  .. examen julio 2021
+
+.. ---------
+
+.. admonition:: :problema-contador-cliente:`Problema`
+  :class: problema
+
+  Sabiendo que en el caso de que se indique cero como segundo argumento de la función ``setTimeout`` de JavaScript, la llamada a la función del primer argumento se encola inmediatamente, indica cuál es la salida por consola del siguiente bloque de JavaScript.
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    (function() {
+        console.log('r');
+        setTimeout( () => {console.log('a')}, 0);
+        (function() {
+        console.log('o');
+        setTimeout( () => {console.log('p')}, 0);
+        console.log('c');
+        setTimeout( () => {console.log('t')}, 0);
+        console.log('i');
+        })();
+        console.log('n');
+        setTimeout( () => {console.log('o')}, 0);
+    })();
+
+  .. solución: rocinapto
+  .. examen enero 2022
+
+.. ---------
+
+.. admonition:: :problema-contador-cliente:`Problema`
+  :class: problema
+
+  El método ``Array.prototype.map()`` crea un nuevo array con los resultados de la llamada a la función indicada aplicados a cada uno de los elementos del array original. Así, el siguiente código imprime por consola ``[ 1, 4, 9, 16, 25 ]``:
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    arr= [1,2,3,4,5]
+    const newArr = arr.map((val) => val * val);
+    console.log(newArr);
+
+  Considera ahora el siguiente código en JavaScript:
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    const animals = [
+        { name: 'shark', likes: 'ocean' },
+        { name: 'turtle', likes: 'pond' },
+        { name: 'otter', likes: 'fish biscuits' },
+        { name: 'ico', likes: ''}
+    ]
+
+    const likes = animals.map(item => {
+        const container = @1;
+        container@2 = item.likes;
+        container.sup = item.name.@3 * 10;
+        return container;
+    })
+
+    console.log(likes);
+
+  Indica con qué sustituir ``@1``, ``@2`` y ``@3`` en el código anterior para que la salida por consola sea:
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    [{"shark":"ocean","sup":50},{"turtle":"pond","sup":60},{"otter":"fish biscuits","sup":50},{"ico":"","sup":30}]
+
+  .. solución: @1={} @2=[item.name] @3=length
+  .. examen enero 2022
+
+.. --------
+
+.. admonition:: :problema-contador-cliente:`Problema`
+  :class: problema
+
+  Considera el siguiente código en HTML:
+
+  .. code-block:: html
+    :linenos:
+    :force:
+
+    <ul class="set">
+        <li class="white do"></li> <li class="black dos"></li>
+        <li class="white re"></li> <li class="black res"></li>
+        <li class="white mi"></li>
+        <li class="white fa"></li> <li class="black fas"></li>
+        <li class="white sol"></li> <li class="black sols"></li>
+        <li class="white la"></li> <li class="black las"></li>
+        <li class="white si"></li>
+    </ul>
+
+  Y el siguiente código en CSS (basado en el creado por Philip Zastrow en *codepen.io*) al que le faltan algunos fragmentos:
+
+  .. code-block:: css
+    :linenos:
+    :force:
+
+    * {
+        box-sizing:border-box
+    }
+
+    body {
+        margin:0;
+        background:#222
+    }
+
+    ul {
+        height:20em;
+        width:34em;
+        margin:5em auto;
+        padding:3em 0 0 3em;
+        position:relative;
+        background-color: gray;
+    }
+
+    li {
+        margin:0;
+        padding:0;
+        list-style:none;
+        position:relative;
+        float: left;
+    }
+
+    ul .white {
+        height:16em;
+        width: @1;
+        z-index:1;
+        border-left:1px solid #bbb;
+        border-bottom:1px solid #bbb;
+        border-radius:0 0 5px 5px;
+        background-color: white;
+    }
+
+    .black {
+        height:8em;
+        width:2em;
+        margin:0 0 0 -1em;
+        z-index: @2;
+        border:1px solid #000;
+        border-radius:0 0 3px 3px;
+        background-color: black;
+    }
+
+    .re,.mi,.sol,.la,.si {
+        margin:0 0 0 @3
+    }
+
+    ul li:first-child {
+        border-radius:5px 0 5px 5px
+    }
+
+    ul li:last-child {
+        border-radius:0 5px 5px 5px
+    }
+
+  El código anterior muestra en la ventana del navegador el siguiente piano:
+
+  .. figure:: _static/img/problema-pianoh.png
+    :target: _static/img/problema-pianoh.png
+    :alt: piano horizontal
+    :figwidth: 40 %
+
+  La propiedad ``float:left`` de CSS que se usa en el ejemplo anterior hace que la caja de cada elemento ``li`` no se posicione debajo de la anterior (como correspondería por defecto), sino que se desplace a la izquierda hasta tocar el borde de la caja contenedora o el borde de otro elemento flotante. Esto es lo que permite que cada tecla aparezca a la derecha de la anterior y no debajo, aunque, como puedes ver en el código, hace falta un pequeño reajuste para colocarlas correctamente, ya que las teclas negras de los semitonos se sitúan a medio camino entre las blancas. Aunque no es muy relevante para este problema, la propiedad ``border-radius`` define la curvatura de las esquinas comenzando por la superior izquierda. Finalmente, puedes ignorar el uso del posicionamiento relativo en este código.
+
+  Indica con qué sustituir ``@1``, ``@2`` y ``@3`` en el código en CSS anterior para que el piano se muestre como en la imagen.
+
+  .. solución: @1=4em, @2=2, @3=-1em, https://jsfiddle.net/nx9yoLdp/1/  original: https://codepen.io/zastrow/pen/oDBki 
+  .. examen enero 2022
+
+.. --------
+
+.. admonition:: :problema-contador-cliente:`Problema`
+  :class: problema
+
+  Indica qué nueva regla añadir a la hoja de estilo del problema anterior para que la tecla del re se muestre en color rojo como en la siguiente imagen.
+
+  .. figure:: _static/img/problema-pianoh-rojo.png
+    :target: _static/img/problema-pianoh-rojo.png
+    :alt: piano horizontal con tecla roja
+    :figwidth: 40 %
+
+  .. solución: li.re {background-color:red;} /* ojo con la especificidad */
+  .. examen enero 2022
+
+.. --------
+
+.. admonition:: :problema-contador-cliente:`Problema`
+  :class: problema
+
+  Indica cuál es la salida por consola tras ejecutar el siguiente programa en JavaScript:
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    function A (x) {
+        this.x= x;
+    }
+    let c= console.log;
+    let a1= new A(9);
+    A.prototype.f= function () {
+        c(this.x);
+    };
+    a1.f();
+    a1.f= () => c(0);
+    let a2= new A(8);
+    a1.f();
+    a2.f();
+    Object.getPrototypeOf(a1).f= () => c(1);
+    a1.f();
+    a2.f();
+
+  .. solución: 9, 0, 8, 0, 1, https://jsfiddle.net/yx5n3r0b/2/
+  .. examen enero 2022
+
+.. -------
+
+.. admonition:: :problema-contador-cliente:`Problema`
+  :class: problema
+
+  El método ``Array.prototype.reduce()`` ejecuta una función reductora sobre cada elemento del array y devuelve finalmente un único valor. La función ``reduce`` tiene el siguiente prototipo:
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    arr.reduce(callback(acumulador, valorActual), valorInicial)
+
+  La función ``callback(acumulador,valorActual)`` tiene dos parámetros cuyo papel es el siguiente:
+
+  - ``acumulador``: es el valor acumulado devuelto en la anterior invocación de ``callback``; en la primera llamada se inicializa al valor del parámetro ``valorInicial``.
+  - ``valorActual``: el elemento del array que está siendo procesado actualmente.
+
+  Así, el siguiente código imprime por consola el valor ``6``:
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    console.log([0, 1, 2, 3].reduce(function(a, b) {return a + b;}));
+
+  Por otra parte, el método ``Array.prototype.concat()`` devuelve un nuevo array que es el resultado de concatenar los elementos de dos arrays: el array del objeto receptor del mensaje y el recibido como parámetro.
+
+  Considera ahora el siguiente código en JavaScript que permite integrar un array de arrays:
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    var arr = [[0,1], [2,3], [4,5]]; 
+    var integrado = arr.@1( (a,b) => @2.@3(@4), [] ); 
+    console.log(integrado);
+
+  Indica con qué sustituir ``@1``, ``@2``, ``@3`` y ``@4`` en el código anterior para que la salida por consola sea:
+
+  .. code-block:: console
+    :linenos:
+    :force:
+
+    [4, 5, 2, 3, 0, 1]
+
+  .. solución: @1=reduce, @2=b, @3=concat, @4=a 
+  .. examen julio 2022
+
+.. --------
+
+.. admonition:: :problema-contador-cliente:`Problema`
+  :class: problema
+
+  Considera el siguiente código en HTML:
+
+  .. code-block:: html
+    :linenos:
+    :force:
+
+    <ul class="set">
+        <li class="white do"></li> <li class="black dos"></li>
+        <li class="white re"></li> <li class="black res"></li>
+        <li class="white mi"></li>
+        <li class="white fa"></li> <li class="black fas"></li>
+        <li class="white sol"></li> <li class="black sols"></li>
+        <li class="white la"></li> <li class="black las"></li>
+        <li class="white si"></li>
+    </ul>
+
+  Y el siguiente código en CSS al que le faltan algunos fragmentos:
+
+  .. code-block:: css
+    :linenos:
+    :force:
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        background: #222;
+    }
+
+    ul {
+        height: 34em;
+        width: 22em;
+        margin: 5em auto;
+        padding: 3em 0 0 3em;
+        background-color: gray;
+    }
+
+    li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        position: relative;
+    }
+
+    ul .white {
+        height: 4em;
+        width: 16em;
+        z-index: 1;
+        border-left: 1px solid #bbb;
+        border-bottom: 1px solid #bbb;
+        background-color: white;
+    }
+
+    .black {
+        height: 2em;
+        width: @1;
+        margin: -1em 0 0 @2;
+        z-index: 2;
+        border: 1px solid #000;
+        background-color: black;
+    }
+
+    .re,.mi,.sol,.la,.si {
+        margin: @3 0 0 0;
+    }
+
+  El código anterior muestra en la ventana del navegador el siguiente piano donde la tecla del do es la de más arriba:
+
+  .. figure:: _static/img/problema-pianov.png
+    :target: _static/img/problema-pianov.png
+    :alt: piano vertical
+    :figwidth: 20 %
+
+  Como puedes ver en el código, hace falta un pequeño reajuste jugando con los márgenes para colocar correctamente las teclas; por ejemplo, en el caso de las teclas negras de los semitonos, estas se sitúan a medio camino entre las blancas. Por otro lado, puedes ignorar el uso del posicionamiento relativo en este código.
+
+  Indica con qué sustituir ``@1``, ``@2`` y ``@3`` en el código en CSS anterior para que el piano se muestre como en la imagen.
+
+  .. solución: @1=8em, @2=8em, @3=-1em, https://jsfiddle.net/nx9yoLdp/1/  original: https://codepen.io/zastrow/pen/oDBki
+  .. examen julio 2022
+
+.. --------
+
+.. admonition:: :problema-contador-cliente:`Problema`
+  :class: problema
+
+  Dado el mismo código HTML del problema anterior, las siguientes reglas de estilo permiten obtener la misma imagen, pero en esta ocasión usando las propiedades de posicionamiento de CSS:
+
+  .. code-block:: css
+    :linenos:
+    :force:
+
+    * {
+        box-sizing:border-box;
+    }
+
+    body {
+        margin: 0;
+        background: #222;
+    }
+
+    ul {
+        height: 34em;
+        width: 22em;
+        margin: 5em auto;
+        padding: 3em 0 0 3em;
+        position: relative;
+        background-color: gray;
+    }
+
+    li {
+        margin: 0;
+        padding :0;
+        list-style: none;
+    }
+
+    ul .white {
+        height: 4em;
+        width: 16em;
+        z-index: 1;
+        border: 1px solid #bbb;
+        background-color: white;
+    }
+
+    .black {
+        height: 2em;
+        width: 8em;
+        margin-left: @1;
+        z-index: 2;
+        border: 1px solid #000;
+        background-color: black;
+    }
+
+    .do {
+        position: absolute;
+        top: 3em;
+    }
+
+    .re {
+        position: absolute;
+        top: 7em;
+    }
+    
+    .mi {
+        position: absolute;
+        top: 11em;
+    }
+    
+    .fa {
+        position: absolute;
+        top: 15em;
+    }
+    
+    .sol {
+        position: absolute;
+        top: 19em;
+    }
+
+    .la {
+        position: absolute;
+        top: 23em;
+    }
+    
+    .si {
+        position: absolute;
+        top: 27em;
+    }
+    
+    .dos {
+        position: absolute;
+        top: 6em;
+    }
+
+    .res {
+        position: absolute;
+        top: @2;
+    }
+    
+    .fas {
+        position: absolute;
+        top: @3;
+    }
+    
+    .sols {
+        position: absolute;
+        top: @4;
+    }
+    
+    .las {
+        position: absolute;
+        top: 26em;
+    }
+
+  Indica con qué sustituir ``@1``, ``@2``, ``@3`` y ``@4`` en el código anterior para obtener la misma imagen que en el problema anterior.
+
+  .. solución: @1=8em, @2=10em, @3=18em, @4=22em
+  .. examen julio 2022
+  
+.. --------
+
+.. admonition:: :problema-contador-cliente:`Problema`
+  :class: problema
+
+  Dibuja aproximadamente cómo se mostraría en un navegador el siguiente fragmento HTML si se usaran (una vez completas) las reglas de estilo del problema anterior:
+
+  .. code-block:: html
+    :linenos:
+    :force:
+
+    <ul class="set">
+        <li class="white do"></li> 
+        <li class="white re"></li> 
+        <li class="white mi"></li> 
+        <li class="white fa"></li> 
+        <li class="white sol"></li> 
+        <li class="white la"></li> 
+        <li class="white si"></li>
+        <li class="black res"></li> 
+        <li class="black dos"></li>
+        <li class="black fas"></li>
+        <li class="black sols"></li>
+        <li class="black las"></li>
+    </ul>
+
+  .. solución: igual
+  .. examen julio 2022
+
+.. -------
+
+.. admonition:: :problema-contador-cliente:`Problema`
+  :class: problema
+
+  En CSS, las propiedades personalizadas (también conocidas como variables) son propiedades especiales que contienen valores específicos que se pueden volver a utilizar en un documento por medio de la función ``var()`` e incluso operar mediante la función ``calc()``. Uno de sus usos más habituales es el de evitar tener que indicar el mismo valor literal en múltiples partes de un documento CSS. Como muchas otras propiedades de CSS, las variables en un nodo heredan el valor del nodo padre. Como ejemplo de todo esto, el siguiente bloque de HTML muestra una serie de botones de colores diferentes similares a los que se pueden obtener con Bootstrap:
+
+  .. code-block:: html
+    :linenos:
+    :force:
+
+    <section>
+        <button class="btn primary">Primary</button>
+        <button class="btn secondary">Secondary</button>
+        <button class="btn error">Error</button>
+    </section>
+
+  Para ello, usa los siguientes estilos, donde puedes ver cómo se definen diferentes variables:
+
+  .. code-block:: css
+    :linenos:
+    :force:
+
+    * {
+        border: 0;
+    }
+    html {
+        --primary: #0076c6;
+        --secondary: #333333;
+        --white: #ffffff;
+        --error: #ee0000
+    }
+    .btn {
+        padding: 1rem 1.5rem;
+        background: transparent;
+        font-weight: 700;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        outline: none;
+    }
+    .primary {
+        background: var(--primary);
+        color: var(--white);
+    }
+    .secondary {
+        background: var(--secondary);
+        color: var(--white);
+    }
+    .error {
+        background: var(--error);
+        color: var(--white);
+    }
+
+  Ahora considera un documento HTML con el siguiente contenido:
+
+  .. code-block:: html
+    :linenos:
+    :force:
+
+    <div class="mover"></div>
+
+  Considera también el siguiente código de CSS aplicado al documento anterior:
+
+  .. code-block:: css
+    :linenos:
+    :force:
+
+    .mover {
+        width: 50px;
+        height: 50px;
+        background: red;
+        position: absolute;
+        left: calc( var(--mouse-x) + 10px );
+        top: var(--mouse-y);
+    }
+
+  Finalmente, asume que se ha definido el siguiente manejador de evento que se invoca por el navegador cada vez que la persona usuaria mueve el ratón (las coordenadas actuales del ratón se asignan a los atributos ``clientX`` y ``clientY`` del argumento):
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    let root = document.querySelector("html");
+
+    root.addEventListener("mousemove", e => {
+        root.style.setProperty('--mouse-x', e.clientX + "px");
+        root.style.setProperty('--mouse-y', e.clientY + "px");
+    });
+
+  Indica en qué coordenadas *(x,y)* se encuentra el píxel de la esquina inferior derecha del cuadrado rojo cuando el puntero del ratón está en las coordenadas *(40,50)*.
+
+  .. solución: (100,100)
+  .. examen julio 2022
+
+.. --------
+
 
 
 Acceso a servicios web de terceros
@@ -1981,6 +3080,127 @@ Acceso a servicios web de terceros
     movie();
 
   .. solución: 2,2023, https://codesandbox.io/s/dazzling-paper-kpkyq
+
+.. -------
+
+.. admonition:: :problema-contador-servicios:`Problema`
+  :class: problema
+
+  Una petición GET al URL ``https://api.coindesk.com/v1/bpi/currentprice.json`` devuelve *siempre* la siguiente información en formato JSON:
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    {
+        "time":{
+          "updated":"Jul 1, 2021 15:11:00 UTC",
+          "updatedISO":"2021-07-01T15:11:00+00:00",
+          "updateduk":"Jul 1, 2021 at 16:11 BST"
+        },
+        "disclaimer":"This data was produced from the CoinDesk Bitcoin Price Index (USD).",
+        "chartName":"Bitcoin",
+        "bpi":{
+          "USD":{
+              "code":"USD",
+              "symbol":"&#36;",
+              "rate":"33,472.6400",
+              "description":"United States Dollar",
+              "rate_float":33472.64
+          },
+          "GBP":{
+              "code":"GBP",
+              "symbol":"&pound;",
+              "rate":"24,289.1200",
+              "description":"British Pound Sterling",
+              "rate_float":24289.12
+          },
+          "EUR":{
+              "code":"EUR",
+              "symbol":"&euro;",
+              "rate":"28,203.4774",
+              "description":"Euro",
+              "rate_float":28203.47
+          }
+        }
+    }
+
+  Considera el siguiente código en JavaScript:
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    async function euro() {
+        fetch("https://api.coindesk.com/v1/bpi/currentprice.json")
+        .then(response => response.json())
+        .then(data => console.log(data.bpi.EUR.rate_float));
+    }
+
+    function libra() {
+        fetch("https://api.coindesk.com/v1/bpi/currentprice.json")
+        .then(response => response.json())
+        .then(data => console.log(data.bpi.GBP.rate_float));
+    }
+
+    function dollar() {
+        fetch("https://api.coindesk.com/v1/bpi/currentprice.json")
+        .then(response => response.json())
+        .then(data => console.log(data.bpi.USD.rate_float));
+    }
+
+    async function main() {
+        dollar();
+        await euro();
+        libra();
+    }
+
+    main();
+
+  Indica cuál o cuáles de las salidas siguientes es imposible que se produzca por consola (independientemente del estado de la conexión a internet) al ejecutar el programa anterior:
+
+  1. 33472.64 28203.47 24289.12
+  2. 33472.64 24289.12
+  3. 28203.47 33472.64 24289.12
+  4. 24289.12 28203.47 33472.64
+  5. 28203.47 24289.12 33472.64   
+
+  Indica el número o números de línea que corresponden con la respuesta. Si ninguna de las salidas es viables, indica *ninguna*.
+
+  .. solución: 4 (la libra no puede ir antes del euro por el await)  https://jsfiddle.net/t0fvn9x6/1/ 
+  .. examen julio 2021
+
+.. -------
+
+.. admonition:: :problema-contador-servicios:`Problema`
+  :class: problema
+
+  Indica qué poner en ``@1``, ``@2`` y ``@3`` para que el siguiente comic sobre CORS de la web ``wizardzines.com`` de Julia Evans esté completo y la información sea correcta:
+
+  .. figure:: _static/img/problema-cors.png
+    :target: _static/img/problema-cors.png
+    :alt: CORS
+    :figwidth: 60 %
+
+  .. solución: @1=OPTIONS, @2=clothes.com / *, @3=POST
+  .. examen julio 2022
+
+.. --------
+
+.. admonition:: :problema-contador-servicios:`Problema`
+  :class: problema
+
+  Indica qué poner en ``@1``, ``@2`` y ``@3`` para que el siguiente comic sobre peticiones HTTP de la web ``wizardzines.com`` de Julia Evans esté completo y la información sea correcta:
+
+  .. figure:: _static/img/problema-anatomy-http-request.png
+    :target: _static/img/problema-anatomy-http-request.png
+    :alt: peticiones HTTP
+    :figwidth: 60 %
+
+  .. solución: @1=headers, @2=20, @3=body
+  .. examen julio 2022
+
+.. --------
 
 
 Componentes web
@@ -2223,6 +3443,25 @@ Componentes web
 
   .. solución: https://codepen.io/jaspock/pen/VwjQqbJ
 
+.. ----------
+
+.. admonition:: :problema-contador-componentes:`Problema`
+  :class: problema
+
+  Indica cuál o cuáles de las siguientes afirmaciones son ciertas. Si ninguna lo es, pon *ninguna* como respuesta. Justifica muy esquematicamente en el espacio correspondiente los motivos por los que has considerado cada afirmación como verdadera o falsa.
+
+  1. Para usar la técnica CORS, es necesario que desde nuestro código en JavaScript (por ejemplo, al llamar a la función ``fetch``) se le dé un valor adecuado a la cabecera ``Origins``.
+  2. La *política del mismo origen* (*same-origin policy*) es una restricción implementada hoy en día por todos los servidores web, aunque el servidor web de Apache fue el primero en hacerlo.
+  3. La tecnología del DOM ensombrecido (*shadow DOM*) permite crear un subárbol DOM relativamente aislado del árbol DOM global; decimos *relativamente* porque, por ejemplo, algunas propiedades de CSS provenientes de fuera del *shadow DOM* se pueden heredar dentro de este.
+  4. Aunque el estándar HTML indica que desde el constructor de un componente web no se debería poder acceder a los atributos del elemento, algunos navegadores permiten hacerlo.
+  5. La versión 3 de HTTP se apoya en un protocolo de transporte llamado QUIC.
+
+  .. solución: 3,4,5
+  .. examen julio 2021
+
+.. --------
+
+
 Implementación de servicios web
 -------------------------------
 
@@ -2338,6 +3577,7 @@ Implementación de servicios web
   .. solución: https://repl.it/@jaspock/Node-Express#index.js
   .. examen julio 2020
 
+.. -------
 
 .. admonition:: :problema-contador-rest:`Problema`
   :class: problema
@@ -2365,8 +3605,9 @@ Implementación de servicios web
 
   Indica con qué sustituir ``@1``, ``@2``, ``@3`` y ``@4`` para que el código anterior muestra un ``1`` por consola.
 
-.. solución: @1=await @2=async @3=await, @4=0
+  .. solución: @1=await @2=async @3=await, @4=0
 
+.. --------
 
 .. admonition:: :problema-contador-rest:`Problema`
   :class: problema
@@ -2387,7 +3628,183 @@ Implementación de servicios web
 
     f();
   
-.. solución: @1=.then(
+  .. solución: @1=.then(
+
+.. ---------
+
+.. admonition:: :problema-contador-rest:`Problema`
+  :class: problema
+
+  Indica con qué sustituir ``@1``, ``@2`` y ``@3`` en el siguiente código para que el servidor solo atienda peticiones de tipo POST que indiquen en sus cabeceras que los datos del *payload* están en formato JSON. En caso contrario, ha de devolver el código de estado 400 y un mensaje de error. La respuesta para ``@4`` ha de usar la variable ``f`` de algún modo.
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    const express = require('express');
+    const app = express();
+
+    var f = () => {
+        return (rq, rs, nx) => {
+        if (@1.headers['content-type'] !== 'application/json') {
+            @2.send('Este servidor solo procesa datos en JSON');
+        } else {
+            @3
+        }
+        }
+    }
+
+    app.use(@4)
+
+    app.post('/', (rq, rs) => {
+        rs.send('JSON recibido');
+    })
+
+    app.post('/message', (rq, rs, nx) => {
+        rs.send('JSON recibido');
+    })
+
+    app.listen(3000);
+
+  .. solución: @1=rq,@2=rs.status(400),@3=nx();@4=f()  https://repl.it/@jaspock/IncompleteAnxiousTrace#index.js
+  .. examen enero 2021
+
+.. --------
+
+.. admonition:: :problema-contador-rest:`Problema`
+  :class: problema
+
+  Express define un *middleware* por defecto que se encarga de la gestión de errores que se producen en otros middleware. Este tipo de *middlewares* tiene un prototipo diferente al de los otros *middlewares* al tener un primer parámetro adicional que representa el error:
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    app.use((err, req, res, next) => {
+        // middleware de gestión del error 
+    })
+
+
+  El programador puede obviamente definir sus propios *middlewares* de gestión de errores. Para llamar a este tipo especial de *middleware* basta pasar un argumento a la llamada a la función ``next``. Por ejemplo, el siguiente código pasa el testigo a un *middleware* de gestión de error definido por el programador cuando llega una petición GET al URL ``/open``.
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    app.get('/open', (req, res, next) => {
+        next(new Error('I am passing you an error!'));
+    });
+
+    app.use((err, req, res, next) => {
+        console.log(err);    
+        if(!res.headersSent){
+        res.status(500).send(err.message);
+        }
+    });
+
+  Un *middleware* de gestión de error puede (de forma similar a los *middlewares* *normales*) llamar al siguiente *middleware* de gestión de error, generando así una cadena (*pipeline*) de llamadas. En última instancia, si el último *middleware* de la cadena definida por el programador llamará a la siguiente función con un argumento de error, se invocaría el *middleware* de gestión de error por defecto definido por Express.
+
+  El siguiente código para Express define tres funciones de *middleware* de gestión de errores. Si llega una petición a ``/nonexistant`` se devuelve al cliente el mensaje ``NotFound``. Si llega una petición a ``/problematic`` se devuelve al cliente el mensaje ``Unauthorized``. Cualquier otra situación de error detectada en otros *middleware* hace que se devuelva al cliente el mensaje ``UnknownError``.
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    app.get('/nonexistant', (req, res, next) => {
+        let err = new Error('I couldn\'t find it.');
+        err.httpStatusCode = 404;
+        next(@1);
+    });
+
+    app.get('/problematic', (req, res, next) => {
+        let err = new Error('I\'m sorry, you can\'t do that.');
+        err.httpStatusCode = @2;
+        next(@1);
+    });
+
+    app.get(...);
+
+    app.get(...);
+
+    app.use((err, req, res, next) => {
+        if (err.httpStatusCode === 404) {
+        res.status(400).render('NotFound');
+        }
+        next(@3);
+    });
+
+    app.use((err, req, res, next) => {
+        if(err.httpStatusCode === 304){
+        res.status(304).render(@4);
+        }
+        next(@3);
+    })
+
+    app.@5((err, req, res, next) => {
+        console.log(err);
+        if (!res.headersSent) {
+        res.status(err.httpStatusCode || 500).render('UnknownError');
+        }
+    });
+
+  Indica con qué sustituir ``@1``, ``@2``, ``@3``, ``@4`` y ``@5`` en el código anterior para obtener la funcionalidad indicada. 
+
+  .. solución: @1=err, @2= 304, @3=err, @4='Unauthorized', @5=use
+  .. examen julio 2021
+
+.. -------
+
+.. admonition:: :problema-contador-rest:`Problema`
+  :class: problema
+
+  El siguiente es el código de un servidor con Express con un único punto de acceso que devuelve un fragmento de HTML:
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    const express = require('express');
+    const cors = require('cors');
+    const app = express();
+    const port = 8080;
+
+    app.use(cors());
+
+    app.get('/', (req, res) => {
+        res.send('a<strong>b</strong>c')
+    });
+
+    app.listen(port, () => {
+        console.log(`Listening at ${port}`);
+    });
+
+  El paquete ``cors`` de Node.js permite en su forma más fácil (como la usada en el código anterior) tener un *middleware* que acepta todas las peticiones CORS independientemente de su origen. 
+
+  Tras lanzar en nuestro ordenador el servicio anterior, creamos la página siguiente con la idea de probarlo:
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    <!DOCTYPE html>
+    <html lang="es">
+    <head><title>T</title></head>
+    <body>
+        <div id="x"></div>
+        <script>
+        fetch('@1')
+        .then(response => response.text())
+        .then(@2 => {let x= document.querySelector("#x"); x.@3= response;})
+        </script>
+    </body>
+    </html>
+
+  Indica con qué sustituir ``@1``, ``@2`` y ``@3`` en el código HTML anterior para que el navegador muestre la cadena ``abc`` con la letra *b* en negrita. Recuerda que la función ``text`` devuelve una promesa que se cumple si el cuerpo de la respuesta representada por el objeto receptor puede convertirse en una cadena de texto. 
+
+  .. solución: @1=http://localhost:8080, @2=response, @3=innerHTML
+  .. examen enero 2022
+
+.. --------
 
 
 Computación en la nube
@@ -2460,6 +3877,40 @@ Computación en la nube
   Indica con qué sustituir las marcas ``@1`` y ``@2`` en el siguiente texto para que sea correcto: "Las funciones de Google Cloud Functions pueden ser escritas en al menos estos dos lenguajes de programación: ``@1`` y ``@2``".
 
   .. solución: JavaScript, Java
+
+.. ------
+
+.. admonition:: :problema-contador-nube:`Problema`
+  :class: problema
+
+  Indica cuál o cuáles de las siguientes afirmaciones son ciertas. Si ninguna lo es, pon *ninguna* como respuesta. Justifica muy esquemáticamente en el espacio correspondiente los motivos por los que has considerado cada afirmación como verdadera o falsa.
+
+  1. Se denominan nubes públicas aquellos entornos de computación en la nube operados y controlados por un organismo público.
+  2. Google Cloud Platform ofrece servicios para nubes públicas, privadas y mixtas.
+  3. Se denominan nubes privadas aquellos entornos de computación en la nube que cualquiera puede utilizar, quizás previo pago, por internet.
+  4. Una nube privada nunca ofrece servicios del tipo *infrastructure as a service*.
+  5. Las arquitecturas *serverless* son más propias del modelo de computación en la nube conocido como *platform as a service* que del *infrastructure as a service*.
+  6. Google App Engine integra un motor de base de datos, por lo que nunca es necesario para que nuestra aplicación de Google App Engine funcione lanzar instancias adicionales de máquinas virtuales en Google Cloud Platform.
+
+  .. solución: 5
+
+.. -------
+
+.. admonition:: :problema-contador-nube:`Problema`
+  :class: problema
+
+  Indica cuál o cuáles de las siguientes afirmaciones son ciertas. Si ninguna lo es, pon *ninguna* como respuesta. Justifica muy esquemáticamente en el espacio correspondiente los motivos por los que has considerado cada afirmación como verdadera o falsa.
+
+  1. Es posible ejecutar múltiples imágenes al mismo tiempo basadas en un único contenedor de Docker.
+  2. Por seguridad, un contenedor no puede acceder a archivos alojados en directorios del sistema anfitrión (*host*).
+  3. Cada vez que ejecutamos *docker build*, la imagen se construye desde cero.
+  4. La instrucción *RUN* de un *Dockerfile* sirve para ejecutar código dentro del sistema operativo de la imagen mientras esta se construye.
+  5. Cuando usamos el servicio *Google Cloud Build*, la imagen resultante se almacena en una base de datos relacional dentro de *Google Cloud SQL*.
+
+  .. solución: 4
+  .. examen enero 2022
+
+.. -------
 
 
 .. PENDIENTE: añadir problemas más elaborados del tipo cada oveja con su pareja, por ejemplo.
