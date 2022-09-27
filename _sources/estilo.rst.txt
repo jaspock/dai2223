@@ -780,6 +780,52 @@ Al igual que con el posicionamiento absoluto, en el posicionamiento ``fixed`` no
   .. _`generadores de texto de relleno`: https://getlorem.com/
 
 
+.. Note::
+
+  Las variables de CSS (también conocidas como propiedades personalizables) son muy útiles al jugar con los tamaños y desplazamientos de las diferentes cajas y evitan al desarrollador tener que rehacer los cálculos continuamente. El siguiente ejemplo define una variable ``--lado`` y ajusta en base a su valor los tamaños y desplazamientos de los diferentes bloques:
+
+  .. code-block:: css
+    :linenos:
+
+    :root {
+      --lado: 200px;
+      --grisaceo: #dadada;
+    }
+    .cuadrados {
+      background: var(--grisaceo);
+      padding: 10px;
+      position: relative;
+      width: calc(var(--lado) * 3);
+      height: var(--lado);
+    }
+    .orange {
+      background: orange;
+      height: var(--lado);
+      width: var(--lado);
+      position: absolute;
+      top: 10px;
+      left: calc(var(--lado) * 0 + 10px);
+    }
+    .blue {
+      background: lightskyblue;
+      height: var(--lado);
+      width: var(--lado);
+      position: absolute;
+      top: 10px;
+      left: calc(var(--lado) * 1 + 10px);
+    }
+    .lavender {
+      background: lavender;
+      height: var(--lado);
+      width: var(--lado);
+      position: absolute;
+      top: 10px;
+      left: calc(var(--lado) * 2 + 10px);
+    }
+
+  Solo cambiando el valor inicial de la variable se consigue que se recalculen los tamaños y posiciones de todos los elementos (¡pruébalo!). Las propiedades personalizadas también se heredan, por lo que sele ser una práctica común (como en el ejemplo) declararlas para la pseudo-clase ``:root`` de CSS. Esta pseudo-clase selecciona el elemento raíz del árbol DOM. En HTML, este elemento es ``<html>``, aunque la especificidad de ``:root`` es mayor. Las hojas de estilo pueden aplicarse a documentos escritos en otros lenguajes (XML, por ejemplo), por lo que ``:root`` es un selector más aconsejable e independiente del documento.
+
+
 Herramientas para desarrolladores
 ---------------------------------
 
