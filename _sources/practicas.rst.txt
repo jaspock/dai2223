@@ -17,22 +17,22 @@ Este es el calendario de cada uno de los entregables de la asignatura. No se adm
       - Fecha límite de entrega
       - Tiempo medio estimado de realización
       - Porcentaje en la nota de prácticas
-    * - P#1
+    * - P1
       - `Práctica 1: una página web con HTML5 🖥️`_
       - 6 octubre 2022
       - 8 horas
       - 20%
-    * - P#2
+    * - P2
       - `Práctica 2: una aplicación web local 🖥️`_
       - 3 noviembre 2022 (provisional)
       - 14 horas
       - 25%
-    * - P#3
+    * - P3
       - `Práctica 3: una aplicación con acceso a servicios web de terceros y con componentes web 🖥️`_
       - 24 noviembre 2022 (provisional)
       - 12 horas
       - 25%
-    * - P#4
+    * - P4
       - `Práctica 4: una aplicación en la nube 🖥️`_
       - 21 diciembre 2022 (provisional)
       - 20 horas

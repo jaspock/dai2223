@@ -109,6 +109,60 @@
 <p class="admonition-title">Hazlo tú ahora</p>
 <p>Practica con los diferentes conceptos de JavaScript hasta tener claro su uso. Puedes practicar usando la consola de JavaScript de las Chrome Devtools, instalando Node.js, abriendo una <a class="reference external" href="https://jsconsole.com/">consola en línea</a> o creando un proyecto en <a class="reference external" href="https://repl.it/">repl.it</a> de tipo Node.js.</p>
 </div>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>El izado (<em>hoisting</em>) es el mecanismo por el que las declaraciones de variables y funciones son desplazadas al comienzo del ámbito en el que se encuentran antes de la ejecución. En el caso de las variables, su declaración y su inicialización son dos cosas diferentes, por lo que el siguiente código imprime <em>undefined</em> y <em>Novokribirsk</em>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">newcity</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">2</span><span class="nx">city</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="kd">var</span><span class="w"> </span><span class="nx">newcity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Novokribirsk&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">5</span>
+<span class="linenos">6</span><span class="kd">function</span><span class="w"> </span><span class="nx">city</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">7</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Kribirsk&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">8</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Cuando aparecen en el nivel superior del programa, las funciones y las variables declaradas con <code class="docutils literal notranslate"><span class="pre">var</span></code> se convierten en propiedades del llamado <em>objeto global</em>. Por otro lado, <code class="docutils literal notranslate"><span class="pre">let``y</span> <span class="pre">``const</span></code> no crean propiedades del objeto global, sino que se limitan al ámbito en el que se declaran. En el caso de los navegadores, este objeto se suele llamar <code class="docutils literal notranslate"><span class="pre">window</span></code>, por lo que a una variable global declarada como <code class="docutils literal notranslate"><span class="pre">x</span></code> nos podemos referir tanto como <code class="docutils literal notranslate"><span class="pre">x</span></code> o como <code class="docutils literal notranslate"><span class="pre">window.x</span></code>. Como en otros entornos el objeto global recibe otros nombres (por ejemplo, en Node.js se llama <code class="docutils literal notranslate"><span class="pre">global</span></code>), el lenguaje JavaScript permite referirse al objeto global de forma general como <code class="docutils literal notranslate"><span class="pre">globalThis</span></code>. Cuando usamos módulos en JavaScript, las reglas son diferentes, ya que hay que indicar explícitamente qué elementos del espacio de nombres del módulo son visibles desde el exterior.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Los módulos son una característica de JavaScript que permite agrupar objetos relacionados en espacios de nombres separados. El siguiente módulo (guardado en el fichero <code class="docutils literal notranslate"><span class="pre">modulo.js</span></code>) exporta una función y un array:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">var</span><span class="w"> </span><span class="nx">frutas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;papaya&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;banana&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;watermelon&#39;</span><span class="p">];</span><span class="w"></span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="kd">function</span><span class="w"> </span><span class="nx">log</span><span class="w"> </span><span class="p">(</span><span class="nx">mensaje</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 4</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">duplica</span><span class="p">(</span><span class="nx">mensaje</span><span class="p">));</span><span class="w"></span>
+<span class="linenos"> 5</span><span class="p">}</span><span class="w"></span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="kd">function</span><span class="w"> </span><span class="nx">duplica</span><span class="w"> </span><span class="p">(</span><span class="nx">mensaje</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 8</span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">mensaje</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">mensaje</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 9</span><span class="p">}</span><span class="w"></span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="k">export</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">frutas</span><span class="p">,</span><span class="w"> </span><span class="nx">log</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Estos elementos pueden ser ahora usados desde <code class="docutils literal notranslate"><span class="pre">script.js</span></code> de la siguiente forma:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">m</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./modulo.js&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="nx">m</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">frutas</span><span class="p">[</span><span class="mf">0</span><span class="p">]);</span><span class="w"></span>
+<span class="linenos">4</span><span class="nx">m</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">frutas</span><span class="p">[</span><span class="mf">1</span><span class="p">]);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>O, equivalentemente:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">frutas</span><span class="p">,</span><span class="w"> </span><span class="nx">log</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./modulo.js&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="nx">log</span><span class="p">(</span><span class="nx">frutas</span><span class="p">[</span><span class="mf">0</span><span class="p">]);</span><span class="w"></span>
+<span class="linenos">4</span><span class="nx">log</span><span class="p">(</span><span class="nx">frutas</span><span class="p">[</span><span class="mf">1</span><span class="p">]);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Ahora si insertamos la siguiente línea en nuestro documento HTML obtendremos por la consola <em>papayapapaya</em> y <em>bananabanana</em>:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;module&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;script.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Los módulos de JavaScript han de cargarse con el atributo <code class="docutils literal notranslate"><span class="pre">type=&quot;module&quot;</span></code>. Si no lo hacemos así, el intérprete intentará cargar el fichero como si fuera un script normal, lo que puede dar lugar a errores.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>A diferencia de lo que ocurre en otros lenguajes, el punto y coma actúa en JavaScript como un <em>separador</em> de instrucciones y no como un <em>finalizador</em> de ellas. El estándar establece que su uso es opcional en ciertos casos (básicamente, cuando el intérprete puede determinar dónde acaba una instrucción y empieza la siguiente), pero en ocasiones esto puede llevar a que el motor de JavaScript interprete el código de forma diferente a la que teníamos en mente. Por ejemplo, el código siguiente:</p>
@@ -372,6 +426,33 @@
 </div>
 <p>Si se hace clic en la palabra <em>bye</em>, se está haciendo clic en ambos <code class="docutils literal notranslate"><span class="pre">div</span></code> y no solo en el más interno, por lo que procede ejecutar ambos manejadores, como puedes comprobar <a class="reference external" href="http://jsfiddle.net/rLv1cob7/">aquí</a>.</p>
 <p>Respecto a la existencia de las dos fases de captura y <em>burbujeo</em>, en la mayoría de los casos no será muy relevante en qué fase se ejecuta un determinado manejador. De hecho, en las primeros años de la web y antes de la estandarización de la gestión de eventos, los navegadores solían implementar una de las dos fases, pero no ambas.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Dado que el objetivo de esta asignatura no es desarrollar aplicaciones con un rendimiento elevado, podemos usar <code class="docutils literal notranslate"><span class="pre">innerHTML</span></code> para añadir contenido a un nodo del árbol DOM. Sin embargo, has de saber que esta práctica puede llegar a ser especialmente ineficiente y, además, producir errores difíciles de detectar para programadores nóveles. Así, considera el siguiente código HTML:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="p">&lt;</span><span class="nt">ul</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;x&quot;</span><span class="p">&gt;</span>
+<span class="linenos">2</span>  <span class="p">&lt;</span><span class="nt">li</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;es&quot;</span><span class="p">&gt;</span>azul<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="linenos">3</span><span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Y el siguiente código en JavaScript:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">var</span><span class="w"> </span><span class="nx">lista</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#x&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">2</span><span class="kd">var</span><span class="w"> </span><span class="nx">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">lista</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;li&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">3</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">item</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span><span class="w">  </span><span class="c1">// imprime x</span><span class="w"></span>
+<span class="linenos">4</span><span class="nx">lista</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s1">&#39;&lt;li lang=&quot;en&quot;&gt;blue&lt;/li&gt;&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">5</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">item</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span><span class="w">  </span><span class="c1">// excepción</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La última línea no tiene el efecto inicialmente esperado y lanza una excepción, porque <code class="docutils literal notranslate"><span class="pre">item.parentNode</span></code> vale <code class="docutils literal notranslate"><span class="pre">null</span></code> y, por tanto, no es posible acceder a ningún atributo <code class="docutils literal notranslate"><span class="pre">id</span></code>. Las cadenas son inmutables en JavaScript por lo que la cuarta línea implica una lectura y una reescritura completas como vamos a ver. Para entender mejor lo que ocurre, recuerda que la penúltima línea es equivalente a:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nx">lista</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">lista</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;&lt;li lang=&quot;en&quot;&gt;blue&lt;/li&gt;&#39;</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>El operando izquierdo de la concatenación se obtiene recorriendo todo el subárbol interno del nodo apuntado por <code class="docutils literal notranslate"><span class="pre">lista</span></code> y convirtiéndolo a una representación en forma de una nueva cadena en memoria. A continuación, esta cadena se concatena con la cadena literal del operando derecho y el resultado deviene una nueva cadena en memoria. Finalmente, se asigna esta nueva cadena al atributo <code class="docutils literal notranslate"><span class="pre">innerHTML</span></code> del nodo apuntado por <code class="docutils literal notranslate"><span class="pre">lista</span></code>. Como consecuencia de esto último, es necesario analizar la cadena (lo que en inglés se conoce como <em>parsing</em>) e ir construyendo un subárbol (estrictamente, una colección de nodos, ya que no tiene por qué haber un nodo raíz como, de hecho, pasa en este caso) en base a su contenido. Los nuevos nodos reemplazan entonces el contenido anterior del nodo <code class="docutils literal notranslate"><span class="pre">lista</span></code>. En cualquier caso, estos viejos nodos no serían eliminados definitivamente de la memoria si hubiera variables apuntando a ellos, lo que explica que en la última línea del código anterior la variable <code class="docutils literal notranslate"><span class="pre">item</span></code> siga referenciando el nodo original (<code class="docutils literal notranslate"><span class="pre">item.textContent</span></code> sigue valiendo <em>azul</em>, por ejemplo), pero este se haya convertido en un nodo huérfano, con lo que <code class="docutils literal notranslate"><span class="pre">item.parentNode</span></code> valdrá <code class="docutils literal notranslate"><span class="pre">null</span></code>. Todo el proceso, además, es altamente ineficiente, como habrás observado. Y esto se notará especialmente si el subárbol que se está reemplazando es grande.</p>
+<p>En resumen, puedes usar <code class="docutils literal notranslate"><span class="pre">innerHTML</span></code> para añadir contenido a un nodo del árbol DOM, pero hazlo con cuidado y conocimiento de causa. Si quieres escribir código eficiente, el API de JavaScript de los navegadores incluye la función <code class="docutils literal notranslate"><span class="pre">insertAdjacentHTML</span></code> que permite insertar contenido (en diferentes posiciones) en un nodo del árbol DOM sin necesidad de reemplazar todo el contenido existente. Así, para que nuestro código de ejemplo no falle, bastaría con reemplazar las últimas líneas por:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nx">lista</span><span class="p">.</span><span class="nx">insertAdjacentHTML</span><span class="p">(</span><span class="s1">&#39;beforeend&#39;</span><span class="p">,</span><span class="s1">&#39;&lt;li lang=&quot;en&quot;&gt;blue&lt;/li&gt;&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">2</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">item</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span><span class="w">  </span><span class="c1">// imprime x</span><span class="w"></span>
+</pre></div>
+</div>
 </div>
 </section>
 <section id="herramientas-para-desarrolladores">

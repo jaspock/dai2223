@@ -417,6 +417,20 @@
 <section id="codificacion-de-caracteres">
 <h2><span class="section-number">1.4. </span>Codificación de caracteres<a class="headerlink" href="#codificacion-de-caracteres" title="Enlace permanente a este encabezado"></a></h2>
 <p>Aunque hoy día la mayor parte de los sistemas operativos trabajan con la codificación de caracteres de longitud variable UTF-8, que permite representar todos los caracteres del juego de caracteres Unicode, es importante que seas capaz de saber qué codificación de caracteres se usa en tus documentos web, en los de terceros, o en tu servidor web. No tener esto en cuenta puede hacer que tu web se visualice incorrectamente en algunos navegadores. En esta actividad hablaremos de codificación de caracteres siguiendo <a class="reference external" href="./slides/070-codificacion-slides.html">estas diapositivas</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Cuando abres un documento con un editor de texto, el editor lee todos los bytes del fichero y los interpreta (y muestra) en base a la codificación con la que está configurado. Si, por ejemplo, el fichero se ha escrito con un programa que usa una codificación (llamémosla C1) en la que todos los caracteres ocupan un byte, pero se intenta mostrar con un editor configurado con una codificación (llamémosla C2) en la que todos los caracteres ocupan dos bytes, los caracteres mostrados probablemente no coincidirán con los originales, ya que el editor los agrupará de dos en dos. Además, al abrirlo con el editor, el fichero parecerá tener la mitad de caracteres que el original.</p>
+<p>Por ejemplo, puede que los bytes F3 y A1 (representados en hexadecimal) en la codificación C1 correspondan al signo <code class="docutils literal notranslate"><span class="pre">+</span></code> y a la <code class="docutils literal notranslate"><span class="pre">M</span></code>, respectivamente, pero que en la codificación C2 la secuencia de dos bytes F3A1 corresponda al símbolo <code class="docutils literal notranslate"><span class="pre">%</span></code>, que sería lo que mostraría en pantalla el editor que usa C2. Es posible incluso que algunos pares de bytes no representen caracteres válidos en la codificación C2, porque en C2 no se usan todos los posibles valores para representar caracteres; en ese caso, el editor de texto puede hacer varias cosas dependiendo de su configuración: no mostrar nada (saltarse ese carácter) o mostrar un símbolo especial que identifique caracteres inválidos.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Los aspectos más relevantes mostrados en las diapositivas son:</p>
+<ul class="simple">
+<li><p>UTF-8 es una codificación que asigna diferentes cantidades de bytes a los caracteres: algunos se representan con un byte, otros con dos, otros con tres y otros con cuatro bytes.</p></li>
+<li><p>Cada uno de los 128 caracteres del ASCII (que se representan con un byte) se representan exactamente con el mismo byte en UTF-8. Los caracteres del ASCII se corresponden aproximadamente con los de un teclado estadounidense, por lo que no se incluyen entre ellos los caracteres acentuados, los kanjis del japonés o los emojis, entre otros muchos.</p></li>
+<li><p>Los caracteres específicos del español o del catalán (á, à, ñ, Ñ, ç, Ç, etc.) ocupan dos bytes en UTF-8.</p></li>
+</ul>
+</div>
 <div class="hazlotu admonition">
 <p class="admonition-title">Hazlo tú ahora</p>
 <p>Observa que indicar una determinada codificación en el atributo <code class="docutils literal notranslate"><span class="pre">charset</span></code> del elemento <code class="docutils literal notranslate"><span class="pre">meta</span></code> no garantiza que los caracteres del documento usen realmente dicha codificación. Usa un editor de textos que permita redactar documentos bajo diferentes codificaciones y graba tu documento HTML usando las codificaciones <em>UTF-8</em> e <em>ISO-8859-15</em> (Latin-1); prueba a poner el valor correcto y el incorrecto en la directiva <code class="docutils literal notranslate"><span class="pre">meta</span></code> y observa el resultado con los caracteres especiales al abrir el documento en el navegador. Estudia cómo se representan a nivel de bytes los caracteres en las distintas codificaciones con editores hexadecimales como <a class="reference external" href="https://hexed.it/">HexEd.it</a> o el <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.hexeditor">incorporado</a> en Visual Studio Code.</p>
@@ -428,13 +442,14 @@
 <div class="hazlotu admonition">
 <p class="admonition-title">Hazlo tú ahora</p>
 <p>Una de las formas más sencillas de lanzar un servidor local es usar el que Python incluye por defecto. Colócate en el directorio raíz del contenido que quieres servir y haz:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">SimpleHTTPServer</span>
-</pre></div>
-</div>
-<p>o con versiones más recientes de Python:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">http</span><span class="o">.</span><span class="n">server</span>
 </pre></div>
 </div>
+<p>o con versiones más antiguas de Python:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">SimpleHTTPServer</span>
+</pre></div>
+</div>
+<p>La extensión <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">LiveServer</a> de Visual Studio Code permite lanzar el servidor local desde el propio editor de texto.</p>
 </div>
 </section>
 <section id="validacion-de-documentos-html">
@@ -467,6 +482,10 @@
 </pre></div>
 </div>
 <p>Ten en cuenta estas diferencias cuando encuentres código de ejemplo en HTML en alguna web. Los navegadores suelen procesar correctamente la mayor parte de la última versión del estándar existente cuando son publicados, pero no debes perder de vista que un gran número de usuarios tendrán probablemente versiones antiguas del navegador. Aunque no las veremos en este curso, existen maneras de desarrollar aplicaciones web teniendo en cuenta estas versiones antiguas sin renunciar necesariamente a la versatilidad de las recientes.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Las ventajas de trabajar con documentos validados no son solo para terceros que accedan a tu página, sino también para el desarrollador. Imagina que olvidas la primera línea de un documento HTML, es decir, la que reza <code class="docutils literal notranslate"><span class="pre">&lt;!DOCTYPE</span> <span class="pre">html&gt;</span></code>. Recuerda que hemos comentado que los navegadores son bastante laxos a la hora de mostrar los documentos y los procesan aunque no sean válidos, potencialmente introduciendo efectos colaterales inesperados. En concreto, la ausencia del tipo de documento pone al navegador en un modo especial que se denomina <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Quirks_Mode_and_Standards_Mode">quirks</a>. En este modo el navegador toma decisiones que lo alejan del estándar, intentando mostrar el documento como lo habrían hecho navegadores antiguos. En este modo, los márgenes o tamaños de ciertos elementos pueden variar, por ejemplo, pero ello puede cambiar de un navegador a otro.</p>
 </div>
 </section>
 </section>
