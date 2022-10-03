@@ -44,6 +44,75 @@ Elementos más avanzados del lenguaje o las características adicionales a las q
   .. _`repl.it`: https://repl.it/
 
 
+.. Important::
+
+  El izado (*hoisting*) es el mecanismo por el que las declaraciones de variables y funciones son desplazadas al comienzo del ámbito en el que se encuentran antes de la ejecución. En el caso de las variables, su declaración y su inicialización son dos cosas diferentes, por lo que el siguiente código imprime *undefined* y *Novokribirsk*:
+
+  .. code-block:: javascript
+    :linenos:
+
+    console.log(newcity);
+    city();
+
+    var newcity = "Novokribirsk";
+
+    function city() {
+      console.log("Kribirsk");
+    }
+
+.. Note::
+
+  Cuando aparecen en el nivel superior del programa, las funciones y las variables declaradas con ``var`` se convierten en propiedades del llamado *objeto global*. Por otro lado, ``let``y ``const`` no crean propiedades del objeto global, sino que se limitan al ámbito en el que se declaran. En el caso de los navegadores, este objeto se suele llamar ``window``, por lo que a una variable global declarada como ``x`` nos podemos referir tanto como ``x`` o como ``window.x``. Como en otros entornos el objeto global recibe otros nombres (por ejemplo, en Node.js se llama ``global``), el lenguaje JavaScript permite referirse al objeto global de forma general como ``globalThis``. Cuando usamos módulos en JavaScript, las reglas son diferentes, ya que hay que indicar explícitamente qué elementos del espacio de nombres del módulo son visibles desde el exterior.
+
+.. Note::
+
+  Los módulos son una característica de JavaScript que permite agrupar objetos relacionados en espacios de nombres separados. El siguiente módulo (guardado en el fichero ``modulo.js``) exporta una función y un array:
+
+  .. code-block:: javascript
+    :linenos:
+
+    var frutas = ['papaya', 'banana', 'watermelon'];
+
+    function log (mensaje) {
+      console.log(duplica(mensaje));  
+    }
+
+    function duplica (mensaje) {
+      return mensaje + mensaje;
+    }
+
+    export { frutas, log };
+
+  Estos elementos pueden ser ahora usados desde ``script.js`` de la siguiente forma:
+
+  .. code-block:: javascript
+    :linenos:
+
+    import * as m from './modulo.js';
+
+    m.log(m.frutas[0]);
+    m.log(m.frutas[1]);
+
+  O, equivalentemente: 
+
+  .. code-block:: javascript
+    :linenos:
+
+    import { frutas, log } from './modulo.js';
+
+    log(frutas[0]);
+    log(frutas[1]);
+    
+  Ahora si insertamos la siguiente línea en nuestro documento HTML obtendremos por la consola *papayapapaya* y *bananabanana*:
+
+  .. code-block:: html
+    :linenos:
+
+    <script type="module" src="script.js"></script>
+
+  Los módulos de JavaScript han de cargarse con el atributo ``type="module"``. Si no lo hacemos así, el intérprete intentará cargar el fichero como si fuera un script normal, lo que puede dar lugar a errores.
+  
+
 .. Note::
 
   A diferencia de lo que ocurre en otros lenguajes, el punto y coma actúa en JavaScript como un *separador* de instrucciones y no como un *finalizador* de ellas. El estándar establece que su uso es opcional en ciertos casos (básicamente, cuando el intérprete puede determinar dónde acaba una instrucción y empieza la siguiente), pero en ocasiones esto puede llevar a que el motor de JavaScript interprete el código de forma diferente a la que teníamos en mente. Por ejemplo, el código siguiente:
@@ -167,6 +236,47 @@ Ten en cuenta que las funciones de *callback* se ejecutan en el (único) hilo de
   .. _aquí: http://jsfiddle.net/rLv1cob7/
 
   Respecto a la existencia de las dos fases de captura y *burbujeo*, en la mayoría de los casos no será muy relevante en qué fase se ejecuta un determinado manejador. De hecho, en las primeros años de la web y antes de la estandarización de la gestión de eventos, los navegadores solían implementar una de las dos fases, pero no ambas.
+
+
+.. Note::
+
+  Dado que el objetivo de esta asignatura no es desarrollar aplicaciones con un rendimiento elevado, podemos usar ``innerHTML`` para añadir contenido a un nodo del árbol DOM. Sin embargo, has de saber que esta práctica puede llegar a ser especialmente ineficiente y, además, producir errores difíciles de detectar para programadores nóveles. Así, considera el siguiente código HTML:
+
+  .. code-block:: html
+    :linenos:
+
+    <ul id="x">
+      <li lang="es">azul</li>
+    </ul>
+
+  Y el siguiente código en JavaScript:
+
+  .. code-block:: javascript
+    :linenos:
+
+    var lista = document.querySelector('#x');
+    var item = lista.querySelector('li');
+    console.log(item.parentNode.id);  // imprime x
+    lista.innerHTML += '<li lang="en">blue</li>';
+    console.log(item.parentNode.id);  // excepción
+
+  La última línea no tiene el efecto inicialmente esperado y lanza una excepción, porque ``item.parentNode`` vale ``null`` y, por tanto, no es posible acceder a ningún atributo ``id``. Las cadenas son inmutables en JavaScript por lo que la cuarta línea implica una lectura y una reescritura completas como vamos a ver. Para entender mejor lo que ocurre, recuerda que la penúltima línea es equivalente a:
+
+  .. code-block:: javascript
+    :linenos:
+
+    lista.innerHTML = lista.innerHTML + '<li lang="en">blue</li>';
+
+  El operando izquierdo de la concatenación se obtiene recorriendo todo el subárbol interno del nodo apuntado por ``lista`` y convirtiéndolo a una representación en forma de una nueva cadena en memoria. A continuación, esta cadena se concatena con la cadena literal del operando derecho y el resultado deviene una nueva cadena en memoria. Finalmente, se asigna esta nueva cadena al atributo ``innerHTML`` del nodo apuntado por ``lista``. Como consecuencia de esto último, es necesario analizar la cadena (lo que en inglés se conoce como *parsing*) e ir construyendo un subárbol (estrictamente, una colección de nodos, ya que no tiene por qué haber un nodo raíz como, de hecho, pasa en este caso) en base a su contenido. Los nuevos nodos reemplazan entonces el contenido anterior del nodo ``lista``. En cualquier caso, estos viejos nodos no serían eliminados definitivamente de la memoria si hubiera variables apuntando a ellos, lo que explica que en la última línea del código anterior la variable ``item`` siga referenciando el nodo original (``item.textContent`` sigue valiendo *azul*, por ejemplo), pero este se haya convertido en un nodo huérfano, con lo que ``item.parentNode`` valdrá ``null``. Todo el proceso, además, es altamente ineficiente, como habrás observado. Y esto se notará especialmente si el subárbol que se está reemplazando es grande.
+  
+  En resumen, puedes usar ``innerHTML`` para añadir contenido a un nodo del árbol DOM, pero hazlo con cuidado y conocimiento de causa. Si quieres escribir código eficiente, el API de JavaScript de los navegadores incluye la función ``insertAdjacentHTML`` que permite insertar contenido (en diferentes posiciones) en un nodo del árbol DOM sin necesidad de reemplazar todo el contenido existente. Así, para que nuestro código de ejemplo no falle, bastaría con reemplazar las últimas líneas por:
+
+  .. code-block:: javascript
+    :linenos:
+
+    lista.insertAdjacentHTML('beforeend','<li lang="en">blue</li>');
+    console.log(item.parentNode.id);  // imprime x
+
 
 Herramientas para desarrolladores
 ---------------------------------

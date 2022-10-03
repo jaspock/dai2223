@@ -823,7 +823,7 @@ Al igual que con el posicionamiento absoluto, en el posicionamiento ``fixed`` no
       left: calc(var(--lado) * 2 + 10px);
     }
 
-  Solo cambiando el valor inicial de la variable se consigue que se recalculen los tamaños y posiciones de todos los elementos (¡pruébalo!). Las propiedades personalizadas también se heredan, por lo que sele ser una práctica común (como en el ejemplo) declararlas para la pseudo-clase ``:root`` de CSS. Esta pseudo-clase selecciona el elemento raíz del árbol DOM. En HTML, este elemento es ``<html>``, aunque la especificidad de ``:root`` es mayor. Las hojas de estilo pueden aplicarse a documentos escritos en otros lenguajes (XML, por ejemplo), por lo que ``:root`` es un selector más aconsejable e independiente del documento.
+  Los espacios en blanco alrededor de los operadores son necesarios. Solo cambiando el valor inicial de la variable se consigue que se recalculen los tamaños y posiciones de todos los elementos (¡pruébalo!). Las propiedades personalizadas también se heredan, por lo que suele ser una práctica común (como en el ejemplo) declararlas para la pseudo-clase ``:root`` de CSS. Esta pseudo-clase selecciona el elemento raíz del árbol DOM. En HTML, este elemento es ``<html>``, aunque la especificidad de ``:root`` es mayor. Las hojas de estilo pueden aplicarse a documentos escritos en otros lenguajes (XML, por ejemplo), por lo que ``:root`` es un selector más aconsejable e independiente del documento.
 
 
 Herramientas para desarrolladores

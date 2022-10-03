@@ -148,6 +148,20 @@ Aunque hoy día la mayor parte de los sistemas operativos trabajan con la codifi
 
 .. _`estas diapositivas`: ./slides/070-codificacion-slides.html
 
+.. Note::
+
+  Cuando abres un documento con un editor de texto, el editor lee todos los bytes del fichero y los interpreta (y muestra) en base a la codificación con la que está configurado. Si, por ejemplo, el fichero se ha escrito con un programa que usa una codificación (llamémosla C1) en la que todos los caracteres ocupan un byte, pero se intenta mostrar con un editor configurado con una codificación (llamémosla C2) en la que todos los caracteres ocupan dos bytes, los caracteres mostrados probablemente no coincidirán con los originales, ya que el editor los agrupará de dos en dos. Además, al abrirlo con el editor, el fichero parecerá tener la mitad de caracteres que el original.
+
+  Por ejemplo, puede que los bytes F3 y A1 (representados en hexadecimal) en la codificación C1 correspondan al signo ``+`` y a la ``M``, respectivamente, pero que en la codificación C2 la secuencia de dos bytes F3A1 corresponda al símbolo ``%``, que sería lo que mostraría en pantalla el editor que usa C2. Es posible incluso que algunos pares de bytes no representen caracteres válidos en la codificación C2, porque en C2 no se usan todos los posibles valores para representar caracteres; en ese caso, el editor de texto puede hacer varias cosas dependiendo de su configuración: no mostrar nada (saltarse ese carácter) o mostrar un símbolo especial que identifique caracteres inválidos.
+
+.. Note::
+
+  Los aspectos más relevantes mostrados en las diapositivas son:
+
+  - UTF-8 es una codificación que asigna diferentes cantidades de bytes a los caracteres: algunos se representan con un byte, otros con dos, otros con tres y otros con cuatro bytes.
+  - Cada uno de los 128 caracteres del ASCII (que se representan con un byte) se representan exactamente con el mismo byte en UTF-8. Los caracteres del ASCII se corresponden aproximadamente con los de un teclado estadounidense, por lo que no se incluyen entre ellos los caracteres acentuados, los kanjis del japonés o los emojis, entre otros muchos.
+  - Los caracteres específicos del español o del catalán (á, à, ñ, Ñ, ç, Ç, etc.) ocupan dos bytes en UTF-8.
+
 
 .. admonition:: Hazlo tú ahora
   :class: hazlotu
@@ -170,13 +184,17 @@ Una página web normalmente se aloja en un servidor web. Si la máquina en la qu
 
   .. code-block::
 
-    python -m SimpleHTTPServer
+    python -m http.server
 
-  o con versiones más recientes de Python:
+  o con versiones más antiguas de Python:
 
   .. code-block::
 
-    python -m http.server
+    python -m SimpleHTTPServer
+
+  La extensión `LiveServer`_ de Visual Studio Code permite lanzar el servidor local desde el propio editor de texto.
+  
+  .. _`LiveServer`: https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer
 
 
 Validación de documentos HTML
@@ -222,3 +240,8 @@ Un aspecto básico de los documentos HTML es que estos cumplan estrictamente con
 
   Ten en cuenta estas diferencias cuando encuentres código de ejemplo en HTML en alguna web. Los navegadores suelen procesar correctamente la mayor parte de la última versión del estándar existente cuando son publicados, pero no debes perder de vista que un gran número de usuarios tendrán probablemente versiones antiguas del navegador. Aunque no las veremos en este curso, existen maneras de desarrollar aplicaciones web teniendo en cuenta estas versiones antiguas sin renunciar necesariamente a la versatilidad de las recientes.
 
+.. Note::
+
+  Las ventajas de trabajar con documentos validados no son solo para terceros que accedan a tu página, sino también para el desarrollador. Imagina que olvidas la primera línea de un documento HTML, es decir, la que reza ``<!DOCTYPE html>``. Recuerda que hemos comentado que los navegadores son bastante laxos a la hora de mostrar los documentos y los procesan aunque no sean válidos, potencialmente introduciendo efectos colaterales inesperados. En concreto, la ausencia del tipo de documento pone al navegador en un modo especial que se denomina quirks_. En este modo el navegador toma decisiones que lo alejan del estándar, intentando mostrar el documento como lo habrían hecho navegadores antiguos. En este modo, los márgenes o tamaños de ciertos elementos pueden variar, por ejemplo, pero ello puede cambiar de un navegador a otro.
+
+  .. _quirks: https://developer.mozilla.org/en-US/docs/Web/HTML/Quirks_Mode_and_Standards_Mode
