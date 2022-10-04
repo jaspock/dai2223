@@ -246,7 +246,7 @@ Respeta las siguientes directrices a la de hora de dar estilo al formulario. Com
   box-shadow: 0px 0px 3px #ccc, 0 5px 8px #eee inset;
   border-radius:2px;
 
-.. _`pseudoclases de CSS`: https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started/Selectors
+.. _`pseudoclases de CSS`: https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors/Pseudo-classes_and_pseudo-elements
 
 Documento HTML
 ~~~~~~~~~~~~~~
