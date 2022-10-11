@@ -351,9 +351,9 @@
 <span class="linenos">161</span><span class="w">              </span><span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span><span class="w"></span>
 <span class="linenos">162</span><span class="w">            </span><span class="p">},</span><span class="w"> </span>
 <span class="linenos">163</span><span class="w">            </span><span class="kc">false</span><span class="w"></span>
-<span class="linenos">164</span><span class="w">          </span><span class="p">);</span><span class="w"></span>
+<span class="linenos">164</span><span class="w">          </span><span class="p">);</span><span class="w">        </span>
 <span class="linenos">165</span><span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="linenos">166</span><span class="w">  </span>
+<span class="linenos">166</span>
 <span class="linenos">167</span><span class="w">        </span><span class="c1">// Usando construcciones recientes del lenguaje para iterar sobre un array </span><span class="w"></span>
 <span class="linenos">168</span><span class="w">        </span><span class="c1">// de elementos y para indicar mediante funciones flecha (o lambda) la función</span><span class="w"></span>
 <span class="linenos">169</span><span class="w">        </span><span class="c1">// a ejecutar sobre cada elemento, el código anterior sería: </span><span class="w"></span>
@@ -387,6 +387,15 @@
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>Observa lo que se menciona sobre ataques XSS en los comentarios del código anterior. En un entorno de producción nunca deberías integrar una subcadena no verificada (por ejemplo, un valor introducido por el usuario en un formulario o el resultado devuelto por un servidor) en una cadena que se asigna a un atributo <code class="docutils literal notranslate"><span class="pre">innerHTML</span></code>, ya que el intérprete de JavaScript analiza e interpreta toda la cadena como HTML y podría terminar ejecutando código no deseado. La mejor recomendación es que uses <code class="docutils literal notranslate"><span class="pre">innerHTML</span></code> para crear rápidamente nodos, pero que cuando vayas a añadir contenido de terceros lo metas directamente como valor del atributo <code class="docutils literal notranslate"><span class="pre">node.textContent</span></code>, donde <code class="docutils literal notranslate"><span class="pre">node</span></code> es el nodo donde quieres insertar el texto. El navegador no intenta interpretar el contenido de <code class="docutils literal notranslate"><span class="pre">textContent</span></code> como HTML, sino que lo considera como texto plano, por lo que no hay riesgos en este caso. Modifica el código anterior para que funcione de esta manera.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Cuando se pulsa la tecla <em>enter</em> en un cuadro de texto, la especificación de HTML dicta que se ha de generar el evento de <em>click</em> sobre el <em>botón por defecto</em> del formulario en lo que se denomina un <em>envío implícito</em>. Si este evento tiene un manejador asociado, se ejecutará como de costumbre. Las reglas para determinar cuál es el botón por defecto cuando hay más de uno no son relevantes ahora. En el caso del ejemplo, cada formulario tiene un único botón, por lo que no hay duda posible.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>El comportamiento por defecto de un navegador cuando se pulsa el botón de enviar es borrar el contenido actual de la página, realizar una petición al servidor y mostrar en el navegador la respuesta recibida. Si no se ha identificado ninguna dirección para el servidor (usualmente, en el atributo <code class="docutils literal notranslate"><span class="pre">action</span></code> del elemento <code class="docutils literal notranslate"><span class="pre">form</span></code>), el navegador recarga el documento actual.</p>
+<p>En lugar del código del ejemplo que evita esto, también podríamos llamar a <code class="docutils literal notranslate"><span class="pre">preventDefault</span></code> desde las funciones manejadoras del <em>click</em> (<code class="docutils literal notranslate"><span class="pre">creaSección</span></code>, <code class="docutils literal notranslate"><span class="pre">marcaDesmarcaUnaSección</span></code>, etc). Bastaría declarar en ellas un parámetro para la información del evento y llamar al método <code class="docutils literal notranslate"><span class="pre">preventDefault</span></code> sobre él. Lo importante es «interceptar» el evento en algunos de los manejadores asociados y «cortocircuitar» el comportamiento por defecto del navegador. De esta forma, podemos también conseguir efectos como que los caracteres tecleados en un cuadro de entrada no se muestren (el comportamiento por defecto) salvo si son numéricos, por ejemplo.</p>
 </div>
 </section>
 <section id="las-apis-del-navegador-para-programar-el-lado-del-cliente">
