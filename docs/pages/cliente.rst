@@ -60,6 +60,7 @@ Elementos más avanzados del lenguaje o las características adicionales a las q
       console.log("Kribirsk");
     }
 
+
 .. Note::
 
   Cuando aparecen en el nivel superior del programa, las funciones y las variables declaradas con ``var`` se convierten en propiedades del llamado *objeto global*. Por otro lado, ``let``y ``const`` no crean propiedades del objeto global, sino que se limitan al ámbito en el que se declaran. En el caso de los navegadores, este objeto se suele llamar ``window``, por lo que a una variable global declarada como ``x`` nos podemos referir tanto como ``x`` o como ``window.x``. Como en otros entornos el objeto global recibe otros nombres (por ejemplo, en Node.js se llama ``global``), el lenguaje JavaScript permite referirse al objeto global de forma general como ``globalThis``. Cuando usamos módulos en JavaScript, las reglas son diferentes, ya que hay que indicar explícitamente qué elementos del espacio de nombres del módulo son visibles desde el exterior.
