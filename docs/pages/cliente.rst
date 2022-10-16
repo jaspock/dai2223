@@ -170,6 +170,17 @@ El código que se incluye más abajo muestra *en acción*, a modo de introducci�
 
   Observa lo que se menciona sobre ataques XSS en los comentarios del código anterior. En un entorno de producción nunca deberías integrar una subcadena no verificada (por ejemplo, un valor introducido por el usuario en un formulario o el resultado devuelto por un servidor) en una cadena que se asigna a un atributo ``innerHTML``, ya que el intérprete de JavaScript analiza e interpreta toda la cadena como HTML y podría terminar ejecutando código no deseado. La mejor recomendación es que uses ``innerHTML`` para crear rápidamente nodos, pero que cuando vayas a añadir contenido de terceros lo metas directamente como valor del atributo ``node.textContent``, donde ``node`` es el nodo donde quieres insertar el texto. El navegador no intenta interpretar el contenido de ``textContent`` como HTML, sino que lo considera como texto plano, por lo que no hay riesgos en este caso. Modifica el código anterior para que funcione de esta manera.
 
+.. Note::
+
+  Cuando se pulsa la tecla *enter* en un cuadro de texto, la especificación de HTML dicta que se ha de generar el evento de *click* sobre el *botón por defecto* del formulario en lo que se denomina un *envío implícito*. Si este evento tiene un manejador asociado, se ejecutará como de costumbre. Las reglas para determinar cuál es el botón por defecto cuando hay más de uno no son relevantes ahora. En el caso del ejemplo, cada formulario tiene un único botón, por lo que no hay duda posible.  
+
+.. Note::
+
+  El comportamiento por defecto de un navegador cuando se pulsa el botón de enviar es borrar el contenido actual de la página, realizar una petición al servidor y mostrar en el navegador la respuesta recibida. Si no se ha identificado ninguna dirección para el servidor (usualmente, en el atributo ``action`` del elemento ``form``), el navegador recarga el documento actual.
+
+  En lugar del código del ejemplo que evita esto, también podríamos llamar a ``preventDefault`` desde las funciones manejadoras del *click* (``creaSección``, ``marcaDesmarcaUnaSección``, etc). Bastaría declarar en ellas un parámetro para la información del evento y llamar al método ``preventDefault`` sobre él. Lo importante es "interceptar" el evento en algunos de los manejadores asociados y "cortocircuitar" el comportamiento por defecto del navegador. De esta forma, podemos también conseguir efectos como que los caracteres tecleados en un cuadro de entrada no se muestren (el comportamiento por defecto) salvo si son numéricos, por ejemplo. 
+
+
 .. _label-api-web-js:
 
 Las APIs del navegador para programar el lado del cliente
