@@ -54,6 +54,9 @@ Novedades
 .. _`web del departamento`: https://www.dlsi.ua.es/alumnes/index.cgi?id=val
 .. _`entrega de prácticas`: https://pracdlsi.dlsi.ua.es/index.cgi?id=val
 
+.. Créditos educativos para usar Google Cloud Platform. En algunos temas posteriores de la asignatura usaremos los servicios en la nube de Google Cloud Platform. Para poder hacerlo, tienes que darte de alta con tu cuenta de gcloud a través de un programa de créditos educativos. En ningún momento has de dar de indicar los datos de ninguna tarjeta de crédito; si el sistema te pide algo así, es que estás haciendo algo mal. Sigue el siguiente enlace e indica tu nombre y tu cuenta de correo electrónico de gcloud.ua.es: [...] Espera a recibir un mensaje de confirmación. Solo se puede obtener un cupón por estudiante. Más adelante, aprenderemos qué cosas podemos hacer en Google Cloud Platform. Por ahora, basta con que accedas a https://console.cloud.google.com/billing/ y compruebes que tienes una cuenta con $50 a tu disposición.
+
+
 .. _label-actividades:
 
 Actividades previas a las clases
