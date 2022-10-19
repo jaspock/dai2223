@@ -24,7 +24,7 @@ Este es el calendario de cada uno de los entregables de la asignatura. No se adm
       - 20%
     * - P2
       - `Práctica 2: una aplicación web local 🖥️`_
-      - 3 noviembre 2022 (provisional)
+      - 3 noviembre 2022
       - 14 horas
       - 25%
     * - P3
