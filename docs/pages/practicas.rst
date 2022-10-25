@@ -380,9 +380,9 @@ A diferencia del formulario de creación de cuestionarios, el formulario de adic
       <li>
         <label>Respuesta:</label>
         <input type="radio" name="paris_respuesta" value="verdadero" id="paris_v" checked>
-        <label for="paris_v">Verdadero</label>
+        <label for="paris_v" class="radio">Verdadero</label>
         <input type="radio" name="paris_respuesta" value="falso" id="paris_f">
-        <label for="paris_f">Falso</label>
+        <label for="paris_f" class="radio">Falso</label>
       </li>
       <li>
         <input type="button" value="Añadir nueva pregunta">
@@ -391,6 +391,8 @@ A diferencia del formulario de creación de cuestionarios, el formulario de adic
   </div>
 
 Un comentario sobre los atributos ``name`` de los botones de radio: dado que estos no pueden tener los mismos valores para los distintos formularios del documento (de otro modo, todos los botones de radio serían considerados como un único conjunto por el navegador y activar uno de ellos en un cuestionario desactivaría el resto de botones en los otros cuestionarios), en esta práctica has de añadir como prefijo de la cadena que elijas el valor del atributo ``id`` del elemento ``section`` correspondiente seguido de un carácter de subrayado. Tendrás que hacer algo similar para evitar duplicados con los atributos ``id`` y los correspondientes atributos ``for`` de los botones de radio y las etiquetas asociadas. Por tanto, los valores ``paris_pregunta``, ``paris_respuesta``, ``paris_v`` y ``paris_f`` del código anterior son meramente ilustrativos y han de ser sustituidos por los valores correctos en cada cuestionario.
+
+Para que las etiquetas (``<label>``) con verdadero y falso que acompañan a los botones de radio no estén excesivamente separadas entre ellas, añade una regla de CSS que establezca un ancho de ``5em`` para el selector ``label.radio``. Observa de paso cómo estos elementos favorecen la accesibilidad al indicar explícitamente mediante el atributo ``for`` el botón de radio al que complementan.
 
 La función finalizará especificando la función ``addPregunta`` (analizada a continuación) como función manejadora del evento de clic sobre el botón.
 
