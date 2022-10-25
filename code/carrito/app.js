@@ -16,9 +16,9 @@ function conectaBD () {
     if (process.env.CARRITO_ENV === 'gae') {
       options= config.gae;
       console.log('Usando Cloud SQL (MySQL) como base de datos en Google App Engine');
-    } else if (process.env.CARRITO_ENV === 'heroku') {
-      options= config.heroku;
-      console.log('Usando PostgreSQL como base de datos en Heroku');
+    } else if (process.env.CARRITO_ENV === 'gaesqlite3') {
+      options= config.gaesqlite3;
+      console.log('Usando SQLite como base de datos en Google App Engine');
     } else {
       options= config.localbd;
       console.log('Usando SQLite como base de datos local');

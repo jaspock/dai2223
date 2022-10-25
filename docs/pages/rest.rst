@@ -24,7 +24,7 @@ REST es una arquitectura para implementar servicios web sobre el protocolo HTTP 
 .. admonition:: Hazlo tú ahora
   :class: hazlotu
 
-  En esta actividad vamos a explorar una API REST *de jueguete* para gestionar carritos de la compra que se encuentra ya desplegada en la nube. Para acceder a la API vamos a usar ``curl``, un programa que permite realizar peticiones HTTP desde la línea de órdenes y observar la respuesta devuelta por el servidor. Ve probando en tu ordenador todos los pasos siguientes.
+  En esta actividad vamos a explorar una API REST *de juguete* para gestionar carritos de la compra que se encuentra ya desplegada en la nube. Para acceder a la API vamos a usar ``curl``, un programa que permite realizar peticiones HTTP desde la línea de órdenes y observar la respuesta devuelta por el servidor. Ve probando en tu ordenador todos los pasos siguientes.
   
 En primer lugar, vamos a asignar a una variable de entorno el URL base de la API::
 
@@ -419,89 +419,17 @@ En esta actividad, vas a realizar una pequeña modificación a la API del carrit
   Modifica la parte del cliente y del servidor de la aplicación del carrito para que junto con la cantidad se pueda añadir el precio unitario de cada item. Necesitarás instalar en tu sistema Node.js y el gestor de base de datos SQLite3; sigue para ello los pasos detallados en la actividad ":ref:`label-local`". Salvo que uses ``nodemon``, como se ha comentado antes, tendrás que matar y relanzar el servidor para que se apliquen los cambios. Como siempre, tendrás que recargar la página en el navegador siempre que realices algún cambio en el código del cliente.
 
 
-.. _label-heroku:
+.. _label-gcp:
 
-Despliegue de la aplicación web en Heroku
-------------------------------------------
+Despliegue de la aplicación web en Google App Engine
+----------------------------------------------------
 
-Cuando tengas la aplicación lista en modo local, puedes desplegarla en la plataforma en la nube de `Heroku`_ como sigue. 
-Copia para empezar la carpeta ``dai2122/code/carrito`` en otra ubicación de tu sistema. Al copiar la carpeta a una ubicación diferente haces que su contenido no esté ligado al repositorio de Github, ya que para desplegar la aplicación en Heroku necesitas vincularla a otro repositorio.
+Cuando tengas la aplicación lista en modo local, puedes desplegarla en la nube de Google Cloud Platform (en concreto, en el servicio Google App Engine) como sigue.
 
-Instala el cliente de línea de órdenes (CLI, por *command-line interface*) de Heroku con las `instrucciones de esta página`_. En el caso de Linux basta con descargar el fichero con los binarios, descomprimirlo y añadir la carpeta ``bin`` a la variable ``PATH`` del sistema::
+Configura en primer lugar la aplicación de la línea de órdenes ``gcloud``tal como se explica en el apartado ":ref:`label-gcloud`". A continuación, colócate en el directorio de la aplicación del carrito, asegúrate de que la variable ``CARRITO_ENV`` tiene el valor ``gaesqlite3`` en el fichero ``app.yaml`` y ejecuta::
 
-  curl -O https://cli-assets.heroku.com/heroku-linux-x64.tar.gz
-  tar xzf heroku-linux-x64.tar.gz -C $HOME
-  echo 'export PATH=$HOME/heroku/bin:$PATH' >> $HOME/.bashrc
-
-Si tienes permisos de administrador puedes instalar de forma alternativa el cliente de línea de órdenes de Heroku en Ubuntu con::
-
-  sudo curl https://cli-assets.heroku.com/install.sh | sh
-
-o alternativamente::
-
-  sudo snap install --classic heroku
-
-Continúa ahora configurando tu proyecto haciendo::
-
-  git init
-  git add .
-  git commit -m "cambios"
-
-Con lo anterior, se crea un repositorio con los ficheros del proyecto, que podrás subir (*push*) a Heroku. Crea una cuenta en la web de Heroku e identifícate en el cliente de línea de órdenes ejecutando::
-
-  heroku login
-
-Crea un proyecto en la nube haciendo::
-
-  heroku create --region eu
-
-Desde este momento ya podrás `desplegar la aplicación`_ con::
-
-  git push heroku master
-
-.. Note::
-
-  Heroku puede, en principio, leer del fichero ``app.json`` datos como el gestor de base de datos a utilizar o el valor de ciertas variables de entorno que estarán definidas en el entorno de producción, pero en el momento de escribir esto no funciona. Por ello, has de configurar estos aspectos de tu aplicación ejecutando lo siguiente desde la línea de órdenes::
-
-    heroku addons:create heroku-postgresql:hobby-dev
-    heroku config:set CARRITO_ENV=heroku
-
-  Si ejecutas ``heroku config`` podrás ver que ahora hay dos variables de entorno: ``CARRITO_ENV`` y ``DATABASE_URL``.
-
-Finalmente, abre la aplicación en el navegador con::
-
-  heroku open
-
-Puedes estudiar los mensajes de actividad emitidos a la consola por tu aplicación implementada en Heroku con::
-
-  heroku logs
-
-Para verlos conforme se van produciendo::
-
-  heroku logs --tail
-
-.. _`Node Version Manager`: https://github.com/nvm-sh/nvm
-.. _`repositorio de la asignatura`: https://github.com/jaspock/dai2122
-.. _`instrucciones de esta página`: https://devcenter.heroku.com/articles/heroku-cli#download-and-install
-.. _`desplegar la aplicación`: https://devcenter.heroku.com/articles/git
-.. _`Heroku`: https://www.heroku.com/
-
-Si haces cambios en la aplicación, basta con repetir estos pasos para actualizar la aplicación en Heroku::
-
-  git add .
-  git commit -m "cambios"
-  git push heroku master
-
-Para volver a obtener el código de una aplicación si lo hemos perdido, basta con hacer::
-
-  heroku git:clone -a nombre-app-12345
-
-Finalmente, puedes usar el `panel de control`_ de tu aplicación en Heroku para acceder a ciertas opciones adicionales de configuración. Por otro lado, en el panel de control de la `base de datos`_ PostgreSQL puedes visitar la sección :guilabel:`Dataclips` para poder ver las tablas de tu base de datos y lanzar consultas SQL sobre ellas. 
-
-.. _`panel de control`: https://dashboard.heroku.com/
-.. _`base de datos`: https://data.heroku.com/
-
-.. para ligar un nuevo proyecto a una aplicación ya existente: heroku git:remote -a new-project-23116
+  gcloud app deploy
+  gcloud app browse
 
 
 .. _label-cors:
