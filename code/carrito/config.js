@@ -19,22 +19,18 @@ config.gae= {
 // 'useNullAsDefault:true' es necesario para sqlite: http://knexjs.org/#Builder-insert;
 // por consistencia, se lo ponemos al resto de gestores de bases de datos
 
-// Desde 2021, todas las conexiones al cliente Postgres de Heroku necesitan SSL:
-// https://devcenter.heroku.com/articles/heroku-postgresql#connecting-in-node-js
-
-config.heroku= {
-  client: "pg",
-  connection: { 
-    connectionString: process.env.DATABASE_URL,
-    ssl: { rejectUnauthorized: false }
-  }, 
-  useNullAsDefault: true
-}
-
 config.localbd= {
   client: "sqlite3",
   connection: {
     filename: "./mibd.sqlite"
+  },
+  useNullAsDefault: true
+}
+
+config.gaesqlite3= {
+  client: "sqlite3",
+  connection: {
+    filename: "/tmp/mibd.sqlite"
   },
   useNullAsDefault: true
 }
