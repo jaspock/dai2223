@@ -18,7 +18,19 @@ La computación en la nube se ha convertido en la manera más habitual de gestio
 Configuración del entorno de trabajo para Google Cloud Platform
 ---------------------------------------------------------------
 
-En las actividades de este tema vamos a usar diversos servicios de Google Cloud Platform. Aunque plataformas como Amazon Web Services, Microsoft Azure, IBM Cloud, Rackspace o Google Cloud Platform suelen ofrecer de forma gratuita un acceso limitado a algunos de sus servicios, en esta asignatura vas a a usar un proyecto en Google Cloud Platform que el profesor ya ha creado para ti y que está asignado a una cuenta de facturación para centros educativos que Google ofrece a la universidad. Tu proyecto está asociado a la cuenta que la universidad te asigna con `dominio gcloud.ua.es`_; asegúrate de que la tienes activada antes de seguir leyendo. Puedes acceder a la consola de Google Cloud Platform y buscar tu proyecto en el desplegable superior. Dependiendo de cómo haya configurado el entorno el profesor, tendrás que elegir *ninguna organización* o *gcloud.ua.es* en la opción correspondiente. Para no generar gastos innecesarios, recuerda eliminar los recursos que no vayas a seguir utilizando cuando acabes.
+En las actividades de este tema vamos a usar diversos servicios de Google Cloud Platform. Aunque plataformas como Amazon Web Services, Microsoft Azure, IBM Cloud, Rackspace o Google Cloud Platform suelen ofrecer de forma gratuita un acceso limitado a algunos de sus servicios, en esta asignatura vas a crear un proyecto en Google Cloud Platform y asignarlo a una cuenta de facturación especial para centros educativos que Google ofrece a los estudiantes de la universidad. Para recibir los créditos educativos, tendrás que usar la cuenta que la universidad te asigna con `dominio gcloud.ua.es`_; asegúrate de que la tienes activada antes de seguir leyendo. 
+
+.. Important::
+
+  Ten en cuenta que en ningún momento has de dar de indicar los datos de ninguna tarjeta de crédito o cuenta bancaria. Si el sistema te pide algo así, es que estás haciendo algo mal.
+
+En las semanas anteriores al estudio de este tema, el profesor compartirá contigo a través de un anuncio en UACloud u otro medio similar un enlace a una página web donde podrás solicitar los créditos educativos. En dicha página, tendrás que indicar tu dirección de correo electrónico de ``gcloud.ua.es`` y tu nombre. Una vez que hayas enviado el formulario, recibirás un mensaje de confirmación por correo electrónico con un enlace para activar tu cuenta de Google Cloud Platform. Solo se puede obtener un cupón por estudiante. Para comprobar que todo ha ido bien, basta con que accedas al servicio de facturación y compruebes que tienes una cuenta con unos $50 a tu disposición.
+
+.. _`servicio de facturación`: https://console.cloud.google.com/billing
+
+.. Important::
+
+  Para no generar gastos innecesarios, recuerda eliminar los recursos que no vayas a seguir utilizando cuando acabes.
 
 .. _`dominio gcloud.ua.es`: https://si.ua.es/es/manuales/uacloud/uacloudse/servicios-externos.html
 
@@ -49,7 +61,11 @@ Si posteriormente el SDK se desvinculara por algún motivo de tu cuenta, puedes 
 
   gcloud auth login
 
-Puedes ver los proyectos que tienes creados en Google Cloud Platform con::
+Ahora tienes que ejecutar `este script`_ de Linux para crear un proyecto, vincularlo a tu cuenta y añadir al profesor como administrador. Antes de ejecutarlo edítalo y poner tu cuenta completa de ``gcloud`` en la variable ``ESTUDIANTE`` y la cuenta que el profesor te habrá indicado previamente en la variable ``PROFESOR``. Es posible que la ejecución del script se demore por unos minutos. 
+
+.. _`este script`: https://github.com/jaspock/dai2223/blob/main/code/gcp/config-gcloud.sh
+
+Ahora deberías poder ver los proyectos que tienes creados en Google Cloud Platform con::
 
   gcloud projects list
 
@@ -63,7 +79,7 @@ Lo más habitual es que solo tengas el proyecto de la asignatura, cuyo nombre co
 
 donde ``<id>`` sería el id del proyecto obtenido de la lista porporcionada por ``gcloud projects list``.
 
-.. Para desinstalar gcloud borrar su directorio princial y ~/.config/gcloud en Linux.
+.. Para desinstalar gcloud borrar su directorio principal y ~/.config/gcloud en Linux.
 
 
 .. _label-gcp:
