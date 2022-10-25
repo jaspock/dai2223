@@ -29,6 +29,10 @@ Novedades
     :header-rows: 0
     :class: tablita
 
+    * - 25 oct
+      - En UACloud se ha publicado un anuncio referente a las clases de la semana que viene que, recuerda, serán el lunes 31 de octubre.
+    * - 24 oct
+      - Hace unos días se publicó un anuncio en UACloud respecto a la obtención de créditos educativos para usar Google Cloud Platform. Asegúrate de ir configurando tu cuenta para poder usarla dentro de pocas semanas en las prácticas.
     * - 18 oct
       - Ya puedes consultar en la `web del departamento`_ las notas de la práctica 1.
     * - 06 sep
@@ -67,8 +71,8 @@ Actividades previas a las clases
 .. - Antes de la clase del 29/11/2022: practica con lo que se comenta en las actividades siguientes: ":ref:`label-local`", ":ref:`label-prueba-carrito`", ":ref:`label-api-cambio`", ":ref:`label-heroku`" y ":ref:`label-cors`". A continuación, contesta el `test sobre despliegue de aplicaciones web`_ (plazo límite: 28/11/2022, 23:59 horas)
 .. - Antes de la clase del 22/11/2022: lee detenidamente y practica con lo discutido en las actividades siguientes: ":ref:`label-curl`", ":ref:`label-cliente-rest`" y ":ref:`label-servidor-rest`"; la última incluye un vídeo con una traza de la aplicación del carrito (duración: 28 minutos; unos 20 a 1,5x). Para poder practicar con el código de esas actividades, tendrás que configurar tu entorno de trabajo como se indica en la actividad ":ref:`label-local`". A continuación, contesta el `test sobre implementación de servicios web`_ (plazo límite: 21/11/2022, 23:59 horas).
 .. - Antes de la clase del 15/11/2022: lee detenidamente y practica con lo discutido en las actividades siguientes: ":ref:`label-intro-comp`", ":ref:`label-ejemplo-comp`" y ":ref:`label-avanzado-comp`". A continuación, contesta el `test sobre componentes web`_ (plazo límite: 14/11/2022, 23:59 horas).
-.. - Antes de la clase del 08/11/2022: realiza las actividades ":ref:`label-servicios-http`", ":ref:`label-servicios-promesas`", ":ref:`label-servicios-xhr`" y ":ref:`label-servicios-fetch`". Todas las actividades menos la segunda consisten principalmente en el estudio de una serie de vídeos (duración total de los vídeos: 50 minutos; unos 35 a 1,5x). Para la la segunda actividad, sin embargo, tienes que leer su contenido (tiempo estimado de lectura: 30 minutos). A continuación contesta el `test sobre acceso a servicios web`_ (plazo límite: 07/11/2022, 23:59 horas).
 
+- Antes de la clase del 31/10/2022: realiza las actividades ":ref:`label-servicios-http`", ":ref:`label-servicios-promesas`", ":ref:`label-servicios-xhr`" y ":ref:`label-servicios-fetch`". Todas las actividades menos la segunda consisten principalmente en el estudio de una serie de vídeos (duración total de los vídeos: 50 minutos; unos 35 a 1,5x). Para la la segunda actividad, sin embargo, tienes que leer su contenido (tiempo estimado de lectura: 30 minutos). A continuación contesta el `test sobre acceso a servicios web`_ (plazo límite: 30/10/2022, 23:59 horas).
 - Antes de la clase del 25/10/2022: realiza la actividad ":ref:`label-js-objetos`" (en esta actividad tienes que leer un texto con un tiempo estimado de lectura de unos 80 minutos); después, lee y practica con lo que se discute en la actividad ":ref:`label-js-clausuras`" (tiempo estimado de lectura: 15 minutos). A continuación contesta el `test sobre prototipos y clausuras en JavaScript`_ (plazo límite: 24/10/2022, 23:59 horas). 
 - Antes de la clase del 18/10/2022: estudia los vídeos de la actividad ":ref:`label-api-web-js`" (duración total de los vídeos: unos 55 minutos; unos 40 a 1,5x). A continuación, contesta el `test sobre la API de los navegadores para JavaScript`_ (plazo límite: 17/10/2022, 23:59 horas).
 - Antes de la clase del 11/10/2022: estudia el código y los vídeos de la actividad ":ref:`label-app-web-sencilla`" (duración total de los vídeos: unos 50 minutos; unos 35 a 1,5x). A continuación, contesta el `test sobre la aplicación web sencilla con JavaScript`_ (plazo límite: 10/10/2022, 23:59 horas).
