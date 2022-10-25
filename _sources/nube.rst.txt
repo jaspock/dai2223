@@ -73,7 +73,7 @@ Lo más habitual es que solo tengas el proyecto de la asignatura, cuyo nombre co
 
   gcloud config set project <id>
 
-donde ``<id>`` sería el id del proyecto obtenido de la lista porporcionada por ``gcloud projects list``.
+donde ``<id>`` sería el id del proyecto obtenido de la lista proporcionada por ``gcloud projects list``.
 
 
 .. Important::
