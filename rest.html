@@ -936,7 +936,7 @@ echo &#39;export PATH=$HOME/sqlite-tools-linux-x86-3300100:$PATH&#39; &gt;&gt; $
 </section>
 <section id="prueba-de-la-aplicacion-del-carrito">
 <span id="label-prueba-carrito"></span><h3><span class="section-number">6.4.3. </span>Prueba de la aplicación del carrito<a class="headerlink" href="#prueba-de-la-aplicacion-del-carrito" title="Enlace permanente a este encabezado"></a></h3>
-<p>A continuación, descarga el código del cliente y del servidor de la aplicación del carrito; clona para ello el <a class="reference external" href="https://github.com/jaspock/dai2122">repositorio de la asignatura</a> haciendo:</p>
+<p>A continuación, descarga el código del cliente y del servidor de la aplicación del carrito; clona para ello el <a href="#id1"><span class="problematic" id="id2">`repositorio de la asignatura`_</span></a> haciendo:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">jaspock</span><span class="o">/</span><span class="n">dai2122</span><span class="o">.</span><span class="n">git</span>
 </pre></div>
 </div>
@@ -1009,71 +1009,11 @@ echo &#39;export PATH=$HOME/sqlite-tools-linux-x86-3300100:$PATH&#39; &gt;&gt; $
 <section id="despliegue-de-la-aplicacion-web-en-google-app-engine">
 <span id="label-gcp"></span><h2><span class="section-number">6.6. </span>Despliegue de la aplicación web en Google App Engine<a class="headerlink" href="#despliegue-de-la-aplicacion-web-en-google-app-engine" title="Enlace permanente a este encabezado"></a></h2>
 <p>Cuando tengas la aplicación lista en modo local, puedes desplegarla en la nube de Google Cloud Platform (en concreto, en el servicio Google App Engine) como sigue.</p>
-<p>Copia para empezar la carpeta <code class="docutils literal notranslate"><span class="pre">dai2122/code/carrito</span></code> en otra ubicación de tu sistema. Al copiar la carpeta a una ubicación diferente haces que su contenido no esté ligado al repositorio de Github, ya que para desplegar la aplicación en Heroku necesitas vincularla a otro repositorio.</p>
-<p>Instala el cliente de línea de órdenes (CLI, por <em>command-line interface</em>) de Heroku con las <a class="reference external" href="https://devcenter.heroku.com/articles/heroku-cli#download-and-install">instrucciones de esta página</a>. En el caso de Linux basta con descargar el fichero con los binarios, descomprimirlo y añadir la carpeta <code class="docutils literal notranslate"><span class="pre">bin</span></code> a la variable <code class="docutils literal notranslate"><span class="pre">PATH</span></code> del sistema:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -O https://cli-assets.heroku.com/heroku-linux-x64.tar.gz
-tar xzf heroku-linux-x64.tar.gz -C $HOME
-echo &#39;export PATH=$HOME/heroku/bin:$PATH&#39; &gt;&gt; $HOME/.bashrc
+<p>Configura en primer lugar la aplicación de la línea de órdenes <code class="docutils literal notranslate"><span class="pre">gcloud``tal</span> <span class="pre">como</span> <span class="pre">se</span> <span class="pre">explica</span> <span class="pre">en</span> <span class="pre">el</span> <span class="pre">apartado</span> <span class="pre">&quot;:ref:`label-gcloud`&quot;.</span> <span class="pre">A</span> <span class="pre">continuación,</span> <span class="pre">colócate</span> <span class="pre">en</span> <span class="pre">el</span> <span class="pre">directorio</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">aplicación</span> <span class="pre">del</span> <span class="pre">carrito,</span> <span class="pre">asegúrate</span> <span class="pre">de</span> <span class="pre">que</span> <span class="pre">la</span> <span class="pre">variable</span> <span class="pre">``CARRITO_ENV</span></code> tiene el valor <code class="docutils literal notranslate"><span class="pre">gaesqlite3</span></code> en el fichero <code class="docutils literal notranslate"><span class="pre">app.yaml</span></code> y ejecuta:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcloud</span> <span class="n">app</span> <span class="n">deploy</span>
+<span class="n">gcloud</span> <span class="n">app</span> <span class="n">browse</span>
 </pre></div>
 </div>
-<p>Si tienes permisos de administrador puedes instalar de forma alternativa el cliente de línea de órdenes de Heroku en Ubuntu con:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">curl</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cli</span><span class="o">-</span><span class="n">assets</span><span class="o">.</span><span class="n">heroku</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">install</span><span class="o">.</span><span class="n">sh</span> <span class="o">|</span> <span class="n">sh</span>
-</pre></div>
-</div>
-<p>o alternativamente:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">snap</span> <span class="n">install</span> <span class="o">--</span><span class="n">classic</span> <span class="n">heroku</span>
-</pre></div>
-</div>
-<p>Continúa ahora configurando tu proyecto haciendo:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">init</span>
-<span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
-<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;cambios&quot;</span>
-</pre></div>
-</div>
-<p>Con lo anterior, se crea un repositorio con los ficheros del proyecto, que podrás subir (<em>push</em>) a Heroku. Crea una cuenta en la web de Heroku e identifícate en el cliente de línea de órdenes ejecutando:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">heroku</span> <span class="n">login</span>
-</pre></div>
-</div>
-<p>Crea un proyecto en la nube haciendo:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">heroku</span> <span class="n">create</span> <span class="o">--</span><span class="n">region</span> <span class="n">eu</span>
-</pre></div>
-</div>
-<p>Desde este momento ya podrás <a class="reference external" href="https://devcenter.heroku.com/articles/git">desplegar la aplicación</a> con:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span> <span class="n">heroku</span> <span class="n">master</span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Nota</p>
-<p>Heroku puede, en principio, leer del fichero <code class="docutils literal notranslate"><span class="pre">app.json</span></code> datos como el gestor de base de datos a utilizar o el valor de ciertas variables de entorno que estarán definidas en el entorno de producción, pero en el momento de escribir esto no funciona. Por ello, has de configurar estos aspectos de tu aplicación ejecutando lo siguiente desde la línea de órdenes:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">heroku</span> <span class="n">addons</span><span class="p">:</span><span class="n">create</span> <span class="n">heroku</span><span class="o">-</span><span class="n">postgresql</span><span class="p">:</span><span class="n">hobby</span><span class="o">-</span><span class="n">dev</span>
-<span class="n">heroku</span> <span class="n">config</span><span class="p">:</span><span class="nb">set</span> <span class="n">CARRITO_ENV</span><span class="o">=</span><span class="n">heroku</span>
-</pre></div>
-</div>
-<p>Si ejecutas <code class="docutils literal notranslate"><span class="pre">heroku</span> <span class="pre">config</span></code> podrás ver que ahora hay dos variables de entorno: <code class="docutils literal notranslate"><span class="pre">CARRITO_ENV</span></code> y <code class="docutils literal notranslate"><span class="pre">DATABASE_URL</span></code>.</p>
-</div>
-<p>Finalmente, abre la aplicación en el navegador con:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">heroku</span> <span class="nb">open</span>
-</pre></div>
-</div>
-<p>Puedes estudiar los mensajes de actividad emitidos a la consola por tu aplicación implementada en Heroku con:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">heroku</span> <span class="n">logs</span>
-</pre></div>
-</div>
-<p>Para verlos conforme se van produciendo:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">heroku</span> <span class="n">logs</span> <span class="o">--</span><span class="n">tail</span>
-</pre></div>
-</div>
-<p>Si haces cambios en la aplicación, basta con repetir estos pasos para actualizar la aplicación en Heroku:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
-<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;cambios&quot;</span>
-<span class="n">git</span> <span class="n">push</span> <span class="n">heroku</span> <span class="n">master</span>
-</pre></div>
-</div>
-<p>Para volver a obtener el código de una aplicación si lo hemos perdido, basta con hacer:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">heroku</span> <span class="n">git</span><span class="p">:</span><span class="n">clone</span> <span class="o">-</span><span class="n">a</span> <span class="n">nombre</span><span class="o">-</span><span class="n">app</span><span class="o">-</span><span class="mi">12345</span>
-</pre></div>
-</div>
-<p>Finalmente, puedes usar el <a class="reference external" href="https://dashboard.heroku.com/">panel de control</a> de tu aplicación en Heroku para acceder a ciertas opciones adicionales de configuración. Por otro lado, en el panel de control de la <a class="reference external" href="https://data.heroku.com/">base de datos</a> PostgreSQL puedes visitar la sección <span class="guilabel">Dataclips</span> para poder ver las tablas de tu base de datos y lanzar consultas SQL sobre ellas.</p>
 </section>
 <section id="la-politica-del-mismo-origen-y-el-estandar-cors">
 <span id="label-cors"></span><h2><span class="section-number">6.7. </span>La política del mismo origen y el estándar CORS<a class="headerlink" href="#la-politica-del-mismo-origen-y-el-estandar-cors" title="Enlace permanente a este encabezado"></a></h2>
@@ -1119,7 +1059,7 @@ echo &#39;export PATH=$HOME/heroku/bin:$PATH&#39; &gt;&gt; $HOME/.bashrc
 <p>Esta actividad solo es necesaria este curso si vas a implementar la parte de la práctica 4 relacionada con la identificación de usuarios. Si no es así, puedes ignorar el resto, salvo que tengas curiosidad en aprender cómo se hace.</p>
 </div>
 <p>El primer paso para que una aplicación pueda acceder al servicio de identificación de Google Sign-in es obtener las credenciales adecuadas que nos permitan obtener el <em>id del cliente</em>, una secuencia de caracteres que necesitamos para poder usar el servicio desde el código JavaScript del navegador y desde el código en Node.js del servidor. Para ello accede en la consola web de Google Cloud Platform a la opción <span class="guilabel">Credenciales</span> dentro del menú <span class="guilabel">APIs y servicios</span>. Elige crear una credencial de tipo <span class="guilabel">ID de cliente de OAuth</span>. Serás redirigido en primer lugar a la configuración de la pantalla de consentimiento de OAuth: indica como usuarios objetivo a usuarios <em>externos</em> y luego aporta solo los datos obligatorios (nombre de la aplicación y tu dirección de correo electrónico de <code class="docutils literal notranslate"><span class="pre">gcloud.ua.es</span></code>). De vuelto a la pantalla de credenciales, elige de nuevo crear una credencial de tipo <span class="guilabel">ID de cliente de OAuth</span>. En la nueva pantalla, escoge <em>web</em> como tipo de aplicación, introduce un nombre para la aplicación, y en <span class="guilabel">Orígenes de JavaScript autorizados</span> indica los URLs desde los que harás peticiones: normalmente, indicarás un URL del tipo <code class="docutils literal notranslate"><span class="pre">http://localhost:5000</span></code> para cuando la aplicación se lance en local y uno del tipo <code class="docutils literal notranslate"><span class="pre">https://proyecto-10002.appspot.com/</span></code> para cuando se despliegue en un servidor en la nube. No has de indicar nada en la sección <span class="guilabel">URIs de redirección autorizados</span>. Con esta información, ya podrás obtener el <em>id del cliente</em>.</p>
-<p>A continuación se describe una aplicación sencilla que permite que el usuario se identifique en el navegador con su cuenta de Google. La aplicación completa está en la carpeta <code class="docutils literal notranslate"><span class="pre">code/gsignin</span></code> del <a class="reference external" href="https://github.com/jaspock/dai2122">repositorio de la asignatura</a> . Tras la autenticación, el código puede obtener una serie de datos del usuario entre los que es especialmente relevante el <em>token id</em>, que será el dato que se enviará al servidor y del que este extraerá un <em>id</em> del usuario que será el que se almacenará en las bases de datos para indicar el usuario asociado a un registro dado. Observa que no se envía al servidor un dato como la dirección de correo electrónico para usarlo como identificador del usuario porque podría cambiar en algún momento del futuro. Tampoco se le envía el <em>id</em> del usuario, sino un <em>token</em> más largo que codifica diferentes datos, incluyendo el <em>id</em> del usuario. Este token deberá ser validado por el servidor antes de dar por bueno el <em>id</em> que incluye.</p>
+<p>A continuación se describe una aplicación sencilla que permite que el usuario se identifique en el navegador con su cuenta de Google. La aplicación completa está en la carpeta <code class="docutils literal notranslate"><span class="pre">code/gsignin</span></code> del <a href="#id3"><span class="problematic" id="id4">`repositorio de la asignatura`_</span></a> . Tras la autenticación, el código puede obtener una serie de datos del usuario entre los que es especialmente relevante el <em>token id</em>, que será el dato que se enviará al servidor y del que este extraerá un <em>id</em> del usuario que será el que se almacenará en las bases de datos para indicar el usuario asociado a un registro dado. Observa que no se envía al servidor un dato como la dirección de correo electrónico para usarlo como identificador del usuario porque podría cambiar en algún momento del futuro. Tampoco se le envía el <em>id</em> del usuario, sino un <em>token</em> más largo que codifica diferentes datos, incluyendo el <em>id</em> del usuario. Este token deberá ser validado por el servidor antes de dar por bueno el <em>id</em> que incluye.</p>
 <p>Este es el código de la parte del cliente:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="cp">&lt;!doctype html&gt;</span>
 <span class="linenos">  2</span><span class="cm">&lt;!-- Ejemplo de uso de la API de autenticación de Google Sign-in --&gt;</span>
