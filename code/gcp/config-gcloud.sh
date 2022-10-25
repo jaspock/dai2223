@@ -50,6 +50,9 @@ gcloud alpha billing projects link $PROYECTO --billing-account=$CUENTA
 # echo "Proyectos ligados a la cuenta $CUENTA:"
 # gcloud beta billing projects list --billing-account=$CUENTA
 
+echo "Configurando el proyecto por defecto..."
+gcloud config set project $PROYECTO
+
 echo
 echo "Si deseas borrar el proyecto, ejecuta: gcloud projects delete $PROYECTO"
 echo "Solo tienes que ejecutar este script una vez, salvo que hayas obtenido un error, ya que solo tienes que tener un proyecto en GCP."
