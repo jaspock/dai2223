@@ -98,16 +98,7 @@
 </div>
 <section id="configuracion-del-entorno-de-trabajo-para-google-cloud-platform">
 <span id="label-gcloud"></span><h2><span class="section-number">7.1. </span>Configuración del entorno de trabajo para Google Cloud Platform<a class="headerlink" href="#configuracion-del-entorno-de-trabajo-para-google-cloud-platform" title="Enlace permanente a este encabezado"></a></h2>
-<p>En las actividades de este tema vamos a usar diversos servicios de Google Cloud Platform. Aunque plataformas como Amazon Web Services, Microsoft Azure, IBM Cloud, Rackspace o Google Cloud Platform suelen ofrecer de forma gratuita un acceso limitado a algunos de sus servicios, en esta asignatura vas a crear un proyecto en Google Cloud Platform y asignarlo a una cuenta de facturación especial para centros educativos que Google ofrece a los estudiantes de la universidad. Para recibir los créditos educativos, tendrás que usar la cuenta que la universidad te asigna con <a class="reference external" href="https://si.ua.es/es/manuales/uacloud/uacloudse/servicios-externos.html">dominio gcloud.ua.es</a>; asegúrate de que la tienes activada antes de seguir leyendo.</p>
-<div class="admonition important">
-<p class="admonition-title">Importante</p>
-<p>Ten en cuenta que en ningún momento has de dar de indicar los datos de ninguna tarjeta de crédito o cuenta bancaria. Si el sistema te pide algo así, es que estás haciendo algo mal.</p>
-</div>
-<p>En las semanas anteriores al estudio de este tema, el profesor compartirá contigo a través de un anuncio en UACloud u otro medio similar un enlace a una página web donde podrás solicitar los créditos educativos. En dicha página, tendrás que indicar tu dirección de correo electrónico de <code class="docutils literal notranslate"><span class="pre">gcloud.ua.es</span></code> y tu nombre. Una vez que hayas enviado el formulario, recibirás un mensaje de confirmación por correo electrónico con un enlace para activar tu cuenta de Google Cloud Platform. Solo se puede obtener un cupón por estudiante. Para comprobar que todo ha ido bien, basta con que accedas al servicio de facturación y compruebes que tienes una cuenta con unos $50 a tu disposición.</p>
-<div class="admonition important">
-<p class="admonition-title">Importante</p>
-<p>Para no generar gastos innecesarios, recuerda eliminar los recursos que no vayas a seguir utilizando cuando acabes.</p>
-</div>
+<p>En las actividades de este tema vamos a usar diversos servicios de Google Cloud Platform. Aunque plataformas como Amazon Web Services, Microsoft Azure, IBM Cloud, Rackspace o Google Cloud Platform suelen ofrecer de forma gratuita un acceso limitado a algunos de sus servicios, en esta asignatura vas a a usar un proyecto en Google Cloud Platform que el profesor ya ha creado para ti y que está asignado a una cuenta de facturación para centros educativos que Google ofrece a la universidad. Tu proyecto está asociado a la cuenta que la universidad te asigna con <a class="reference external" href="https://si.ua.es/es/manuales/uacloud/uacloudse/servicios-externos.html">dominio gcloud.ua.es</a>; asegúrate de que la tienes activada antes de seguir leyendo. Puedes acceder a la consola de Google Cloud Platform y buscar tu proyecto en el desplegable superior. Dependiendo de cómo haya configurado el entorno el profesor, tendrás que elegir <em>ninguna organización</em> o <em>gcloud.ua.es</em> en la opción correspondiente. Para no generar gastos innecesarios, recuerda eliminar los recursos que no vayas a seguir utilizando cuando acabes.</p>
 <div class="hazlotu admonition">
 <p class="admonition-title">Hazlo tú ahora</p>
 <p>Sigue las instrucciones que vienen a continuación para configurar tu entorno de trabajo para las actividades de este tema.</p>
@@ -129,8 +120,7 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcloud</span> <span class="n">auth</span> <span class="n">login</span>
 </pre></div>
 </div>
-<p>Ahora tienes que ejecutar <a class="reference external" href="https://github.com/jaspock/dai2223/blob/main/code/gcp/config-gcloud.sh">este script</a> de Linux para crear un proyecto, vincularlo a tu cuenta y añadir al profesor como administrador. Antes de ejecutarlo edítalo y poner tu cuenta completa de <code class="docutils literal notranslate"><span class="pre">gcloud</span></code> en la variable <code class="docutils literal notranslate"><span class="pre">ESTUDIANTE</span></code> y la cuenta que el profesor te habrá indicado previamente en la variable <code class="docutils literal notranslate"><span class="pre">PROFESOR</span></code>. Es posible que la ejecución del script se demore por unos minutos.</p>
-<p>Ahora deberías poder ver los proyectos que tienes creados en Google Cloud Platform con:</p>
+<p>Puedes ver los proyectos que tienes creados en Google Cloud Platform con:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcloud</span> <span class="n">projects</span> <span class="nb">list</span>
 </pre></div>
 </div>
