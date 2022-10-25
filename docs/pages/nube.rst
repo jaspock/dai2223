@@ -28,10 +28,6 @@ En las semanas anteriores al estudio de este tema, el profesor compartirá conti
 
 .. _`servicio de facturación`: https://console.cloud.google.com/billing
 
-.. Important::
-
-  Para no generar gastos innecesarios, recuerda eliminar los recursos que no vayas a seguir utilizando cuando acabes.
-
 .. _`dominio gcloud.ua.es`: https://si.ua.es/es/manuales/uacloud/uacloudse/servicios-externos.html
 
 
@@ -78,6 +74,12 @@ Lo más habitual es que solo tengas el proyecto de la asignatura, cuyo nombre co
   gcloud config set project <id>
 
 donde ``<id>`` sería el id del proyecto obtenido de la lista porporcionada por ``gcloud projects list``.
+
+
+.. Important::
+
+  Para no generar gastos innecesarios, recuerda eliminar los recursos que no vayas a seguir utilizando cuando acabes.
+
 
 .. Para desinstalar gcloud borrar su directorio principal y ~/.config/gcloud en Linux.
 
