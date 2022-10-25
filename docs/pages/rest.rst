@@ -426,10 +426,12 @@ Despliegue de la aplicación web en Google App Engine
 
 Cuando tengas la aplicación lista en modo local, puedes desplegarla en la nube de Google Cloud Platform (en concreto, en el servicio Google App Engine) como sigue.
 
-Configura en primer lugar la aplicación de la línea de órdenes ``gcloud``tal como se explica en el apartado ":ref:`label-gcloud`". A continuación, colócate en el directorio de la aplicación del carrito, asegúrate de que la variable ``CARRITO_ENV`` tiene el valor ``gaesqlite3`` en el fichero ``app.yaml`` y ejecuta::
+Configura en primer lugar la aplicación de la línea de órdenes ``gcloud`` tal como se explica en el apartado ":ref:`label-gcloud`". A continuación, colócate en el directorio de la aplicación del carrito, asegúrate de que la variable ``CARRITO_ENV`` tiene el valor ``gaesqlite3`` en el fichero ``app.yaml`` y ejecuta::
 
   gcloud app deploy
   gcloud app browse
+
+Se abrirá en tu navegador la página correspondiente.
 
 
 .. _label-cors:

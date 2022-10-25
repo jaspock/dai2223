@@ -57,7 +57,7 @@ Si posteriormente el SDK se desvinculara por algún motivo de tu cuenta, puedes 
 
   gcloud auth login
 
-Ahora tienes que ejecutar `este script`_ de Linux para crear un proyecto, vincularlo a tu cuenta y añadir al profesor como administrador. Antes de ejecutarlo edítalo y poner tu cuenta completa de ``gcloud`` en la variable ``ESTUDIANTE`` y la cuenta que el profesor te habrá indicado previamente en la variable ``PROFESOR``. Es posible que la ejecución del script se demore por unos minutos. 
+Ahora tienes que ejecutar `este script`_ de Linux para crear un proyecto, vincularlo a tu cuenta y añadir al profesor como administrador. Antes de ejecutarlo edítalo y pon tu cuenta completa de ``gcloud`` en la variable ``ESTUDIANTE`` y la cuenta que el profesor te habrá indicado previamente en la variable ``PROFESOR``. Es posible que la ejecución del script se demore por unos minutos. 
 
 .. _`este script`: https://github.com/jaspock/dai2223/blob/main/code/gcp/config-gcloud.sh
 
@@ -78,7 +78,7 @@ donde ``<id>`` sería el id del proyecto obtenido de la lista porporcionada por 
 
 .. Important::
 
-  Para no generar gastos innecesarios, recuerda eliminar los recursos que no vayas a seguir utilizando cuando acabes.
+  Para no generar gastos innecesarios, recuerda eliminar los recursos que hayas creado y que no vayas a seguir utilizando, cuando acabes una sesión de trabajo con Google Cloud Platform.
 
 
 .. Para desinstalar gcloud borrar su directorio principal y ~/.config/gcloud en Linux.
