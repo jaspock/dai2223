@@ -63,7 +63,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#modificacion-de-la-api-rest">6.5. Modificación de la API REST</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#despliegue-de-la-aplicacion-web-en-heroku">6.6. Despliegue de la aplicación web en Heroku</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#despliegue-de-la-aplicacion-web-en-google-app-engine">6.6. Despliegue de la aplicación web en Google App Engine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#la-politica-del-mismo-origen-y-el-estandar-cors">6.7. La política del mismo origen y el estándar CORS</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#peticiones-cors">6.7.1. Peticiones CORS</a></li>
 </ul>
@@ -119,7 +119,7 @@
 <p>REST es una arquitectura para implementar servicios web sobre el protocolo HTTP que es usada actualmente por la gran mayoría de APIs web. Bajo REST los recursos se representan mediante URLs y las acciones a realizar con ellos se indican mediante los correspondientes verbos de HTTP (principalmente, GET, POST, PUT y DELETE).</p>
 <div class="hazlotu admonition">
 <p class="admonition-title">Hazlo tú ahora</p>
-<p>En esta actividad vamos a explorar una API REST <em>de jueguete</em> para gestionar carritos de la compra que se encuentra ya desplegada en la nube. Para acceder a la API vamos a usar <code class="docutils literal notranslate"><span class="pre">curl</span></code>, un programa que permite realizar peticiones HTTP desde la línea de órdenes y observar la respuesta devuelta por el servidor. Ve probando en tu ordenador todos los pasos siguientes.</p>
+<p>En esta actividad vamos a explorar una API REST <em>de juguete</em> para gestionar carritos de la compra que se encuentra ya desplegada en la nube. Para acceder a la API vamos a usar <code class="docutils literal notranslate"><span class="pre">curl</span></code>, un programa que permite realizar peticiones HTTP desde la línea de órdenes y observar la respuesta devuelta por el servidor. Ve probando en tu ordenador todos los pasos siguientes.</p>
 </div>
 <p>En primer lugar, vamos a asignar a una variable de entorno el URL base de la API:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">endpoint</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">damp</span><span class="o">-</span><span class="n">shore</span><span class="o">-</span><span class="mf">49160.</span><span class="n">herokuapp</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">carrito</span><span class="o">/</span><span class="n">v1</span>
@@ -1006,10 +1006,10 @@ echo &#39;export PATH=$HOME/sqlite-tools-linux-x86-3300100:$PATH&#39; &gt;&gt; $
 <p>Modifica la parte del cliente y del servidor de la aplicación del carrito para que junto con la cantidad se pueda añadir el precio unitario de cada item. Necesitarás instalar en tu sistema Node.js y el gestor de base de datos SQLite3; sigue para ello los pasos detallados en la actividad «<a class="reference internal" href="#label-local"><span class="std std-ref">Configuración del entorno de trabajo para ejecutar localmente una aplicación web</span></a>». Salvo que uses <code class="docutils literal notranslate"><span class="pre">nodemon</span></code>, como se ha comentado antes, tendrás que matar y relanzar el servidor para que se apliquen los cambios. Como siempre, tendrás que recargar la página en el navegador siempre que realices algún cambio en el código del cliente.</p>
 </div>
 </section>
-<section id="despliegue-de-la-aplicacion-web-en-heroku">
-<span id="label-heroku"></span><h2><span class="section-number">6.6. </span>Despliegue de la aplicación web en Heroku<a class="headerlink" href="#despliegue-de-la-aplicacion-web-en-heroku" title="Enlace permanente a este encabezado"></a></h2>
-<p>Cuando tengas la aplicación lista en modo local, puedes desplegarla en la plataforma en la nube de <a class="reference external" href="https://www.heroku.com/">Heroku</a> como sigue.
-Copia para empezar la carpeta <code class="docutils literal notranslate"><span class="pre">dai2122/code/carrito</span></code> en otra ubicación de tu sistema. Al copiar la carpeta a una ubicación diferente haces que su contenido no esté ligado al repositorio de Github, ya que para desplegar la aplicación en Heroku necesitas vincularla a otro repositorio.</p>
+<section id="despliegue-de-la-aplicacion-web-en-google-app-engine">
+<span id="label-gcp"></span><h2><span class="section-number">6.6. </span>Despliegue de la aplicación web en Google App Engine<a class="headerlink" href="#despliegue-de-la-aplicacion-web-en-google-app-engine" title="Enlace permanente a este encabezado"></a></h2>
+<p>Cuando tengas la aplicación lista en modo local, puedes desplegarla en la nube de Google Cloud Platform (en concreto, en el servicio Google App Engine) como sigue.</p>
+<p>Copia para empezar la carpeta <code class="docutils literal notranslate"><span class="pre">dai2122/code/carrito</span></code> en otra ubicación de tu sistema. Al copiar la carpeta a una ubicación diferente haces que su contenido no esté ligado al repositorio de Github, ya que para desplegar la aplicación en Heroku necesitas vincularla a otro repositorio.</p>
 <p>Instala el cliente de línea de órdenes (CLI, por <em>command-line interface</em>) de Heroku con las <a class="reference external" href="https://devcenter.heroku.com/articles/heroku-cli#download-and-install">instrucciones de esta página</a>. En el caso de Linux basta con descargar el fichero con los binarios, descomprimirlo y añadir la carpeta <code class="docutils literal notranslate"><span class="pre">bin</span></code> a la variable <code class="docutils literal notranslate"><span class="pre">PATH</span></code> del sistema:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -O https://cli-assets.heroku.com/heroku-linux-x64.tar.gz
 tar xzf heroku-linux-x64.tar.gz -C $HOME

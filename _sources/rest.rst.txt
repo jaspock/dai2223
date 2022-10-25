@@ -24,7 +24,7 @@ REST es una arquitectura para implementar servicios web sobre el protocolo HTTP 
 .. admonition:: Hazlo tú ahora
   :class: hazlotu
 
-  En esta actividad vamos a explorar una API REST *de jueguete* para gestionar carritos de la compra que se encuentra ya desplegada en la nube. Para acceder a la API vamos a usar ``curl``, un programa que permite realizar peticiones HTTP desde la línea de órdenes y observar la respuesta devuelta por el servidor. Ve probando en tu ordenador todos los pasos siguientes.
+  En esta actividad vamos a explorar una API REST *de juguete* para gestionar carritos de la compra que se encuentra ya desplegada en la nube. Para acceder a la API vamos a usar ``curl``, un programa que permite realizar peticiones HTTP desde la línea de órdenes y observar la respuesta devuelta por el servidor. Ve probando en tu ordenador todos los pasos siguientes.
   
 En primer lugar, vamos a asignar a una variable de entorno el URL base de la API::
 
@@ -419,12 +419,15 @@ En esta actividad, vas a realizar una pequeña modificación a la API del carrit
   Modifica la parte del cliente y del servidor de la aplicación del carrito para que junto con la cantidad se pueda añadir el precio unitario de cada item. Necesitarás instalar en tu sistema Node.js y el gestor de base de datos SQLite3; sigue para ello los pasos detallados en la actividad ":ref:`label-local`". Salvo que uses ``nodemon``, como se ha comentado antes, tendrás que matar y relanzar el servidor para que se apliquen los cambios. Como siempre, tendrás que recargar la página en el navegador siempre que realices algún cambio en el código del cliente.
 
 
-.. _label-heroku:
+.. _label-gcp:
 
-Despliegue de la aplicación web en Heroku
-------------------------------------------
+Despliegue de la aplicación web en Google App Engine
+----------------------------------------------------
 
-Cuando tengas la aplicación lista en modo local, puedes desplegarla en la plataforma en la nube de `Heroku`_ como sigue. 
+Cuando tengas la aplicación lista en modo local, puedes desplegarla en la nube de Google Cloud Platform (en concreto, en el servicio Google App Engine) como sigue.
+
+
+
 Copia para empezar la carpeta ``dai2122/code/carrito`` en otra ubicación de tu sistema. Al copiar la carpeta a una ubicación diferente haces que su contenido no esté ligado al repositorio de Github, ya que para desplegar la aplicación en Heroku necesitas vincularla a otro repositorio.
 
 Instala el cliente de línea de órdenes (CLI, por *command-line interface*) de Heroku con las `instrucciones de esta página`_. En el caso de Linux basta con descargar el fichero con los binarios, descomprimirlo y añadir la carpeta ``bin`` a la variable ``PATH`` del sistema::
