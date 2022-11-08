@@ -78,7 +78,9 @@ donde ``<id>`` sería el id del proyecto obtenido de la lista proporcionada por 
 
 .. Important::
 
-  Para no generar gastos innecesarios, recuerda eliminar los recursos que hayas creado y que no vayas a seguir utilizando, cuando acabes una sesión de trabajo con Google Cloud Platform.
+  Para no generar gastos innecesarios, recuerda eliminar los recursos que hayas creado y que no vayas a seguir utilizando, cuando acabes una sesión de trabajo con Google Cloud Platform. Establece ahora una `alarma de gasto`_ en tu cuenta de facturación de Google Cloud Platform.
+
+.. _`alarma de gasto`: https://console.cloud.google.com/billing/budgets
 
 
 .. Para desinstalar gcloud borrar su directorio principal y ~/.config/gcloud en Linux.

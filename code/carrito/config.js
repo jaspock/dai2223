@@ -27,6 +27,9 @@ config.localbd= {
   useNullAsDefault: true
 }
 
+// en Google App Engine el único directorio de trabajo es /tmp
+// lo usamos para guardar los archivos de la base de datos
+// pero se eliminarán cuando se reinicie el servidor
 config.gaesqlite3= {
   client: "sqlite3",
   connection: {

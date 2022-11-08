@@ -401,7 +401,7 @@ Por último, si añades a la inicialización de Knex.js la propiedad ``debug:tru
 Modificación de la API REST
 ---------------------------
 
-En esta actividad, vas a realizar una pequeña modificación a la API del carrito y a la aplicación web que la utiliza. El desarrollo lo realizarás en tu máquina y, cuando hayas comprobado que todo funciona correctamente, lo subirás en la siguiente actividad a un servidor de aplicaciones en la nube.
+En esta actividad, vas a realizar una pequeña modificación de la API del carrito y de la aplicación web que la utiliza. El desarrollo lo realizarás en tu máquina y, cuando hayas comprobado que todo funciona correctamente, lo subirás en la siguiente actividad a un servidor de aplicaciones en la nube.
 
 .. Hint::
 
