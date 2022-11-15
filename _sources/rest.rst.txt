@@ -336,9 +336,9 @@ Ahora deberías poder ver la versión de SQLite3 instalada con::
 Prueba de la aplicación del carrito
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A continuación, descarga el código del cliente y del servidor de la aplicación del carrito; clona para ello el `repositorio de la asignatura`_ haciendo::
+A continuación, descarga el código del cliente y del servidor de la aplicación del carrito; clona para ello el repositorio de la asignatura haciendo::
 
-  git clone https://github.com/jaspock/dai2122.git
+  git clone https://github.com/jaspock/dai2223.git
 
 Entra en el directorio ``code/carrito`` y ejecuta::
 
@@ -424,7 +424,7 @@ En esta actividad, vas a realizar una pequeña modificación de la API del carri
 Despliegue de la aplicación web en Google App Engine
 ----------------------------------------------------
 
-Cuando tengas la aplicación lista en modo local, puedes desplegarla en la nube de Google Cloud Platform (en concreto, en el servicio Google App Engine) como sigue.
+Cuando tengas la aplicación lista en modo local, puedes desplegarla en la nube de Google Cloud Platform (en concreto, en el servicio Google App Engine) como sigue. De momento lo haremos usando ``SQLite3`` como gestor de base de datos, pero más adelante cambiaremos a ``MySQL``. El inconveniente principal de usar ``SQLite3`` es que la base de datos se almacena en un fichero local que se borrará cada vez que se reinicie la máquina virtual. Cuando pasa un tiempo sin atender ninguna petición, por ejemplo, la máquina se elimina, por lo que no podemos confiar en este enfoque para una aplicación real.
 
 Configura en primer lugar la aplicación de la línea de órdenes ``gcloud`` tal como se explica en el apartado ":ref:`label-gcloud`". A continuación, colócate en el directorio de la aplicación del carrito, asegúrate de que la variable ``CARRITO_ENV`` tiene el valor ``gaesqlite3`` en el fichero ``app.yaml`` y ejecuta::
 
@@ -497,7 +497,7 @@ Una componente importante de la mayoría de aplicaciones web es la que permite q
 
 El primer paso para que una aplicación pueda acceder al servicio de identificación de Google Sign-in es obtener las credenciales adecuadas que nos permitan obtener el *id del cliente*, una secuencia de caracteres que necesitamos para poder usar el servicio desde el código JavaScript del navegador y desde el código en Node.js del servidor. Para ello accede en la consola web de Google Cloud Platform a la opción :guilabel:`Credenciales` dentro del menú :guilabel:`APIs y servicios`. Elige crear una credencial de tipo :guilabel:`ID de cliente de OAuth`. Serás redirigido en primer lugar a la configuración de la pantalla de consentimiento de OAuth: indica como usuarios objetivo a usuarios *externos* y luego aporta solo los datos obligatorios (nombre de la aplicación y tu dirección de correo electrónico de ``gcloud.ua.es``). De vuelto a la pantalla de credenciales, elige de nuevo crear una credencial de tipo :guilabel:`ID de cliente de OAuth`. En la nueva pantalla, escoge *web* como tipo de aplicación, introduce un nombre para la aplicación, y en :guilabel:`Orígenes de JavaScript autorizados` indica los URLs desde los que harás peticiones: normalmente, indicarás un URL del tipo ``http://localhost:5000`` para cuando la aplicación se lance en local y uno del tipo ``https://proyecto-10002.appspot.com/`` para cuando se despliegue en un servidor en la nube. No has de indicar nada en la sección :guilabel:`URIs de redirección autorizados`. Con esta información, ya podrás obtener el *id del cliente*.
 
-A continuación se describe una aplicación sencilla que permite que el usuario se identifique en el navegador con su cuenta de Google. La aplicación completa está en la carpeta ``code/gsignin`` del `repositorio de la asignatura`_ . Tras la autenticación, el código puede obtener una serie de datos del usuario entre los que es especialmente relevante el *token id*, que será el dato que se enviará al servidor y del que este extraerá un *id* del usuario que será el que se almacenará en las bases de datos para indicar el usuario asociado a un registro dado. Observa que no se envía al servidor un dato como la dirección de correo electrónico para usarlo como identificador del usuario porque podría cambiar en algún momento del futuro. Tampoco se le envía el *id* del usuario, sino un *token* más largo que codifica diferentes datos, incluyendo el *id* del usuario. Este token deberá ser validado por el servidor antes de dar por bueno el *id* que incluye.
+A continuación se describe una aplicación sencilla que permite que el usuario se identifique en el navegador con su cuenta de Google. La aplicación completa está en la carpeta ``code/gsignin`` del repositorio de la asignatura. Tras la autenticación, el código puede obtener una serie de datos del usuario entre los que es especialmente relevante el *token id*, que será el dato que se enviará al servidor y del que este extraerá un *id* del usuario que será el que se almacenará en las bases de datos para indicar el usuario asociado a un registro dado. Observa que no se envía al servidor un dato como la dirección de correo electrónico para usarlo como identificador del usuario porque podría cambiar en algún momento del futuro. Tampoco se le envía el *id* del usuario, sino un *token* más largo que codifica diferentes datos, incluyendo el *id* del usuario. Este token deberá ser validado por el servidor antes de dar por bueno el *id* que incluye.
 
 Este es el código de la parte del cliente:
 
