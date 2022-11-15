@@ -61,6 +61,10 @@ Ahora tienes que ejecutar `este script`_ de Linux para crear un proyecto, vincul
 
 .. _`este script`: https://github.com/jaspock/dai2223/blob/main/code/gcp/config-gcloud.sh
 
+.. Important::
+
+  El script está preparado en principio para Linux. Puedes adaptarlo fácilmente para otros sistemas operativos. Otra opción es abrir el fichero correspondiente e ir copiando una a una sus instrucciones en el terminal.
+
 Ahora deberías poder ver los proyectos que tienes creados en Google Cloud Platform con::
 
   gcloud projects list
