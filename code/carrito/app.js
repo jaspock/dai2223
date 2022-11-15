@@ -6,7 +6,7 @@ const app = express();
 // carga y ejecuta config.js
 const config = require('./config.js');
 
-// objeto global que referencia a la librería Knexx.js
+// objeto global que referencia a la librería Knex.js
 var knex= null;
 
 // inicializa Knex.js para usar diferentes bases de datos según el entorno:
