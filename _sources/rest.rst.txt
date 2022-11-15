@@ -166,7 +166,7 @@ Si una función de *middleware* no va a llamar a otra función de *middleware* p
 Interfaz común de acceso a bases de datos
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Como queremos que nuestra aplicación web pueda funcionar en distintas plataformas y estas usan distintos gestores de bases de datos (Heroku permite usar PostgreSQL, Google Cloud Platform permite usar MySQL, y en modo local vamos a usar una base de datos *ligera* mediante SQLite para hacer pruebas), nos interesa no tener que escribir código diferente para cada sistema de base de datos. Node.js no tiene un equivalente exacto a, por ejemplo, la tecnología JDBC de Java, pero el paquete Knex.js_ (pronunciado como *konnex*) se acerca bastante al permitirnos interactuar con diferentes gestores de bases de datos con una interfaz única. Con Knex.js usaremos funciones para construir las consultas a la base de datos que serán transformadas internamente en instrucciones SQL; las peticiones a la base de datos son asíncronas y se gestionan mediante promesas o mediante *callbacks*. Las funciones que a este respecto se usan en el código son bastante autoexplicativas y es muy sencillo deducir cuál es su transformación en SQL. Por ejemplo, las líneas de código:
+Como queremos que nuestra aplicación web pueda funcionar en distintas plataformas y estas usan distintos gestores de bases de datos (por ejemplo, el proveedor Heroku incluye un servicio basado en PostgreSQL, Google Cloud Platform permite usar MySQL, y en modo local vamos a usar una base de datos *ligera* mediante SQLite para hacer pruebas), nos interesa no tener que escribir código diferente para cada sistema de base de datos. Node.js no tiene un equivalente exacto a, por ejemplo, la tecnología JDBC de Java, pero el paquete Knex.js_ (pronunciado como *konnex*) se acerca bastante al permitirnos interactuar con diferentes gestores de bases de datos con una interfaz única. Con Knex.js usaremos funciones para construir las consultas a la base de datos que serán transformadas internamente en instrucciones SQL; las peticiones a la base de datos son asíncronas y se gestionan mediante promesas o mediante *callbacks*. Las funciones que a este respecto se usan en el código son bastante autoexplicativas y es muy sencillo deducir cuál es su transformación en SQL. Por ejemplo, las líneas de código:
 
 .. _Knex.js: http://knexjs.org/
 
@@ -309,7 +309,7 @@ Abre un nuevo terminal para que el nuevo valor de la variable de entorno ``PATH`
 
   node -v
 
-La aplicación del carrito usa en modo local el gestor de base de datos *ligero* `SQLite3`_ para no depender de gestores más complejos. Cuando la aplicación se despliegue en la nube (un poco más adelante lo haremos en Heroku y, posteriormente, en Google Cloud Platform), usará otros gestores de bases de datos, lo que explica las diferentes opciones dentro de la función ``conectaBD``. Comprueba si ya tienes SQLite instalado ejecutando ``sqlite3`` desde la línea de órdenes. Si no lo tienes, para el caso de Linux puedes descargar este fichero::
+La aplicación del carrito usa en modo local el gestor de base de datos *ligero* `SQLite3`_ para no depender de gestores más complejos. Cuando la aplicación se despliegue en la nube (un poco más adelante lo haremos en Google Cloud Platform), usará otros gestores de bases de datos, lo que explica las diferentes opciones dentro de la función ``conectaBD``. Comprueba si ya tienes SQLite instalado ejecutando ``sqlite3`` desde la línea de órdenes. Si no lo tienes, para el caso de Linux puedes descargar este fichero::
 
   curl -O https://www.sqlite.org/2019/sqlite-tools-linux-x86-3300100.zip
 
@@ -469,7 +469,7 @@ Peticiones CORS
 .. admonition:: Hazlo tú ahora
   :class: hazlotu
 
-  La API REST del carrito soporta peticiones Fetch realizadas desde programas en JavaScript descargados de dominios diferentes al dominio en el que está ubicada la API. Para comprobarlo, abre el fichero ``carrito.html`` desde un servidor web local; recuerda cambiar antes la variable ``base`` de JavaScript para que apunte al correspondiente *endpoint* de la API que se está ejecutando en otro puerto u otro servidor (el de Heroku, por ejemplo). Estudia el *middleware* del código del servidor que gestiona la respuesta.
+  La API REST del carrito soporta peticiones Fetch realizadas desde programas en JavaScript descargados de dominios diferentes al dominio en el que está ubicada la API. Para comprobarlo, abre el fichero ``carrito.html`` desde un servidor web local; recuerda cambiar antes la variable ``base`` de JavaScript para que apunte al correspondiente *endpoint* de la API que se está ejecutando en otro puerto u otro servidor en la nube. Estudia el *middleware* del código del servidor que gestiona la respuesta.
   
 Para lanzar el cliente desde un servidor web local, si tienes Python 2 instalado, ejecuta desde el directorio donde está ``carrito.html`` una de las dos siguientes órdenes::
 
