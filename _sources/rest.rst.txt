@@ -419,7 +419,7 @@ En esta actividad, vas a realizar una pequeña modificación de la API del carri
   Modifica la parte del cliente y del servidor de la aplicación del carrito para que junto con la cantidad se pueda añadir el precio unitario de cada item. Necesitarás instalar en tu sistema Node.js y el gestor de base de datos SQLite3; sigue para ello los pasos detallados en la actividad ":ref:`label-local`". Salvo que uses ``nodemon``, como se ha comentado antes, tendrás que matar y relanzar el servidor para que se apliquen los cambios. Como siempre, tendrás que recargar la página en el navegador siempre que realices algún cambio en el código del cliente.
 
 
-.. _label-gcp:
+.. _label-gcp-deploy:
 
 Despliegue de la aplicación web en Google App Engine
 ----------------------------------------------------
