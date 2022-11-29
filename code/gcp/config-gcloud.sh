@@ -7,6 +7,10 @@ ESTUDIANTE=abc999@gcloud.ua.es
 # Pon en la variable PROFESOR la cuenta gcloud.ua.es del profesor.
 PROFESOR=cuenta_del_profesor@gcloud.ua.es
 
+# Pon en la variable USRGCP la cuenta en la que hayas canjeado los créditos educativos.
+# Lo habitual es que sea la misma que la de la variable ESTUDIANTE.
+USRGCP=abc999@gcloud.ua.es
+
 # - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 ESTUDIANTE_ID=`echo "$ESTUDIANTE" | cut -d@ -f1`
@@ -20,6 +24,12 @@ if [ "$PROFESOR" = "cuenta_del_profesor@gcloud.ua.es" ]; then
     echo "Cambia el valor de la variable PROFESOR del script y vuelve a ejecutarlo."
     exit
 fi
+
+if [ "$USRGCP" = "abc999@gcloud.ua.es" ]; then
+    echo "Cambia el valor de la variable USRGCP del script y vuelve a ejecutarlo."
+    exit
+fi
+
 
 CHAR6=`echo $RANDOM | md5sum | head -c 8`  # cadena aleatoria de longitud 8
 CURSO=dai2223
@@ -35,8 +45,7 @@ echo "Incorporando al profesor al proyecto..."
 gcloud projects add-iam-policy-binding $PROYECTO --member="user:$PROFESOR" --role="roles/owner"
 
 echo "Dando permisos al estudiante para que pueda permitir a allUsers invocar las funciones de Cloud Functions..."
-echo "[EN PRUEBAS. ¡AVISA AL PROFESOR SI FALLA!]"
-gcloud projects add-iam-policy-binding $PROYECTO --member="user:$ESTUDIANTE" --role="roles/cloudfunctions.admin"
+gcloud projects add-iam-policy-binding $PROYECTO --member="user:$USRGCP" --role="roles/cloudfunctions.admin"
 
 echo "Creando la app de Google App Engine (normalmente puedes ignorar el warning, si lo hay)..."
 gcloud app create --region=europe-west3 --project=$PROYECTO

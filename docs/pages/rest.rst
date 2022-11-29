@@ -28,7 +28,9 @@ REST es una arquitectura para implementar servicios web sobre el protocolo HTTP 
   
 En primer lugar, vamos a asignar a una variable de entorno el URL base de la API::
 
-  export endpoint=https://damp-shore-49160.herokuapp.com/carrito/v1
+  export endpoint=https://dai2223-japerez-a8845521.ey.r.appspot.com/carrito/v1
+
+.. cambiar enlace a GAE en dos sitios de esta página
 
 *Nota:* la sintaxis que seguiremos aquí para manejar variables de entorno es la usada en sistemas basados en Unix. Para otros sistemas operativos, la sintaxis podría ser ligeramente diferente.
 
@@ -100,7 +102,9 @@ Ahora vamos a ver cómo interactuar con la API del carrito desde JavaScript (en 
   :language: html
   :linenos:
 
-.. _`gestión de carritos de la compra`: https://damp-shore-49160.herokuapp.com/carrito.html
+.. _`gestión de carritos de la compra`: https://dai2223-japerez-a8845521.ey.r.appspot.com/carrito.html
+
+.. cambiar enlace a GAE en dos sitios de esta página
 
 El código anterior muestra cómo hacer con ``fetch`` peticiones con verbos de HTTP diferentes a ``GET``, y que incluyen información tanto en las cabeceras como en el bloque de datos (*payload*).
 
