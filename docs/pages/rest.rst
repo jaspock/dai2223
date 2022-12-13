@@ -425,8 +425,8 @@ En esta actividad, vas a realizar una pequeña modificación de la API del carri
 
 .. _label-gcp-deploy:
 
-Despliegue de la aplicación web en Google App Engine
-----------------------------------------------------
+Despliegue básico de la aplicación web en Google App Engine con persistencia limitada vía SQLite3
+-------------------------------------------------------------------------------------------------
 
 Cuando tengas la aplicación lista en modo local, puedes desplegarla en la nube de Google Cloud Platform (en concreto, en el servicio Google App Engine) como sigue. De momento lo haremos usando ``SQLite3`` como gestor de base de datos, pero más adelante cambiaremos a ``MySQL``. El inconveniente principal de usar ``SQLite3`` es que la base de datos se almacena en un fichero local que se borrará cada vez que se reinicie la máquina virtual. Cuando pasa un tiempo sin atender ninguna petición, por ejemplo, la máquina se elimina, por lo que no podemos confiar en este enfoque para una aplicación real.
 

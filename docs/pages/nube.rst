@@ -189,8 +189,8 @@ La siguiente gráfica muestra cómo con la computación en la nube los gastos se
 
 .. _label-appengine:
 
-Publicación de la aplicación del carrito en Google App Engine
--------------------------------------------------------------
+Publicación avanzada de la aplicación del carrito en Google App Engine integrada con Google Cloud SQL 
+-----------------------------------------------------------------------------------------------------
 
 Vamos a ver cómo desplegar la aplicación del carrito del tema anterior en Google App Engine, el servicio de plataforma de aplicaciones de Google Cloud Platform, de manera que esta vez los datos tengan auténtica persistencia. Dado que las máquinas virtuales que se asignen a nuestra aplicación de Google App Engine pueden ser eliminadas o creadas en cualquier momento en base a la demanda, necesitamos almacenar los datos que maneje la aplicación en una base de datos alojada en otro lugar: Google Cloud Platform cuenta con Google Cloud SQL, un servicio de bases de datos relacionales en la nube que incluye el gestor MySQL. En el tema anterior vimos que la aplicación del carrito ya estaba configurada para trabajar con MySQL a través de Knex.js, por lo que no es necesario modificar el código. Al comienzo de este tema, en el apartado ":ref:`label-gcloud`", también se explica cómo configurar el cliente de línea de órdenes ``gcloud``. Para que la aplicación pueda usar MySQL debemos crear y configurar una instancia de máquina virtual para la base de datos en Google Cloud SQL.
 
