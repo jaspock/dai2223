@@ -305,7 +305,7 @@
 <p class="admonition-title">Hazlo tú ahora</p>
 <p>Lee la página de <a class="reference external" href="https://docs.docker.com/get-started/overview/">introducción a Docker</a>. Después, lee el tutorial sobre cómo <a class="reference external" href="https://docs.docker.com/language/nodejs/build-images/">crear una imagen</a> y <a class="reference external" href="https://docs.docker.com/language/nodejs/run-containers/">lanzar un contenedor</a> para una aplicación web basada en Node.js.</p>
 </div>
-<p>En esta actividad vamos a7 ver cómo crear una imagen de nuestra aplicación del carrito y lanzar contenedores basados en ellas. Ambas acciones las realizaremos tanto localmente (para ello necesitas tener instalado <code class="docutils literal notranslate"><span class="pre">docker</span></code> en tu ordenador) como en Google Cloud Platform. A diferencia del <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code> del tutorial anterior, no nos basaremos en una <a class="reference external" href="https://hub.docker.com/_/node">imagen del registro que ya contiene Node.js</a> (según se indicaba en la orden <code class="docutils literal notranslate"><span class="pre">FROM</span></code>), sino que, para mostrar un ejemplo más general, nuestra imagen se basará en una imagen de Ubuntu.</p>
+<p>En esta actividad vamos a ver cómo crear una imagen de nuestra aplicación del carrito y lanzar contenedores basados en ellas. Ambas acciones las realizaremos tanto localmente (para ello necesitas tener instalado <code class="docutils literal notranslate"><span class="pre">docker</span></code> en tu ordenador) como en Google Cloud Platform. A diferencia del <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code> del tutorial anterior, no nos basaremos en una <a class="reference external" href="https://hub.docker.com/_/node">imagen del registro que ya contiene Node.js</a> (según se indicaba en la orden <code class="docutils literal notranslate"><span class="pre">FROM</span></code>), sino que, para mostrar un ejemplo más general, nuestra imagen se basará en una imagen de Ubuntu.</p>
 <p>Para instalar Docker en Ubuntu se puede hacer:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sudo apt install docker.io
 sudo groupadd docker
@@ -343,31 +343,37 @@ newgrp docker
 <span class="n">docker</span> <span class="n">ps</span> <span class="o">--</span><span class="nb">all</span>
 </pre></div>
 </div>
-<p>Podemos ahora probar nuestra aplicación en <code class="docutils literal notranslate"><span class="pre">localhost:8001</span></code>. Las siguientes instrucciones detienen el contenedor, vuelven a lanzarlo, ejecutan una sesión del <em>shell</em> dentro de él, lo vuelven a detener y, finalmente, lo eliminan::
-7</p>
-<blockquote>
-<div><p>docker stop contenedor-carrito
-docker start contenedor-carrito
-docker exec –interactive –tty contenedor-carrito bash
-docker stop contenedor-carrito
-docker rm contenedor-carrito</p>
-</div></blockquote>
-<p>Un uso habitual de Docker es el de tener contenedores con todo el software necesario para programar una aplicación de forma que nos aseguremos que todos los miembros del equipo tengan exactamente el mismo entorno de desarrollo. En ese caso, es muy ineficiente tener que volver a crea7-publish 8001:5000 –volume «$PWD»:/app –name contenedor-carrito imagen-carrito</p>
-<p>Si editamos el contenido de <code class="docutils literal notranslate"><span class="pre">public/carrito.html</span></code> veremos cómo la aplicación web se actualiza inmediatamente. Cuando tengamos la aplicación lista, podemos crear la imagen copiando, esta vez sí, el contenido local al sistema de ficheros del contenedor. Para terminar, podemos eliminar el contenedor e incluso la imagen:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker stop contenedor-carrito
-docker rm contenedor-carrito
-docker rmi imagen-car7
-.. _`Cloud Build`: https://cloud.google.com/build/docs/quickstart-build?hl=en
-.. _`Cloud Run`: https://cloud.google.com/build/docs/quickstart-deploy?hl=en
+<p>Podemos ahora probar nuestra aplicación en <code class="docutils literal notranslate"><span class="pre">localhost:8001</span></code>. Las siguientes instrucciones detienen el contenedor, vuelven a lanzarlo, ejecutan una sesión del <em>shell</em> dentro de él, lo vuelven a detener y, finalmente, lo eliminan:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">stop</span> <span class="n">contenedor</span><span class="o">-</span><span class="n">carrito</span>
+<span class="n">docker</span> <span class="n">start</span> <span class="n">contenedor</span><span class="o">-</span><span class="n">carrito</span>
+<span class="n">docker</span> <span class="n">exec</span> <span class="o">--</span><span class="n">interactive</span> <span class="o">--</span><span class="n">tty</span> <span class="n">contenedor</span><span class="o">-</span><span class="n">carrito</span> <span class="n">bash</span>
+<span class="n">docker</span> <span class="n">stop</span> <span class="n">contenedor</span><span class="o">-</span><span class="n">carrito</span>
+<span class="n">docker</span> <span class="n">rm</span> <span class="n">contenedor</span><span class="o">-</span><span class="n">carrito</span>
 </pre></div>
 </div>
+<p>Un uso habitual de Docker es el de tener contenedores con todo el software necesario para programar una aplicación de forma que nos aseguremos que todos los miembros del equipo tengan exactamente el mismo entorno de desarrollo. En ese caso, es muy ineficiente tener que volver a crear la imagen ante cada cambio en el código que queramos probar. Otro enfoque también ineficiente pasa por editar los ficheros <em>dentro</em> del contenedor, pero en ese caso para hacer esos cambios persistentes, tendríamos que usar ciertas instrucciones que crean una nueva imagen a partir del estado de un contenedor. Una solución mucho mejor es usar <em>volúmenes</em>, que nos permiten enlazar ciertos directorios del contenedor con directorios externos:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">--</span><span class="n">detach</span> <span class="o">--</span><span class="n">publish</span> <span class="mi">8001</span><span class="p">:</span><span class="mi">5000</span> <span class="o">--</span><span class="n">volume</span> <span class="s2">&quot;$PWD&quot;</span><span class="p">:</span><span class="o">/</span><span class="n">app</span> <span class="o">--</span><span class="n">name</span> <span class="n">contenedor</span><span class="o">-</span><span class="n">carrito</span> <span class="n">imagen</span><span class="o">-</span><span class="n">carrito</span>
+</pre></div>
+</div>
+<p>Si editamos el contenido de <code class="docutils literal notranslate"><span class="pre">public/carrito.html</span></code> veremos cómo la aplicación web se actualiza inmediatamente. Cuando tengamos la aplicación lista, podemos crear la imagen copiando, esta vez sí, el contenido local al sistema de ficheros del contenedor. Para terminar, podemos eliminar el contenedor e incluso la imagen:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">stop</span> <span class="n">contenedor</span><span class="o">-</span><span class="n">carrito</span>
+<span class="n">docker</span> <span class="n">rm</span> <span class="n">contenedor</span><span class="o">-</span><span class="n">carrito</span>
+<span class="n">docker</span> <span class="n">rmi</span> <span class="n">imagen</span><span class="o">-</span><span class="n">carrito</span>
+</pre></div>
+</div>
+<p>Podemos repetir los pasos anteriores (sin necesidad de tener Docker instalado) usando servicios en la nube. En el caso de GCP, la generación de la imagen y su subida a un registro se puede hacer con <a class="reference external" href="https://cloud.google.com/build/docs/quickstart-build?hl=en">Cloud Build</a>, mientras que para el lanzamiento del contenedor podemos usar <a class="reference external" href="https://cloud.google.com/build/docs/quickstart-deploy?hl=en">Cloud Run</a>.</p>
+<blockquote>
+<div></div></blockquote>
 <p>En lo siguiente se asume que la variable <code class="docutils literal notranslate"><span class="pre">PROYECTO</span></code> contiene el identificador del proyecto actual. Recuerda que para obtener el proyecto actual o cambiarlo, si es necesario, puedes hacer:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>gcloud config get-value project
 gcloud config set project $PROYECTO
 </pre></div>
 </div>
 <p>Los pasos siguientes crean un repositorio para imágenes de Docker (dado que se pueden almacenar otros tipos de objetos, en GCP lo llaman <em>repositorio de artefactos</em>), construye una imagen a partir del <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code> y el contenido del directorio actual y, finalmente, la ejecuta:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>gcloud artifacts rep7ker images list europe-west3-docker.pkg.dev/$PROYECTO/repositorio-docker
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>gcloud artifacts repositories create repositorio-docker --repository-format=docker --location europe-west3
+gcloud artifacts repositories list
+gcloud builds submit --tag europe-west3-docker.pkg.dev/$PROYECTO/repositorio-docker/imagen-carrito:v1
+gcloud artifacts docker images list europe-west3-docker.pkg.dev/$PROYECTO/repositorio-docker
 gcloud run deploy servicio-carrito --image europe-west3-docker.pkg.dev/$PROYECTO/repositorio-docker/imagen-carrito:v1 --platform managed --region europe-west3
 </pre></div>
 </div>

@@ -325,7 +325,7 @@ Docker es una plataforma que nos permite distribuir *contenedores*, que incluyen
   .. _`crear una imagen`: https://docs.docker.com/language/nodejs/build-images/
   .. _`lanzar un contenedor`: https://docs.docker.com/language/nodejs/run-containers/
 
-En esta actividad vamos a7 ver cómo crear una imagen de nuestra aplicación del carrito y lanzar contenedores basados en ellas. Ambas acciones las realizaremos tanto localmente (para ello necesitas tener instalado ``docker`` en tu ordenador) como en Google Cloud Platform. A diferencia del ``Dockerfile`` del tutorial anterior, no nos basaremos en una `imagen del registro que ya contiene Node.js`_ (según se indicaba en la orden ``FROM``), sino que, para mostrar un ejemplo más general, nuestra imagen se basará en una imagen de Ubuntu.
+En esta actividad vamos a ver cómo crear una imagen de nuestra aplicación del carrito y lanzar contenedores basados en ellas. Ambas acciones las realizaremos tanto localmente (para ello necesitas tener instalado ``docker`` en tu ordenador) como en Google Cloud Platform. A diferencia del ``Dockerfile`` del tutorial anterior, no nos basaremos en una `imagen del registro que ya contiene Node.js`_ (según se indicaba en la orden ``FROM``), sino que, para mostrar un ejemplo más general, nuestra imagen se basará en una imagen de Ubuntu.
 
 .. _`imagen del registro que ya contiene Node.js`: https://hub.docker.com/_/node
 
@@ -351,20 +351,25 @@ Los pasos para crear una imagen y lanzar un contenedor local desde la línea de 
   docker ps --all
 
 Podemos ahora probar nuestra aplicación en ``localhost:8001``. Las siguientes instrucciones detienen el contenedor, vuelven a lanzarlo, ejecutan una sesión del *shell* dentro de él, lo vuelven a detener y, finalmente, lo eliminan::
-7
+
   docker stop contenedor-carrito
   docker start contenedor-carrito
   docker exec --interactive --tty contenedor-carrito bash
   docker stop contenedor-carrito
   docker rm contenedor-carrito
 
-Un uso habitual de Docker es el de tener contenedores con todo el software necesario para programar una aplicación de forma que nos aseguremos que todos los miembros del equipo tengan exactamente el mismo entorno de desarrollo. En ese caso, es muy ineficiente tener que volver a crea7-publish 8001:5000 --volume "$PWD":/app --name contenedor-carrito imagen-carrito
+Un uso habitual de Docker es el de tener contenedores con todo el software necesario para programar una aplicación de forma que nos aseguremos que todos los miembros del equipo tengan exactamente el mismo entorno de desarrollo. En ese caso, es muy ineficiente tener que volver a crear la imagen ante cada cambio en el código que queramos probar. Otro enfoque también ineficiente pasa por editar los ficheros *dentro* del contenedor, pero en ese caso para hacer esos cambios persistentes, tendríamos que usar ciertas instrucciones que crean una nueva imagen a partir del estado de un contenedor. Una solución mucho mejor es usar *volúmenes*, que nos permiten enlazar ciertos directorios del contenedor con directorios externos::
+
+  docker run --detach --publish 8001:5000 --volume "$PWD":/app --name contenedor-carrito imagen-carrito
 
 Si editamos el contenido de ``public/carrito.html`` veremos cómo la aplicación web se actualiza inmediatamente. Cuando tengamos la aplicación lista, podemos crear la imagen copiando, esta vez sí, el contenido local al sistema de ficheros del contenedor. Para terminar, podemos eliminar el contenedor e incluso la imagen::
 
   docker stop contenedor-carrito
   docker rm contenedor-carrito
-  docker rmi imagen-car7
+  docker rmi imagen-carrito
+
+Podemos repetir los pasos anteriores (sin necesidad de tener Docker instalado) usando servicios en la nube. En el caso de GCP, la generación de la imagen y su subida a un registro se puede hacer con `Cloud Build`_, mientras que para el lanzamiento del contenedor podemos usar `Cloud Run`_.
+
   .. _`Cloud Build`: https://cloud.google.com/build/docs/quickstart-build?hl=en
   .. _`Cloud Run`: https://cloud.google.com/build/docs/quickstart-deploy?hl=en
 
@@ -376,7 +381,10 @@ En lo siguiente se asume que la variable ``PROYECTO`` contiene el identificador 
   
 Los pasos siguientes crean un repositorio para imágenes de Docker (dado que se pueden almacenar otros tipos de objetos, en GCP lo llaman *repositorio de artefactos*), construye una imagen a partir del ``Dockerfile`` y el contenido del directorio actual y, finalmente, la ejecuta::
 
-  gcloud artifacts rep7ker images list europe-west3-docker.pkg.dev/$PROYECTO/repositorio-docker
+  gcloud artifacts repositories create repositorio-docker --repository-format=docker --location europe-west3
+  gcloud artifacts repositories list
+  gcloud builds submit --tag europe-west3-docker.pkg.dev/$PROYECTO/repositorio-docker/imagen-carrito:v1
+  gcloud artifacts docker images list europe-west3-docker.pkg.dev/$PROYECTO/repositorio-docker
   gcloud run deploy servicio-carrito --image europe-west3-docker.pkg.dev/$PROYECTO/repositorio-docker/imagen-carrito:v1 --platform managed --region europe-west3
   
 A la pregunta de si permitir invocaciones no autorizadas en la última orden contestamos que sí. La ejecución de la última orden nos dará el URL donde probar la aplicación. Desde la consola web podemos acceder al Artifact Registry y a Cloud Build para ver el repositorio con la imagen y el contenedor, respectivamente. Para eliminar el contenedor y el repositorio completo::
