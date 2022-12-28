@@ -148,6 +148,13 @@ Aunque hoy día la mayor parte de los sistemas operativos trabajan con la codifi
 
 .. _`estas diapositivas`: ./slides/070-codificacion-slides.html
 
+Puedes ver los valores de los bytes en UTF-8 de los diferentes bytes de una cadena en JavaScript ejecutando:
+
+.. code-block:: javascript
+
+  e=new TextEncoder(); s="Avión a reacción: ✈"; for (let i of s) console.log(`'${i}': ${e.encode(i)}`);
+
+
 .. Note::
 
   Cuando abres un documento con un editor de texto, el editor lee todos los bytes del fichero y los interpreta (y muestra) en base a la codificación con la que está configurado. Si, por ejemplo, el fichero se ha escrito con un programa que usa una codificación (llamémosla C1) en la que todos los caracteres ocupan un byte, pero se intenta mostrar con un editor configurado con una codificación (llamémosla C2) en la que todos los caracteres ocupan dos bytes, los caracteres mostrados probablemente no coincidirán con los originales, ya que el editor los agrupará de dos en dos. Además, al abrirlo con el editor, el fichero parecerá tener la mitad de caracteres que el original.
